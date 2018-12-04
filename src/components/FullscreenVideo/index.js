@@ -3,10 +3,10 @@ import "./style.css"
 
 class FullscreenVideo extends React.PureComponent {
   render() {
-    const { children } = this.props
+    const { children, ...others } = this.props
     return (
       <div>
-        <video className="fullscreen-video__video" {...this.props} />
+        <video className="fullscreen-video__video" {...others} />
         {children}
       </div>
     )

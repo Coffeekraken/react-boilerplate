@@ -1,0 +1,8 @@
+{
+  "homepage.body": "Boilerplate react intégré avec react-scripts, redux, redux-thunk, reselect, sugar, gridle et plus encore...",
+  "homepage.counter.decrement": "Décrémenter",
+  "homepage.counter.decrement.tooltip": "Décrémenter le compteur",
+  "homepage.counter.increment": "Incrémenter",
+  "homepage.counter.increment.tooltip": "Incrémenter le compteur",
+  "homepage.title": "Coffeekraken React Boilerplate"
+}

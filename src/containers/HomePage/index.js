@@ -1,7 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 import PropTypes from 'prop-types'
-import { incrementCounter, decrementCounter } from "./actions"
+import { FormattedMessage } from 'react-intl'
+import { incrementCounter, decrementCounter } from './actions'
+import messages from './messages'
 
 import headerImg from "../../assets/doc-header.jpg"
 import video from "../../assets/disaster.mp4"
@@ -34,19 +36,22 @@ class HomePage extends React.Component {
   render() {
     const { count } = this.props
     return (
-      <FullscreenVideo autoPlay muted src={video}>
+      <FullscreenVideo autoPlay muted loop src={video}>
         <Card className="homepage">
-          <H1 className="m-b">Coffeekraken React Boilerplate</H1>
+          <H1 className="m-b">
+            <FormattedMessage {...messages.title} />
+          </H1>
           <P lead="true" className="m-b">
-            Base HTML files and folder structure with complete build process
-            (js, sass, image compression, etc...) built in
+            <FormattedMessage {...messages.body} />
           </P>
           <Button
             className="m-b m-r relative"
             onClick={() => this.decrement()}
           >
-            <Tooltip primary="true">Decrement the counter</Tooltip>
-            Decrement
+            <Tooltip primary="true">
+              <FormattedMessage {...messages.decrementTooltip} />
+            </Tooltip>
+            <FormattedMessage {...messages.decrement} />
           </Button>
           {count}
           <Button
@@ -54,8 +59,10 @@ class HomePage extends React.Component {
             primary="true"
             onClick={() => this.increment()}
           >
-            <Tooltip secondary="true">Increment the counter</Tooltip>
-            Increment
+            <Tooltip secondary="true">
+              <FormattedMessage {...messages.incrementTooltip} />
+            </Tooltip>
+            <FormattedMessage {...messages.increment} />
           </Button>
           <img src={headerImg} alt="Coffeekraken React Boilerplate" />
         </Card>
