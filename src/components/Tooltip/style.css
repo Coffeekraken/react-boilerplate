@@ -1,0 +1,4028 @@
+@charset "UTF-8";
+/**
+ * Vendors
+ * All external librarie needed in the project.
+ */
+/**
+ * @name 	Functions API
+ * This are all the API functions that are exposed by gridle.
+ */
+/**
+ * Get states count
+ * @return 	{Integer} 	The number of states defined
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Get the current state map
+ * @return 		{Map} 	The current state map
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Get the current state name
+ * @return 		{String} 	The current state name
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Get the column width in percent for the global or a specific context
+ *
+ * @param 	{Integer} 		[$columns=1] 							The number of columns to calculate
+ * @param 	{Integer} 		[$stateMap-or-stateName=current] 	 	The state to calculate the column width for
+ * @return 	{Percent} 												The width in percent
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/*
+ * Get a state map
+ *
+ * @param 	{String|Map} 		[$state=current] 		The name or map of the state to get
+ * @return 	{Map} 				A state map object
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Check if a state exist :
+ * @param 	{String} 		$name 		The name of the state to check
+ * @return 	{Boolean} 					true if exist
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Get a state variable
+ *
+ * @param 	{String} 		$varName 								The variable name
+ * @param  	{String} 		[$stateMap-or-stateName=current] 	 	The state name or a map state value
+ * @return 	{Mixed} 												The finded value
+ */
+/**
+ * Set a variable in a state
+ * @param  		{String} 	$var                    	Variable name to assign
+ * @param  		{Mixed} 	$newValue          			The new value to assign
+ * @param 		{String} 	[$state=current] 			The state to apply the variable for
+ * @return 		{List}                         			The states list (full)
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * get the registered gridle states
+ * @return 	{Map} 		All the registered states
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * get the registered gridle states names
+ * @return 	{List} 		All the registered states names
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Get the register columns map
+ * @param 	{String|List<String>} 		[$state=current] 		The state name or map
+ * @return 	{Map} 												The map of registered columns for the specified state
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Will return the generated selector depending on the "package" wanted, the state and some optional values that might be needed by the package (like for row-align that need a "side" value)
+ * @param 		{String} 							$package 			The package to generate the selector for (see _settings.scss file)
+ * @param 		{String|List<String} 				[$states=null] 		The list of state to generate the selector for. If not specified, will generate for all registered states
+ * @param 		{Mixed} 							[$value=null] 		The value that will be used to replace the "%{tokenName}" inside the package pattern
+ * @example 	scss
+ * g-selector(grid, mobile, 2) {
+ * 	// your code here
+ * 	// The selector will be .gr-2@mobile
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Return the current used driver
+ * @return 	{String} 		The used driver like default or driver
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Check if the used driver is the specified one
+ * @param 		{String} 		$driver 	The driver to check
+ * @return 		{Boolean} 					True if is the current driver
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Get the media query for a particular state, or width, etc...
+ *
+ * @param 	{Mixed} 		[$stateName-or-stateMap=current] 		The state name of the min width
+ * @return 	{String} 												The media query string without the @media
+ */
+/**
+ * @name 	Setting mixins
+ * This are all the mixins that are exposed by gridle for the setting up your grid.
+ */
+/**
+ * Setting up your grid
+ * @param 		{Map} 		$settings 		Your default grid settings
+ * @example 	scss
+ * // default settings
+ * $_gridle-settings : (
+ *	name : default,
+ *	min-width : null,
+ *	max-width : null,
+ *	query : null,
+ *	classes : true,
+ *	context : 12,
+ *	column-width : null,
+ *	gutter-width : 20px,
+ *	gutter-height : 0,
+ *	gutter-top : 0,
+ *	gutter-right : 10px,
+ *	gutter-bottom : 0,
+ *	gutter-left : 10px,
+ *	direction : ltr,
+ *	dir-attribute : false,
+ *	name-multiplicator : 1,
+ *	states-classes : false,
+ *	classes-prefix : null
+ * );
+ *
+ * // setting up your grid
+ * \@include g-setup((
+ * 	context : 12
+ * 	// other settings
+ * ));
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Register a new state with some settings
+ * @param 		{String} 		$name 		The new state name
+ * @param 		{Map} 			$settings 	The state settings
+ * @example 	scss
+ * \@include g-register-state(mobile, (
+ * 	max-width : 600px
+ * ));
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Register some clear each that will been generated in classes
+ * @param 		{Integer} 		$count 		The n each item to clear
+ * @param 		{String} 		$what 		What to clear (left, right, both)
+ * @example 	scss
+ * \@include g-register-clear-each(2, left);
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Register a new custom column in case the generated ones are not enough.
+ * This is useful when you have a 12 columns grid and you need some 1/5 ones.
+ * @param 		{String} 		$name 		The column name
+ * @param 		{Integer} 		$columns 	The column width
+ * @param 		{Integer} 		$context 	The context on which to calculate the column width
+ *
+ * @example 	scss
+ * \@include g-register-column(1on5, 1, 5);
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set a pattern for a specified package used to generate the classnames
+ * @param 		{String} 	$package 		The package name to specify the pattern for
+ * @param 		{List} 		$pattern 		The new classname pattern
+ *
+ * @example 	scss
+ * \@include g-set-classname-map(grid, ('grid','-','%count','@','%state'));
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set a generic selector for a specific package. This generic selector will be used to target some elements like [class*="gr-"].
+ * If not specified for a package, the generic selector will be generated automatically but sometimes it's better to hardcode it.
+ * @param 		{String} 		$package 		The package to specify the generic selector for
+ * @param 		{String} 		$selector 		The generic selector like [class*="gr-"], or whatever...
+ * @example 	scss
+ * \@include g-set-generic-selector(grid, '[class*="gr-"]');
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Register some basics states:
+ *
+ * - mobile : 0 to 480px
+ * - tablet : 481px to 1024px
+ *
+ * @example 	scss
+ * \@include g-register-default-states();
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Register some basics mobile first states:
+ *
+ * - mobile : 320px to infinite
+ * - tablet : 640px to infinite
+ * - desktop : 992px to infinite
+ * - large : 1200px to infinite
+ *
+ * @example 	scss
+ * \@include g-register-mobile-first-states();
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Register bootstrap 3 states
+ *
+ * - xs : 0 to 750px
+ * - sm : 750px to infinite
+ * - md : 970px to infinite
+ * - lg : 1170px to infinite
+ *
+ * @example 	scss
+ * \@include g-register-bootstrap3-states();
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Register bootstrap 4 states
+ *
+ * - xs : 0 to 576px
+ * - sm : 576px to infinite
+ * - md : 970px to infinite
+ * - lg : 1200px to infinite
+ *
+ * @example 	scss
+ * \@include g-register-bootstrap4-states();
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * @name 	Base API
+ * This are all the base API mixins that are exposed by gridle.
+ */
+/**
+ * Specify a layout using a single call like in the example bellow
+ * @param 		{Map} 				$layout 				The map layout wanted
+ * @param 		{Map|List|String} 	[$context=null] 		The context in which to apply the layout
+ * @example 	scss
+ * body {
+ * 	\@include g-layout((
+ * 	 	'#header' : 12,
+ * 	 	'#sidebar' : 4 mobile 12,
+ * 	 	'#content' : 8 mobile 12,
+ * 	 	'#footer' : 12
+ * 	));
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Apply some styling in a passed state
+ * @param 		{Map|List|String} 		$states 		The states to apply the css for. Can be a state map, a list of states or a state name
+ * @example 	scss
+ * .my-cool-element {
+ * 	// specify a register state name
+ * 	\@include g-state(mobile) {
+ * 		// your css code here...
+ * 	}
+ * 	// specify more than one register states
+ * 	\@include g-state(mobile tablet) {
+ * 		// your css code here...
+ * 	}
+ *  // specify a min and max width
+ * 	\@include g-state(200px, 500px) {
+ * 		// your css code here...
+ * 	}
+ * 	// passing a state map (complexe usage)
+ * 	\@include g-state((
+ * 		query : 'print only'
+ * 	)) {
+ * 		// your code here...
+ * 	}
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Apply some css depending on the element size (element queries)
+ * **Using this mixin requires that you import the ```gridle-eq.js``` file into your javascript code**
+ * @param 	{Number} 	$size 				The size to take care of. If negative, mean lower than, if positive, mean greater than.
+ * @param 	{Boolean} 	[$height=false] 	Set to true to handle height instead of width
+ * @example 	scss
+ * .my-cool-element {
+ *  	\@include g-eq(-400px) {
+ *  		// your css that will be applied when element
+ *  		// is between 0 and 399px wide
+ *  	}
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Basically, this is the same as the ```g-state``` mixin, with the difference that it will not print any media queries. It will just create a state context in which your inside code will refer.
+ * @param 		{Map|List|String} 		$states 		The states to apply the css for. Can be a state map, a list of states or a state name
+ * @example 	scss
+ * @warn(g-get-state-var(min-width)); // will output the min-width of the default state
+ * \@include g-state-context(mobile) {
+ *  	@warn(g-get-state-var(min-width)); // will output the min-width of the mobile state
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Will print the generated selector depending on the "package" wanted, the state and some optional values that might be needed by the package (like for row-align that need a "side" value)
+ * @param 		{String} 							$package 			The package to generate the selector for (see _settings.scss file)
+ * @param 		{String|List<String} 				[$states=null] 		The list of state to generate the selector for. If not specified, will generate for all registered states
+ * @param 		{Mixed} 							[$value=null] 		The value that will be used to replace the "%{tokenName}" inside the package pattern
+ * @example 	scss
+ * \@include g-selector(grid, mobile, 2) {
+ * 	// your code here
+ * 	// The selector will be .gr-2@mobile
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Helper gridle mixin that let you specify the grid properties through ```g-set``` map, or a list of properties like "8 push 2 mobile 12 push 0"
+ * @param 		{Map|List} 			$properties 			The grid properties to apply
+ * @example 	scss
+ * #content {
+ * 	// using list
+ * 	\@include gridle(8 mobile 12);
+ * 	// using a map
+ * 	\@include gridle((
+ * 		grid : 8,
+ * 		mobile : (
+ * 			grid : 12
+ * 		)
+ * 	));
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Helper mixin that let you specify the grid properties through map formated like in the example bellow.
+ * Here's the possible properties:
+ *
+ * - ```grid``` {Integer} : The grid column count
+ * - ```container``` {Boolean} : Set the element as container
+ * - ```grid-grow``` {Boolean} : Set the element a grid column that grow
+ * - ```grid-adapt``` {Boolean} : Set the element a grid column that adapt
+ * - ```grid-table``` {Boolean} : Set the element a grid column of type table
+ * - ```push``` {Integer} : Set the push count
+ * - ```pull``` {Integer} : Set the pull count
+ * - ```prefix``` {Integer} : Set the prefix count
+ * - ```suffix``` {Integer} : Set the suffix count
+ * - ```clear-each``` {Integer} : Set the clear each count
+ * - ```grid-centered``` {Boolean} : Set the grid column as centered
+ * - ```row``` {Boolean} : Set the element as a grid row
+ * - ```row-full``` {Boolean} : Set the element as a grid row full
+ * - ```col``` {Boolean} : Set the element as a grid column (vertical)
+ * - ```row-align``` {String} : Set the row alignement
+ * - ```row-no-gutter``` {Boolean} : Remove the gutters on columns inside this row
+ * - ```nowrap``` {Boolean} : Set a nowrap on the row
+ * - ```wrap``` {Boolean} : Reset the wrap property on the row
+ * - ```order``` {Integer} : Set the order of the column (flex driver)
+ * - ```hide``` {Boolean} : Hide the element
+ * - ```show``` {Boolean} : Show the element
+ * - ```visible``` {Boolean} : Set the visibility of the element to visible
+ * - ```not-visible``` {Boolean} : Set the visibility of the element to hidden
+ * - ```invisible``` {Boolean} : Set the visibility of the element to hidden
+ * - ```show-inline``` {Boolean} : Set the display of the element to inline-block
+ * - ```float``` {String} : Set the specified float of the element
+ * - ```clear``` {String} : Clear the specified float of the element
+ * - ```no-gutter``` {Boolean|String|List<String>} : Remove the specified gutters
+ * - ```gutter``` {Boolean|String|List<String>} : Apply the specified gutters
+ *
+ * @param 		{Map} 			$properties 			The grid map properties to apply
+ * @example 	scss
+ * #content {
+ * 	// using a map
+ * 	\@include gridle((
+ * 		grid : 8,
+ * 		push : 2
+ * 		mobile : (
+ * 			grid : 12
+ * 		),
+ * 		{stateName} : {mapProperties}
+ * 	));
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the push count for the column
+ * @param 		{Integer} 		$columns 			The number of columns to push this column
+ * @param 		{Integer} 		[$context=null]  	The context on which to calculate the push value. By default, it is the default context setted with ```g-setup```.
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-push(2);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the pull count for the column
+ * @param 		{Integer} 		$columns 			The number of columns to pull this column
+ * @param 		{Integer} 		[$context=null]  	The context on which to calculate the pull value. By default, it is the default context setted with ```g-setup```.
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-pull(2);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the prefix count for the column
+ * @param 		{Integer} 		$columns 			The number of columns to prefix this column
+ * @param 		{Integer} 		[$context=null]  	The context on which to calculate the prefix value. By default, it is the default context setted with ```g-setup```.
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-prefix(2);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the suffix count for the column
+ * @param 		{Integer} 		$columns 			The number of columns to suffix this column
+ * @param 		{Integer} 		[$context=null]  	The context on which to calculate the suffix value. By default, it is the default context setted with ```g-setup```.
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-suffix(2);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Display a debug grid on top of the row
+ * @example 	scss
+ * .my-row {
+ * 	\@include g-row-debug();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Make the element a grid container
+ * @example 	scss
+ * .my-cool-container {
+ * 	\@include g-container();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Remove the gutters on each columns inside the row
+ * @param 		{String|List<String>} 		[$sides=top right bottom left] 		The sides to clear
+ * @example 	scss
+ * .my-cool-row {
+ * 	\@include g-row-no-gutter(left right);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Make a column centered
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-grid-centered();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Hide an element
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-hide();
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the visibility of an element to hidden
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-not-visible();
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the visibility of an element to hidden
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-invisible();
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the display of an element to block
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-show();
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the display of an element to inline-block
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-show();
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the visibility of an element to visible
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-show();
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the float property of the element to the specified direction
+ * @param 		{String} 		[$float=left] 		The float direction to set
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-float(right);
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Clear the float property of the element to the specified direction
+ * @param 		{String} 		[$float=left] 		The float direction to clear
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-clear(right);
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Remove the gutters on the column
+ * @param 		{String|List<String>} 		[$sides=top right bottom left] 		The sides to clear
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-no-gutter(left right);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the gutters on the column
+ * @param 		{String|List<String>} 		[$sides=top right bottom left] 		The sides to apply gutters on
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-gutter(left right);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * @name 	Generate mixins
+ * This are all the mixins that you can use to generate classes to use inside your HTML codebase
+ */
+/**
+ * Generate a custom class for all the states
+ * @param 	{List} 	$pattern 					The name pattern of the class
+ * @param 	{List} 	[$statesNames=null] 		The states names to generate. If null or all, will generate the class for all registered states
+ * @example 	scss
+ * \@include g-generate-custom-class(('my','-','cool','-','class','-','%state')) {
+ * 	color: pink;
+ * 	padding: g-get-state-var(gutter-left);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Generate all the classes depending on the packages you have specified like:
+ * - ```.container@{state}``` : default container
+ * - ```.row@{state}``` : default row
+ * - ```.row-align-{align}@{state}``` : default row-align
+ * - ```.row-full@{state}``` : default row-full
+ * - ```.row-debug@{state}``` : default row-debug
+ * - ```.row-no-gutter@{state}``` : default row-no-gutter
+ * - ```.nowrap@{state}``` : default nowrap
+ * - ```.wrap@{state}``` : default wrap
+ * - ```.col@{state}``` : default col
+ * - ```.gr-{column}@{state}``` : default grid
+ * - ```.gr-table@{state}``` : default gr-table
+ * - ```.gr-grow@{state}``` : default gr-grow
+ * - ```.gr-adapt@{state}``` : default gr-adapt
+ * - ```.gr-centered@{state}``` : default gr-centered
+ * - ```.push@{state}``` : default push
+ * - ```.pull@{state}``` : default pull
+ * - ```.prefix@{state}``` : default prefix
+ * - ```.suffix@{state}``` : default suffix
+ * - ```.hide@{state}``` : helpers hide
+ * - ```.show@{state}``` : helpers show
+ * - ```.show-inline@{state}``` : helpers show-inline
+ * - ```.not-visible@{state}``` : helpers not-visible
+ * - ```.visible@{state}``` : helpers visible
+ * - ```.float-{%float}@{state}``` : helpers float
+ * - ```.clear-{%float}@{state}``` : helpers clear
+ * - ```.clear-each-{%count}@{state}``` : helpers clear-each
+ * - ```.gutter-{%side}@{state}``` : helpers gutter
+ * - ```.no-gutter-{%side}@{state}``` : helpers no-gutter
+ * - ```.auto-height@{state}``` : helpers auto-height
+ * - ```.order-{%column-count}@{state}``` : helpers order
+ *
+ * @param 		{String|List<String>} 		[$states=all] 		The states to generate the classes for
+ * @param 		{String|List<String>} 		[$package=all] 		The packages to generate the classes for
+ * @param 		{String} 					[$scope=null] 		A classname to scope the classes in
+ *
+ * @example 	scss
+ * // generate all the classes
+ * \@include g-classes();
+ * // generate only certain states
+ * \@include g-classes(mobile tablet);
+ * // generate only the helpers for all the states
+ * \@include g-classes(all, helpers);
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * @name 	Default driver API
+ * This are all the API mixins that are exposed by gridle for the default driver.
+ */
+/**
+ * Set the element as a row
+ * @param 		{Boolean} 		[$reverse=false] 		Revert the columns order if true
+ * @example 	scss
+ * .my-cool-row {
+ * 	\@include g-row();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the element as a col
+ * @param 		{Boolean} 		[$reverse=false] 		Revert the columns order if true
+ * @example 	scss
+ * .my-cool-col {
+ * 	\@include g-col();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Apply a nowrap on the element
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-nowrap();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Reset the nowrap on the element
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include g-wrap();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Apply a column width on the element
+ * @param 		{Integer|String} 		$columns 			The column count to apply or a registered column name
+ * @param 		{Integer} 				[$context=null]  	The context on which to calculate the column width. If null, take the context setted with ```g-setup```
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-grid(2);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the grid element as a table display type
+ * @example 	scss
+ * .my-cool-column {
+ * 	\@include g-grid(2);
+ * 	\@include g-grid-table();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the width of the row element to full viewport width
+ * @example 	scss
+ * .my-cool-row {
+ *  \@include g-row();
+ * 	\@include g-row-full();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the width of the grid element to adapt to his content
+ * @example 	scss
+ * .my-cool-column {
+ *  \@include g-grid-adapt();
+ *  // or
+ *  \@include g-grid(adapt);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the width of the grid element to grow depending on the place it has at disposal
+ * @example 	scss
+ * .my-cool-column {
+ *  \@include g-grid-grow();
+ *  // or
+ *  \@include g-grid(grow);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Clear each n childs
+ * @example 	scss
+ * .my-cool-row {
+ *  \@include g-clear-each(2);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Set the alignement of the columns inside the row using these alignement properties:
+ *
+ * - top : Align vertical top
+ * - middle : Align vertical middle
+ * - bottom : Align vertical bottom
+ * - left : Align horizontal left
+ * - center : Align horizontal center
+ * - right : Align horizontal right
+ *
+ * @example 	scss
+ * .my-cool-row {
+ *  \@include g-row-align(middle center);
+ *  \@include g-row-align(right);
+ *  \@include g-row-align(middle);
+ *  // etc...
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Parse and return the Map respresentation of a border property
+ * The $border argument will be parsed with the [s-parse-properties](../core/functions/_s-parse-properties.scss) function.
+ *
+ * @param 		{List} 			$border 			The border property to parse
+ * @return 		{Map} 								The Map represenration of the border
+ *
+ * @example
+ * s-border-map(1px solid white);
+ * // return
+ * // (
+ * // 	width : 1px,
+ * // 	color : white,
+ * // 	style : solid
+ * // )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the Map representation of a columns properties
+ * @param  		{Interger} 			[$count=null] 			The number of columns
+ * @param 		{Number} 			[$gap=null] 			The gap width between each columns
+ * @param 		{String} 			[$fill=null] 			The fill property (balance,auto,initial,inherit)
+ * @param 		{Number} 			[$width=null] 			The width of the columns
+ * @param 		{Integer|String} 	[$span=null] 			The column-span property (1,all,initial,inherit)
+ * @param 		{List} 				[$rule=null] 			The column-rule property
+ * @param 		{String} 			[$rule-style=null]  	The column-rule-style property
+ * @param 		{Color} 			[$rule-color=null] 		The column-rule-color property
+ * @param 		{Number} 			[$rule-width=null] 		The column-rule-width property
+ * @return 		{Map} 										The map representation or the columns properties
+ *
+ * @example
+ * s-columns-map(2, 20px);
+ * // return
+ * // (
+ * // 	column-count : 2,
+ * // 	column-gap : 20px
+ * // )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Parse and return the Map respresentation of a margin property
+ * The $margin argument will be parsed with the [s-parse-properties](../core/functions/_s-parse-properties.scss) function.
+ *
+ * @param 			{List|Number} 			$margin 			The margin property to parse
+ * @return 			{Map} 										The map representation
+ *
+ * @example
+ * s-margin-map(10px); // => ( top:10px, right:10px, bottom:10px, left:10px )
+ * s-margin-map(10px 20px); // => ( top:10px, right:20px, bottom:10px, left:20px )
+ * s-margin-map(5px 10px 15px 20px); // => ( top:5px, right:10px, bottom:15px, left:20px )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the representation of a position styling like position:absolute; top:0; left:100%; etc...
+ * This function gives you some shortcuts to align your element top, bottom, middle, center, etc...
+ *
+ * @param 		{String} 			[$position=absolute] 			The position css property
+ * @param 		{String} 			[$vertical-align=top] 			The vertical alignement wanted (top,middle,bottom)
+ * @param 		{String} 			[$align=left] 					The horizontal alignement wanted (left,center,right)
+ * @param 		{Number} 			[$top=null] 					The top property wanted
+ * @param 		{Number} 			[$right=null] 					The right property wanted
+ * @param 		{Number} 			[$bottom=null] 					The bottom property wanted
+ * @param 		{Number} 			[$left=null] 					The left property wanted
+ * @return 		{Map} 												The map representation of the position wanted
+ *
+ * @example
+ * s-position-map(absolute, top, right);
+ * s-position-map(absolute, middle, center);
+ * s-position-map(relative, bottom, right);
+ * s-position-map(absolute, bottom, center);
+ * // etc...
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the Map properties representation for the rhythme width
+ * The rhythme width is the width of an element that target a certain number of letters by line
+ *
+ * @param 			{Integer} 			[$letters-count=settings.typography.line-letters-count] 		The number of letters to target by line
+ * @return 			{Map} 																		The Map properties representation
+ *
+ * @example
+ * s-rhythm-width(50);
+ * // return
+ * // (
+ * // 	display : block,
+ * // 	max-width : 50ex
+ * // )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the Map properties representation of a translate x,y and z
+ *
+ * @param 			{Number} 			[$x=0] 			The x translate value
+ * @param 			{Number} 			[$y=0] 			The y translate value
+ * @param 			{Number} 			[$z=0] 			The z translate value
+ * @return 			{Map} 								The translate Map representation
+ *
+ * @example
+ * s-translate-map(10px,20px);
+ * // return
+ * // (
+ * // 	transform: translateX(10px) translateY(20px) translateZ(0)
+ * // )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Helper mixin to set a background image
+ *
+ * @param 			{String} 				[$repeat=null] 				The background-repeat property
+ * @param 			{String} 				[$size=null] 				The background-size property
+ * @param 			{String} 				[$attachment=null] 			The background-attachment property
+ * @param 			{String} 				[$blend-mode=null] 			The background-blend-mode property
+ * @param 			{String} 				[$clip=null] 				The background-clip property
+ * @param 			{String} 				[$url=null] 				The background-image url property
+ * @param 			{Number} 				[$width=null] 				The background-size width property
+ * @param 			{Number} 				[$height=null] 				The background-size height property
+ * @param 			{Number} 				[$top=null] 				The background-position top property
+ * @param 			{Number} 				[$left=null] 				The background-position left property
+ * @param 			{String} 				[$suffix2x=@2x] 			The suffix to add the the url if the 2x resolution if wanted
+ * @param 			{String} 				[$suffix3x=@3x] 			The suffix to add the the url if the 3x resolution if wanted
+ * @param 			{String} 				[$suffix4x=@4x] 			The suffix to add the the url if the 4x resolution if wanted
+ * @param 			{List} 					[$resolution=null] 			The resolution wanted like 2x, 3x and 4x
+ * @param 			{List} 					[$position=null] 			The background-position property
+ *
+ * @example
+ * .my-cool-element {
+ * 		\@include s-background(
+ * 			$url : 'img/my-cool-image.jpg',
+ * 			$size : cover,
+ * 			resolution : 2x 3x 4x
+ * 		);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Apply some border radius
+ * @param 		{Number} 		[$radius=null] 			The radius to apply globally
+ * @param 		{Number} 		[$top=null] 			The radius to apply on top corners
+ * @param 		{Number} 		[$right=null] 			The radius to apply on right corners
+ * @param 		{Number} 		[$bottom=null] 			The radius to apply on bottom corners
+ * @param 		{Number} 		[$left=null] 			The radius to apply on left corners
+ * @param 		{Number} 		[$top-left=null] 		The radius to apply on top-left corners
+ * @param 		{Number} 		[$top-right=null] 		The radius to apply on top-right corners
+ * @param 		{Number} 		[$bottom-left=null] 	The radius to apply on bottom-left corners
+ * @param 		{Number} 		[$bottom-right=null] 	The radius to apply on bottom-right corners
+ *
+ * @example 	scss
+ * .my-cool-item {
+ * 	// apply on top left and right corners
+ * 	\@include s-border-radius(
+ * 		$top : 10px;
+ * 	);
+ * 	// apply on each corners
+ * 	\@include s-border-radius(10px);
+ * 	// etc...
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Center a block element using margins etc...
+ * @example 	scss
+ * .my-cool-block-element {
+ * 	\@include s-center-block();
+ * }
+ *
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * @name 	s-clearfix
+ * Apply a clearfix on the element.
+ * Supported methods:
+ * - micro
+ * - facebook
+ * - float
+ * - micro
+ *
+ * @param 		{String} 		[$method=micro] 		The clearfix method to use
+ *
+ * @example 	scss
+ * .my-cool-element {
+ *  \@include s-clearfix();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Display a coffeekraken logo with two specified colors
+ * @param 		{Color} 		[$color=default] 	The base color to use
+ * @param 		{Color} 		[$accent=primary] 	The accent color to use
+ *
+ * @example 	scss
+ * .my-cool-coffeekraken-logo {
+ * 	\@include s-coffeekraken-logo();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Create a column layout my setting each columns properties at once
+ * @param 		{Integer} 		[$count=null] 		The number of columns wanted
+ * @param 		{Number} 		[$gap=null] 		The column-gap width wanted
+ * @param 		{String} 		[$fill=null] 		The column-fill wanted
+ * @param 		{Number} 		[$width=null] 		THe width of each columns wanted
+ * @param 		{String} 		[$span=null] 		Specify on how many columns the element has to span across
+ * @param 		{List} 			[$rule=null] 		Specify the shorthand version of the column-rule-color, column-rule-style and column-rule-width
+ * @param 		{String} 		[$rule-style=null] 	Specify the column-rule-style wanted
+ * @param 		{Color} 		[$rule-color=null] 	Specify the column-rule-color wanted
+ * @param 		{Number} 		[$rule-width=null] 	Specify the column-rule-width wanted
+ *
+ * @example 	scss
+ * .my-cool-container {
+ * 	\@include s-columns(
+ * 		$count : 3,
+ * 		$gap : 30px,
+ * 		$span : solid s-color(primary) 20px
+ * 	);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Apply some border radius
+ * @param 		{Number} 		[$radius=null] 			The radius to apply globally
+ * @param 		{Number} 		[$top=null] 			The radius to apply on top corners
+ * @param 		{Number} 		[$right=null] 			The radius to apply on right corners
+ * @param 		{Number} 		[$bottom=null] 			The radius to apply on bottom corners
+ * @param 		{Number} 		[$left=null] 			The radius to apply on left corners
+ * @param 		{Number} 		[$top-left=null] 		The radius to apply on top-left corners
+ * @param 		{Number} 		[$top-right=null] 		The radius to apply on top-right corners
+ * @param 		{Number} 		[$bottom-left=null] 	The radius to apply on bottom-left corners
+ * @param 		{Number} 		[$bottom-right=null] 	The radius to apply on bottom-right corners
+ *
+ * @example 	scss
+ * .my-cool-item {
+ * 	// apply on top left and right corners
+ * 	\@include s-corner(
+ * 		$top : 10px;
+ * 	);
+ * 	// apply on each corners
+ * 	\@include s-corner(10px);
+ * 	// etc...
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Make the element fit his container.
+ * @param 	{String} 			[$position=null] 		The position how to fit the element.
+ *
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include s-fit(absolute);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Hide the contained text
+ *
+ * @example 	scss
+ * .my-cool-container {
+ * 	\@include s-hide-text();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Apply an icon on the element. This mixin support font-awesome and custom icons systems that have an icon name formated like "icon-{name}"
+ * @param 		{String} 		$name 		The icon name to apply
+ *
+ * @example 	scss
+ * .my-cool-icon {
+ * 	\@include s-icon(fa-user);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Set how to render the image
+ * @param 		{String} 		[$mode=auto] 		The mode to use to render the image
+ *
+ * @example 	scss
+ * img {
+ * 	\@include s-image-rendering(crips-edges);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Set how the list bullet has to be displayed.
+ * @param 		{String} 		[$type=null] 				The list type to use. Can be all the list-style-type values
+ * @param 		{Url} 			[$image=null] 				An image url to use as bullet
+ * @param 		{String} 		[$icon=null] 				An icon name to use as bullet. Will use the s-icon mixin under the hood
+ * @param 		{Color} 		[$color=s-color(default)] 	The color to use for the bullet
+ * @param 		{Number} 		[$size=null] 				The size to use for the bullet
+ * @param 		{Number|List<Number>} 	[$offset=null] 		A number that represent the top offset, or a list of two numbers that represent the top, left offset
+ * @param 		{String} 		[$font=null] 				The font name to use for the bullet
+ * @param 		{Number} 		[$space=null] 				The space between the bullet and the content
+ *
+ * @example 	scss
+ * .my-cool-list__item {
+ * 	@\include s-list-bullet(
+ * 		$image : '../img/my-cool-bullet.svg',
+ * 		$offset : 5px 10px,
+ * 		$size : 1em,
+ * 		$space : 2em
+ * 	);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Start a new list
+ * @param 		{String} 		[$counter-reset=s-list] 		A counter name to reset
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Easy to use media query mixin that support cssua classes to target specific browsers
+ * @param 		{String} 		[$screen=null] 			Any of the @media screen type property like "screen, handheld, print, etc..."
+ * @param 		{Number} 		[$min-width=null] 		The min width to target
+ * @param 		{Number} 		[$max-width=null] 		The max width to target
+ * @param 		{Number} 		[$min-height=null] 		The min height to target
+ * @param 		{Number} 		[$max-height=null] 		The max height to target
+ * @param 		{String} 		[$orientation=null] 	The orientation to target. Can be portrait or landscape
+ * @param 		{String} 		[$resolution=null] 		The resolution to target. Can be 2x, 3x, 4x, etc...
+ * @param 		{String} 		[$engine=null] 			The engine that powers the display. Can be gecko, webkit, trident, blink or presto
+ * @param 		{String} 		[$device=null] 			The device to target. Can be mobile, tablet, desktop, iphone or ipad
+ * @param 		{String} 		[$browser=null] 		The browser(s) to target. Can be chrome, safari, firefox, opera, ie, ie6-20
+ * @param 		{String} 		[$system=null] 			The system(s) to target. Can be ios, osx, windows, linux, android, webos or blackberry
+ *
+ * @example 	scss
+ * // simple min width
+ * \@include s-media(
+ * 	$min-width : 200px
+ * ) {
+ * 	// custom css here...
+ * }
+ *
+ * // target a specific engine
+ * \@include s-media(
+ * 	$engine : gecko webkit
+ * ) {
+ * 	// custom css here
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Set the placeholder style for inputs, etc...
+ *
+ * @example 	scss
+ * input, textarea {
+ * 	\@include s-placeholder() {
+ * 		color : red;
+ * 	}
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Set a complexe position styling like position:absolute; top:0; left:100%; etc...
+ * This mixin gives you some shortcuts to align your element top, bottom, middle, center, etc...
+ *
+ * @param 		{String} 			[$position=absolute] 			The position css property
+ * @param 		{String} 			[$vertical-align=top] 			The vertical alignement wanted (top,middle,bottom)
+ * @param 		{String} 			[$align=left] 					The horizontal alignement wanted (left,center,right)
+ * @param 		{Number} 			[$top=null] 					The top property wanted
+ * @param 		{Number} 			[$right=null] 					The right property wanted
+ * @param 		{Number} 			[$bottom=null] 					The bottom property wanted
+ * @param 		{Number} 			[$left=null] 					The left property wanted
+ * @return 		{Map} 												The map representation of the position wanted
+ *
+ * @example
+ * .my-cool-element {
+ * 	// absolute top right
+ * 	\@include s-position(absolute, top, right);
+ * 	// custom right and bottom values
+ * 	\@include s-position(absolute,
+ * 		$bottom : 20px,
+ * 		$right : 20px
+ * 	);
+ * 	// etc...
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Apply a ratio css styling. This will apply a before or after content that will make the element keep the specified ratio.
+ * The content need to be displayed as absolute top left and fit in size.
+ *
+ * @param 		{Number} 		$ratio 			The ratio to keep like 16/9, etc...
+ * @param 		{String} 		[$type=before] 	The type of ratio to apply. Can be before or after
+ *
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include s-ratio(16/9);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print out a reset css
+ * @example 	scss
+ *
+ * \@include s-reset();
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print out the css on a container that will make the lines displays a maximum number of characters.
+ *
+ * @example 	scss
+ * h1 {
+ * 	\@include s-rhythm-width(45);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Apply some css to have a rounded element with already an overflow on it
+ *
+ * @param 		{Number} 		[$size=null] 		The size (width and height) of the element wanted
+ * @param 		{Number} 		[$width=null] 		The width of the element wanted
+ * @param 		{Number} 		[$height=null] 		The height of the element wanted
+ *
+ * @example 	scss
+ * .my-cool-image {
+ * 	\@include s-round(100px);
+ *
+ * 	img {
+ * 		\@include s-size(cover);
+ * 	}
+ * }
+ */
+/**
+ * Quicky and easily set simple or complexe size to any element
+ * @param 		{String|Number} 		$size-width				The size like "cover" or "contain", or the width un number
+ * @param 		{Number} 				[$height=null] 			The height wanted
+ * @param 		{String} 				[$position=absolute] 	The position wanted if the size is "cover" or "contain"
+ *
+ * @example 	scss
+ * .my-cool-image {
+ * 	\@include s-size(cover);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Quicky set some translates
+ * @param 		{Number} 		[$x=0] 		The x translate value
+ * @param 		{Number} 		[$y=0] 		The y translate value
+ * @param 		{Number} 		[$z=0] 		The z translate value
+ *
+ * @example
+ * .my-cool-element {
+ * 	\@include s-translate(50%, 20px);
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print out the style to truncate the text if needed
+ *
+ * @example 	scss
+ * h1 {
+ * 	\@include s-truncate-text();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Vertically align content by using the inline-block middle trick
+ *
+ * @example 	scss
+ * .my-cool-container {
+ * 	\@include s-vertical-aligner();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Hide an element only visually. This ensure that the element is still correctly displayed in the page for SEO
+ * but will not being visible to the user
+ *
+ * @example 	scss
+ * .my-cool-element {
+ * 	\@include s-visually-hidden();
+ * }
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Get a registered color by name or wrap a new color into a s-color call
+ * to manipulate it with ease.
+ * Supported actions :
+ * - hue {Deg}
+ * - lighten {Percent}
+ * - darken {Percent}
+ * - saturate {Percent}
+ * - desaturate {Percent}
+ * - grayscale {Boolean}
+ * - complement {Boolean}
+ * - invert {Boolean}
+ * - opacity {Percent}
+ * - mix {Color}
+ *
+ * @param 		{String|Color} 		$color 				The color name or the color value to manipulate
+ * @param 		{String|List} 			[$modifier=null] 	The color modifier to apply. Can be a registered modifier name or a modifier list
+ * @return 		{Color} 									The actual color value
+ *
+ * @example 	 	scss
+ * // default color (settings.colors.default)
+ * $myColor : s-color(default);
+ * // primary color (settings.colors.primary)
+ * $primary : s-color(primary);
+ * // manipulate
+ * $primary-dark : s-color(primary, -darken 10%);
+ * // registered modifier
+ * $primary-light : s-color(primary, light);
+ * // $name as list
+ * $modified primary : s-color((primary, -darken 10%));
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the color in a modifier list
+ * @param 			{List} 			$modifiers 		The modifiers list
+ * @return 			{String} 						The color name
+ *
+ * @example
+ * $my-color : s-color-modifier(outline primary); // => primary
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the name of the top level component setted with the [../mixins/_s-component.scss] mixin
+ *
+ * @param 			{String} 			[$default=null] 		The name to return if no top component name exist
+ * @return 			{String} 									The component name
+ *
+ * @example
+ * s-component('hello') // => 'hello'
+ * \@include s-component('my-component') {
+ * 		s-component('hello') // => 'my-component'
+ * 		\@include s-component('another-component') {
+ * 			s-component('hello') // => 'my-component'
+ * 		}
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com);
+ */
+/**
+ * Convert a passed value to the wanted unit
+ * The conversion between some units that depends on a font-size will take the settings.typography.font-size value as reference.
+ *
+ * Available conversions
+ * - from px
+ * 	- to em
+ * 	- to rem
+ * 	- to pt
+ * 	- to %
+ *
+ * - from em
+ * 	- to rem
+ * 	- to px
+ * 	- to pt
+ * 	- to %
+ *
+ * - from pt
+ * 	- to em
+ * 	- to rem
+ * 	- to px
+ * 	- to pt
+ * 	- to %
+ *
+ * - from rem
+ * 	- to em
+ * 	- to px
+ * 	- to pt
+ * 	- to %
+ *
+ * @param 			{Number} 		$value 			The value to convert
+ * @param 			{String} 		$unit 			The unit in which to convert the value
+ * @return 			{Number} 						The converted value
+ *
+ * @example
+ * // if the settings.typography.font-size === 16px
+ * s-convert(24px, rem) // 1.5rem
+ * s-convert(3rem, pt) // 36pt
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Transform a dash notation value into a map
+ * Dash notation value is : -key1 value1 -key2 value2
+ *
+ * @param 			{List} 			$dash 			The dash list notation to transform
+ * @return 			{Map} 							The map generated
+ *
+ * @example
+ * $dash : -hello world -coco universe
+ * s-dash-to-map($dash);
+ * // (
+ * // 	hello : world,
+ * // 	coco : universe
+ * // )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Convert the passed value to em
+ *
+ * @param 			{Number} 		$value 		The value to convert
+ * @return 			{Number} 					The em converted value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Convert the passed value to the closest even value
+ *
+ * @param 			{Number} 		$value 		The value to convert
+ * @return 			{Number} 					The closest even converted value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Take a filter as parameter and parse it to return the {Map} corresponding
+ * The $filter parameter can be either a registered filter name or a filter formated like `filterName(filterValue)`
+ *
+ * @param 			{List}<String> 			$filter 			The registered filter name or the filter string to transform into map
+ * @return 			{Map} 										The corresponding filter map properties
+ *
+ * @example
+ * // register a filter
+ * \@include s-setup((
+ * 		filters : (
+ * 			myCoolFilter : box-shadow(#000 0 0 10px) blur(30px),
+ * 			// other filters...
+ * 		)
+ * ));
+ *
+ * // registered filter
+ * s-filter-map(myCoolFilter);
+ * // {
+ * // 	box-shadow : #000 0 0 10px,
+ * // 	blur : 30px
+ * // }
+ *
+ * // custom filter
+ * s-filter-map(blur(10px));
+ * // {
+ * // 	blur : 10px
+ * // }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return a list with all the filters that are passed as argument
+ * This will use the [./_s-filter-map.scss] function to parse the filters
+ *
+ * @param 	 	{List}<String> 			$filters 			The registered filter(s) name(s) or the filter(s) string(s) to transform into list
+ * @return 		{List} 										The converted filters list to use as css property
+ *
+ * @example
+ * // register a filter
+ * \@include s-setup((
+ * 		filters : (
+ * 			myCoolFilter : box-shadow(#000 0 0 10px) blur(30px),
+ * 			// other filters...
+ * 		)
+ * ));
+ *
+ * // registered filter
+ * .my-cool-elememt {
+ * 		filter : s-filter(myCoolFilter);
+ * 		// filter : box-shadow(#000 0 0 10px) blur(30px);
+ * }
+ *
+ * // custom filter
+ * .my-cool-element {
+ * 		filter : s-filter(myCoolFilter invert(100%));
+ * 		// filter : box-shadow(#000 0 0 10px) blur(30px) invert(100%);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the font-family string or a registered font
+ *
+ * @param 			{String} 		$name 		The name of the registered font
+ * @return 			{String} 					The corresponding font-family property to set in your css
+ *
+ * @example
+ * // register a font
+ * \@include s-setup((
+ * 		fonts : (
+ * 			myCoolFont : (
+ * 				font-family : 'Helvetica Neue',
+ * 				font-weight : 'bold',
+ * 				// etc...
+ * 			),
+ * 			// other fonts...
+ * 		)
+ * ));
+ *
+ * // apply the font
+ * .my-cool-element {
+ * 		font-family : s-font-family(myCoolFont);
+ * 		// font-family : 'Helvetica Neue';
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the font {Map} that correspond to the passed arguments
+ *
+ * @param 		{String} 			[$family=null] 			The font family wanted (can be a registered font name)
+ * @param 		{Color} 			[$color=null] 			The color wanted (can be a registered color name)
+ * @param 		{Number} 			[$size=null] 			The font-size wanted
+ * @param 		{String} 			[$style=null] 			The font-style wanted
+ * @param 		{String} 			[$variant=null] 		The font-variant wanted
+ * @param 		{String|Number} 	[$weight=null] 			The font-weight wanted
+ * @param 		{String} 			[$decoration=null] 		The text-decoration wanted
+ * @param 		{String} 			[$align=null] 			The text-align wanted
+ * @param 		{String} 			[$transform=null] 		The text-transform wanted
+ * @param 		{String} 			[$stretch=null] 		The font-stretch wanted
+ * @param 		{String} 			[$white-space=null] 	The white-space wanted
+ * @param 		{Number} 			[$height=null] 			The line-height wanted
+ * @param 		{Number} 			[$spacing=null] 		The letter-spacing wanted
+ * @param 		{Number} 			[$indent=null] 			The text-indent wanted
+ * @param 		{String} 			[$break=null] 			The line-break wanted
+ * @param 		{String} 			[$wrap=null] 			The word-wrap wanted
+ * @return 		{Map} 										The corresponding font map
+ *
+ * @example
+ * s-font(
+ * 		$family : 'Helvetica Neue',
+ * 		$size : 12px,
+ * 		$wrap : norwap
+ * );
+ * // (
+ * 		font-family : 'Helvetica Neue',
+ * 		font-size : 12px,
+ * 		word-wrap : nowrap
+ * // )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Check if the provided color is a registered one or not
+ * @param 		{String} 		$color 		The color nane to check
+ * @return 		{Boolean} 					True if exists, false if not
+ */
+/**
+ * Return the specified or calculated value of the given stack and size
+ * depending on the settings.sizes ratios stack
+ *
+ * @param 		{Map} 			$stack 			The stack from which to interpolate the value
+ * @param 		{String} 		$size 			The size wanted (has to exist in the settings.sizes stack)
+ * @return 		{Number} 						The $stack.$size value or the interpolated one depending on the settings.sizes ratios
+ *
+ * @example
+ *
+ * // settings.sizes
+ * \@include s-setup((
+ * 		sizes : (
+ * 			small : 0.5,
+ * 			default : 1, // default is ALWAYS 1
+ * 			big : 1.5
+ * 		)
+ * ));
+ *
+ * $myStack : (
+ * 		default : 3rem,
+ * 		big : 6rem
+ * )
+ *
+ * s-interpolate($myStack, big) // 6rem cause specified in the $myStack value
+ * s-interpolate($myStack, small) // 1.5rem => calculated like : 3rem * 0.5 = 1.5rem
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Check if the passed value is of a certain type
+ *
+ * Here's the available types that you can check
+ * - mixed => mean anything
+ * - null
+ * - url
+ * - px
+ * - pt
+ * - rem
+ * - em
+ * - percent | %
+ * - vw
+ * - vh
+ * - ex
+ * - ch
+ * - cm
+ * - mm
+ * - in
+ * - pc
+ * - s | second
+ * - boolean | bool
+ * - function
+ * - number
+ * - int | integer
+ * - string
+ * - color
+ * - list
+ * - map
+ * - deg | degree
+ * - list-{type} => check if is a list of the specified type
+ * - map-{type} => check if is a map of the specified type
+ *
+ * @param 			{Mixed} 			$value 			The value to check
+ * @param 			{String} 			$type 			The type to check
+ * @return 			{Boolean} 							true if match the type, false if not
+ *
+ * @example
+ * s-is(hello, string) // => true
+ * s-is('hello', string) // => true
+ * s-is(#fff, color) // => true
+ * s-is(hello #fff, list-color) // => false
+ * s-is(#fff #ddd, list-color) // => true
+ * // etc...
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Alias to the [./_s-look-and-feel.scss] function
+ *
+ * Return a settings.look-and-feel stack value
+ *
+ * @param 		{String} 		$name					The look and feel value name
+ * @return 		{Number} 								The look and feel value in em
+ *
+ * @example
+ * .my-cool-element {
+ * 		padding : s-lnf(padding-horizontal) s-lnf(padding-vertical);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return a settings.look-and-feel stack value
+ *
+ * @param 		{String} 		$name					The look and feel value name
+ * @return 		{Number} 								The look and feel value in em
+ *
+ * @example
+ * .my-cool-element {
+ * 		padding : s-look-and-feel(padding-horizontal) s-look-and-feel(padding-vertical);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the modular scale value based on the settings ```modular-scale.base``` and ```modular-scale.ratio```.
+ *
+ * @param 			{Number} 		$scale 		The wanted scale
+ * @param 			{Number} 		[$base=settings.modular-scale.base] 	The base of calculation
+ * @return 			{Number} 					The calculated resulting value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Convert the passed value to the closest odd value
+ *
+ * @param 			{Number} 		$value 		The value to convert
+ * @return 			{Number} 					The closest odd converted value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Parse a given string/list properties and return the Map corresponding to the Map description
+ *
+ * @param 				{List} 				$properties 			The properties to parse
+ * @param 				{Map} 				$descriptor 			The descriptor map to use to parse the properties
+ * @return 				{Map} 										The properties in map format
+ *
+ * @example
+ * s-parse-properties(10px hello -delay 20s, (
+ *  	myNumber : Number,
+ *  	myOtherNumber : Number,
+ *  	myString : String,
+ *  	myCoolVar : String,
+ *  	delay : second
+ * ));
+ * // => (
+ * //  	myNumber : 10px,
+ * // 	myString : hello,
+ * // 	delay : 20s
+ * // )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Convert the passed value to %
+ *
+ * @param 			{Number} 		$value 		The value to convert
+ * @return 			{Number} 					The % converted value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Convert the passed value to pt
+ *
+ * @param 			{Number} 		$value 		The value to convert
+ * @return 			{Number} 					The pt converted value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Convert the passed value to px
+ *
+ * @param 			{Number} 		$value 		The value to convert
+ * @return 			{Number} 					The px converted value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Convert the passed value to rem
+ *
+ * @param 			{Number} 		$value 		The value to convert
+ * @return 			{Number} 					The rem converted value
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the passed values in the same unit but that has been even rounded on the corresponding px value
+ * This ensure that your passed value will be a round px value for final rander in the viewport
+ *
+ * @param 		{Number} 		$value 			The value to process
+ * @return 		{Number} 						The rounded value in same input unit but px rounded
+ *
+ * @example
+ * // if settings.typography.font-size == 16px
+ * s-render-round-even(5.2rem);
+ * // 1. transform to px values : 5.2 * 16px = 83.2px
+ * // 2. round even the px value : 84px
+ * // 3. transform to passed unit value : 84px / 16px = 5.25rem
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the passed values in the same unit but that has been odd rounded on the corresponding px value
+ * This ensure that your passed value will be a round px value for final rander in the viewport
+ *
+ * @param 		{Number} 		$value 			The value to process
+ * @return 		{Number} 						The rounded value in same input unit but px rounded
+ *
+ * @example
+ * // if settings.typography.font-size == 16px
+ * s-render-round-odd(5.2rem);
+ * // 1. transform to px values : 5.2 * 16px = 83.2px
+ * // 2. round odd the px value : 83px
+ * // 3. transform to passed unit value : 84px / 16px = 5.1875rem
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the passed values in the same unit but that has been rounded on the corresponding px value
+ * This ensure that your passed value will be a round px value for final rander in the viewport
+ *
+ * @param 		{Number} 		$value 			The value to process
+ * @return 		{Number} 						The rounded value in same input unit but px rounded
+ *
+ * @example
+ * // if settings.typography.font-size == 16px
+ * s-render-round(5.2rem);
+ * // 1. transform to px values : 5.2 * 16px = 83.2px
+ * // 2. round even the px value : 83px
+ * // 3. transform to passed unit value : 84px / 16px = 5.1875rem
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Search and replace tokens like colors #primary in a passed string, list or map
+ * Supported tokens types :
+ * 1. Colors : colorName
+ *
+ * @example
+ * s-replace-tokens(12px #primary hello #secondary); // > 12px #ddd hello #fff;
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Process selector to avoid having --default, etc...
+ * @param 		{String} 		$selector 		The selector to process
+ * @return 		{String} 						The processed selector
+ * @example 	scss
+ * s-selector('.input--default'); // => .input
+ * s-selector('.input-default'); // => .input
+ * s-selector('.input.default'); // => .input
+ */
+/**
+ * Get a settings from the global settings stack
+ *
+ * @param 				{String} 			$path 						The setting path wanted separated by dots
+ * @param 				{String} 			[$context=s-context()] 		The context name to get the setting
+ * @param 				{Mixed} 			[$default=null] 			The value to return if no value is found
+ * @return 				{Mixed} 										The setting value¨
+ *
+ * @example
+ * $font-size : s-setting('typography.font-size');
+ * // etc...
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return a value interpolated from the settings.spaces stack
+ *
+ * @param 			{String} 			$size 			The space size wanted. Must exist in the settings.sizes stack
+ * @return 			{Number} 							The actual space value
+ *
+ * @example
+ * .my-cool-section {
+ * 		padding : s-pace(big);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return a number without any units
+ *
+ * @param 			{Number} 		$number 		The number to process
+ * @return 			{Number} 						The number without units
+ *
+ * @example
+ * s-strip-units(12px); // => 12
+ * s-strip-units(30rem); // => 30
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Test an argument passed to a function or a mixin to ensure his type, value, etc...
+ * If the argument does not pass the test, an error will be thrown, unless the $check-only argument is true
+ *
+ * @param 				{String} 				$method 				The function/mixin name (debug purpose)
+ * @param 				{String} 				$argument 				The argument name to test (debug purpose)
+ * @param 				{List|String} 			$type-or-values 		If string, the type(s) that the argument must match, if list, the possible values that the argument can take
+ * @param 				{Mixed} 				$value 					The actual argument value
+ * @param 				{Boolean} 				[$check-only=false]		If this is true, will not thrown any error
+ * @return 				{Mixed} 										The value if ok, false if not
+ *
+ * @example
+ * \@mixin my-cool-mixin($argument1, $argument2) {
+ *        $argument1 : s-test-argument(my-cool-mixin, argument1, string, $argument1);
+ *        $argument2 : s-test-argument(my-cool-mixin, argument2, (hello,world,12), $argument2);
+ * }
+ * \@mixin my-cool-mixin(hello, world); // ok
+ * \@mixin my-cool-mixin(hello, universe); // throw an error
+ * \@mixin my-cool-mixin(12, world); // throw an error
+ *
+ * @author 				Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the text-format setting scope class
+ * @return 		{String} 		The text-format scope class from settings.text-format.scope-class
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Take a transition as parameter and parse it to return the {Map} corresponding
+ * The $transition parameter can be either a registered transition name or a custom css transition like : all .2s ease-in-out 2s
+ * The $transition argument will be parsed with the [./_s-parse-properties.scss] function.
+ *
+ * @param 			{List} 				$transition 			The registered transition name or the transition string to transform into map
+ * @return 			{Map} 										The corresponding transition map properties
+ *
+ * @example
+ * // register a transition
+ * \@include s-setup((
+ * 		transitions : (
+ * 			fast : all .2s ease-in-out,
+ * 			// other transitions...
+ * 		)
+ * ));
+ *
+ * // registered transition
+ * s-transition-map(fast);
+ * // {
+ * // 	property : all,
+ * // 	duration : .2s,
+ * // 	ease : ease-in-out
+ * // }
+ *
+ * // custom transition
+ * s-transition-map(fast -delay .5s);
+ * // {
+ * // 	property : all,
+ * // 	duration : .2s,
+ * // 	ease : ease-in-out,
+ * // 	delay : .5s
+ * // }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Take a transition as parameter and parse it to return the {List} corresponding
+ * The $transitions parameter can be either a registered transition name or a custom css transition like : all .2s ease-in-out 2s
+ * The $transitions argument will be parsed with the [./_s-parse-properties.scss] function.
+ *
+ * @param 			{List} 				$transitions 			The registered transition(s) name(s) or the transition(s) strings(s) to transform into list
+ * @return 			{List} 										The corresponding transition list properties
+ *
+ * @example
+ * // register a transition
+ * \@include s-setup((
+ * 		transitions : (
+ * 			fast : all .2s ease-in-out 0s,
+ * 			// other transitions...
+ * 		)
+ * ));
+ *
+ * // registered transition
+ * .my-cool-element {
+ * 		transition : s-transition(fast);
+ * 		// transition : all .2s ease-in-out 0s;
+ * }
+ *
+ * // custom transition
+ * .my-cool-element {
+ *  	transition : s-transition(fast -delay .5s, fast width ease-in);
+ *  	// transition : all .2s ease-in-out .5s, width .2s ease-in 0s;
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the unit context if has been set by the [s-unit-context mixin](../mixins/_s-unit-context.scss)
+ *
+ * @return 		{String} 				The unit context setted
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Return the vertical-rhythm setting scope class
+ * @return 		{String} 		The vertical-rhythm scope class from settings.vertical-rhythm.scope-class
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Generic sugar function can return multiple settings types like:
+ * - any settings : s('settings.{path}')
+ * - look and feel : s('look-and-feel.{property}', $size)
+ *  	- s('lnf.{property}', $size)
+ * - space : s('space.{size}')
+ * - color : s('color.{name}', $modifier)
+ * - transition : s('transition.{name}')
+ * - filter : s('filter.{name}')
+ *
+ * @example
+ * $my-color : s('color.primary');
+ * $my-transition : s('transition.fast');
+ * $my-font-size : s('settings.typography.font.size')
+ * // etc...
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print out the animation property calculated with the passed arguments
+ * This mixin support all the standard css animation properties like name, duration, delay, ease, direction and fill-mode.
+ * The $animations argument will be parsed with the [../functions/_s-parse-properties.scss] function.
+ * If you specify multiple animations at a time, this mixin will take care
+ * of the delay calculation for each animations and make them play one after another
+ *
+ * @param 			{List} 				$animations 			The animations wanted like : coco .2s ease-in-out reverse
+ *
+ * @example
+ * .my-cool-element {
+ * 		@include s-animation(my-animation 1s ease-in-out, another-animation 4s);
+ * 		// animation : my-animation 1s 0s ease-in-out 1 normal forwards, another-animation 4s 1s ease-in-out 1 normal forwards;
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print out all wanted registered classes like padding helpers, margin helpers, font helpers, etc...
+ * Available namespaces
+ * - sugar.filter.{name} : .fi-{name}
+ * - sugar.transition.{name} : .tr-{name}
+ * - sugar.font.family.{name} : .f-{name}
+ * - sugar.margin.bottom.{size} : .m-b-{size}
+ * - sugar.margin.top.{size} : .m-t-{size}
+ * - sugar.margin.left.{size} : .m-l-{size}
+ * - sugar.margin.right.{size} : .m-r-{size}
+ * - sugar.margin.side.{size} : .m-s-{size}
+ * - sugar.padding.all.{size} : .p-{size}
+ * - sugar.padding.top.{size} : .p-t-{size}
+ * - sugar.padding.bottom.{size} : .p-b-{size}
+ * - sugar.padding.left.{size} : .p-l-{size}
+ * - sugar.padding.right.{size} : .p-r-{size}
+ * - sugar.padding.side.{size} : .p-s-{size}
+ * - sugar.size.{size} : .s-{size}
+ * - sugar.size.rel.{size} : .s-{size}-rel
+ * - sugar.padding.no.top : .no-p-t
+ * - sugar.padding.no.bottom : .no-p-b
+ * - sugar.padding.no.left : .no-p-l
+ * - sugar.padding.no.right : .no-p-r
+ * - sugar.padding.no.side : .no-p-s
+ * - sugar.margin.no.top : .no-m-t
+ * - sugar.margin.no.bottom : .no-m-b
+ * - sugar.margin.no.left : .no-m-l
+ * - sugar.margin.no.right : .no-m-r
+ * - sugar.margin.no.side : .no-m-s
+ * - sugar.color.{name}.color` .c-{name}
+ * - sugar.color.{name}.bkg : .bkg-{name}
+ * - sugar.color.{name}.modifier.{mod-name}.color : .c-{name}--{mod-name}
+ * - sugar.color.{name}.modifier.{mod-name}.bkg : .bkg-{name}--{mod-name}
+ * - sugar.pull.left : .pull-left
+ * - sugar.pull.right : .pull-right
+ * - sugar.position.relative : .relative
+ * - sugar.position.absolute : .absolute
+ * - sugar.clear.left : .clear-left
+ * - sugar.clear.right : .clear-right
+ * - sugar.clear.both : .clear
+ * - sugar.pointer.events.all : .pointer-events-all
+ * - sugar.pointer.events.none : .pointer-events-none
+ * - sugar.display.show : .show
+ * - sugar.display.show-inline : .show-inline
+ * - sugar.display.hidden : .hidden
+ * - sugar.display.hide : .hide
+ * - sugar.display.visible : .visible
+ * - sugar.display.invisible : .invisible
+ * - sugar.display.visually-hidden : .visually-hidden
+ * - sugar.text.hidden : .t-hidden
+ * - sugar.text.truncate : .t-truncate
+ * - sugar.text.align.left : .t-left
+ * - sugar.text.align.right : .t-right
+ * - sugar.text.align.center : .t-center
+ * - sugar.text.align.justify : .t-justify
+ * - sugar.text.transform.lowercase : .t-lowercase
+ * - sugar.text.transform.uppercase : .t-uppercase
+ * - sugar.text.transform.capitalize : .t-capitalize
+ * - sugar.font.weight.bold : .f-bold
+ * - sugar.font.weight.lighter : .f-lighter
+ * - sugar.font.weight.bolder : .f-bolder
+ * - sugar.font.weight.normal : .f-normal
+ * - sugar.font.style.italic : .f-italic
+ * - sugar.font.style.oblique : .f-oblique
+ * - sugar.font.variant.small-caps : .f-small-caps
+ * - sugar.block.align.center : .block-center
+ * - sugar.ratio.21-9 : ```.ratio-21-9```
+ * - sugar.ratio.16-9 : ```.ratio-16-9```
+ * - sugar.ratio.4-3 : ```.ratio-4-3```
+ * - sugar.ratio.1-1 : ```.ratio-1-1```
+ * - sugar.size.abs.cover : ```.abs-cover```
+ * - sugar.size.abs.contain : ```.abs-contain```
+ * - sugar.size.abs.fit : ```.abs-fit```
+ * - sugar.clearfix.default : .clearfix
+ * - sugar.clearfix.float : .clearfix-float
+ * - sugar.clearfix.micro : .clearfix-micro
+ * - sugar.clearfix.overflow : .clearfix-overflow
+ * - sugar.clearfix.facebook : .clearfix-facebook
+ * - sugar.no-transitions : .no-transitions
+ * - sugar.clear-transitions : .clear-transitions
+ * - sugar.no-animations : .no-animations
+ * - sugar.clear-animations : .clear-animations
+ * - sugar.no-transmations : .no-transmations
+ * - sugar.clear-transmations : .clear-transmations
+ *
+ * @param 			{List}<string> 			$namespaces 		The classes namespaces wanted
+ *
+ * @example
+ * \@include s-classes(); // will print out all the classes
+ * \@include s-classes('sugar.font'); // will print all the font classes
+ * \@include s-classes('sugar.clearfix' 'sugar.pull'); // the clearfixes and the pull classes
+ * // etc...
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print out the scoped color schema css
+ *
+ * @param 		{String} 			$name 			The color schema name
+ *
+ * @example
+ * \@include s-color-schema(light) {
+ * 		h1, h2 {
+ * 			color : white;
+ * 		}
+ * }
+ * // will print
+ * .cs-light h1,
+ * .cs-light h2 {
+ * 		color : white;
+ * }
+ *
+ * h1, h2 {
+ * 		\@include s-color-schema(light) {
+ * 			color : white;
+ * 		}
+ * }
+ * // will print
+ * .cs-light h1, h1.cs-light,
+ * .cs-light h2, h2.cs-light {
+ * 		color : white;
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Set the name of the component that will be handled inside the mixin
+ *
+ * @param 			{String} 			[$name=null] 			The name of the component to set
+ * @param 			{String|Map} 		[$context=null] 		A context name or map to use inside the mixin
+ *
+ * @example
+ * \@include s-component('my-component') {
+ * 		s-component('hello') // => 'my-component'
+ * 		\@include s-component('another-component') {
+ * 			s-component('hello') // => 'my-component'
+ * 		}
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com);
+ */
+/**
+ * Register a context with a name to use it later
+ *
+ * @param 			{String} 		$name 			The context name
+ * @param 			{Map} 			$settings 		The settings to override for this context
+ *
+ * @example
+ * \@include s-context-setup(my-cool-context, (
+ * 		look-and-feel : (
+ * 			padding-vertical : (
+ * 				default : 0.6em
+ * 			)
+ * 		)
+ * ));
+ *
+ * // using your context
+ * \@include s-context(my-cool-context) {
+ * 		s-look-and-feel(padding-vertical); // => 0.6em
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Set a context to be used inside the mixin
+ *
+ * @param 			{String|Map} 			$name-or-map 		The name of a registered context or a map
+ *
+ * @example
+ * // register a context
+ * \@include s-context-setup(my-cool-context, (
+ * 		look-and-feel : (
+ * 			padding-vertical : (
+ * 				default : 0.6em
+ * 			)
+ * 		)
+ * ));
+ *
+ * // registered context
+ * \@include s-context(my-cool-context) {
+ * 		// your code here...
+ * }
+ *
+ * // inline context
+ * \@include s-context((
+ * 		look-and-feel : (
+ * 			padding-vertical : (
+ * 				default : .3em
+ * 			)
+ * 		)
+ * )) {
+ * 		// your code here...
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print out a list with all the filters that are passed as argument
+ * This will use the [../functions/_s-filter-map.scss] function to parse the filters
+ *
+ * @param 	 	{List}<String> 			$filters 			The registered filter(s) name(s) or the filter(s) string(s) to transform into list
+ *
+ * @example
+ * // register a filter
+ * \@include s-setup((
+ * 		filters : (
+ * 			myCoolFilter : box-shadow(#000 0 0 10px) blur(30px),
+ * 			// other filters...
+ * 		)
+ * ));
+ *
+ * // registered filter
+ * .my-cool-elememt {
+ * 		\@include s-filter(myCoolFilter);
+ * 		// filter : box-shadow(#000 0 0 10px) blur(30px);
+ * }
+ *
+ * // custom filter
+ * .my-cool-element {
+ * 		\@include s-filter(myCoolFilter invert(100%));
+ * 		// filter : box-shadow(#000 0 0 10px) blur(30px) invert(100%);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Helper to print a font-face
+ *
+ * @param 			{String} 		$font-family 			The font-family
+ * @param 			{String} 		$src 					The source url (only 1 extension)
+ * @param 			{List} 			[$extensions=woff2] 	The extensions list that you have available
+ * @param 			{String} 		[$font-weight=normal] 	The font-weight property
+ * @param 			{String} 		[$font-style=normal] 	The font-style property
+ *
+ * @example
+ * // if you have these extensions files : .woff .eot .woff2
+ * \@include s-font-face(
+ * 		$name : my-cool-font,
+ * 		$src : '/fonts/my-font.eot',
+ * 		$extensions : eot woff woff2
+ * )
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Print all the fonts properties that correspond to the passed arguments
+ *
+ * @param 		{String} 			[$family=null] 			The font family wanted (can be a registered font name)
+ * @param 		{Color} 			[$color=null] 			The color wanted (can be a registered color name)
+ * @param 		{Number} 			[$size=null] 			The font-size wanted
+ * @param 		{String} 			[$style=null] 			The font-style wanted
+ * @param 		{String} 			[$variant=null] 		The font-variant wanted
+ * @param 		{String|Number} 	[$weight=null] 			The font-weight wanted
+ * @param 		{String} 			[$decoration=null] 		The text-decoration wanted
+ * @param 		{String} 			[$align=null] 			The text-align wanted
+ * @param 		{String} 			[$transform=null] 		The text-transform wanted
+ * @param 		{String} 			[$stretch=null] 		The font-stretch wanted
+ * @param 		{String} 			[$white-space=null] 	The white-space wanted
+ * @param 		{Number} 			[$height=null] 			The line-height wanted
+ * @param 		{Number} 			[$spacing=null] 		The letter-spacing wanted
+ * @param 		{Number} 			[$indent=null] 			The text-indent wanted
+ * @param 		{String} 			[$break=null] 			The line-break wanted
+ * @param 		{String} 			[$wrap=null] 			The word-wrap wanted
+ * @return 		{Map} 										The corresponding font map
+ *
+ * @example
+ * .my-cool-elememt {
+ * 		\@include s-font(
+ * 			$family : 'Helvetica Neue',
+ * 		 	$size : 12px,
+ * 		  	$wrap : norwap
+ *      );
+ *      // print
+ * 		font-family : 'Helvetica Neue',
+ * 		font-size : 12px,
+ * 		word-wrap : nowrap
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Init the sugar toolkit.
+ * This has to be called **AFTER** all the [./_s-setup.scss] mixin call
+ * and **BEFORE** all the others sugar mixins and functions calls
+ *
+ * @example
+ * \@include s-init();
+ *
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Register all the dynamic helper classes that depends on the settings, etc...
+ * This is used internaly
+ *
+ * @example
+ * \@include s-init-classes();
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Register a helper class under a certain namespace
+ *
+ * @param 			{String} 		$classname 		The classname that will be printed out
+ * @param 			{String} 		$namespace 		The dots separated namespace under which the class will live
+ *
+ * @example
+ * \@include s-register-helper-class(my-cool-class, 'my.cool.namespace') {
+ * 		background : pink;
+ * }
+ * \@include s-register-helper-class(another-cool-class, 'my.another.namespace') {
+ * 		background : red;
+ * }
+ *
+ * // print out my helpers classes
+ * \@include s-classes('my');
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Setup sugar toolkit by overriding the default [settings](../_settings.scss)
+ * This has to be called **BEFORE** the [s-init mixin](./_s-init.scss)
+ *
+ * @param 			{Map} 			$settings 		The settings to override
+ *
+ * @example
+ * \@include s-setup((
+ * 		typo : (
+ * 			font-size : 12px
+ * 		),
+ * 		sizes : (
+ * 			small : 0.5,
+ * 			big : 1.5
+ * 		)
+ * ));
+ * // this mixin can be called as many times as you need
+ * // this allows you to separate your configs setup into multiple
+ * // files...
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Display the vertical rhythme
+ *
+ * @param 			{Color} 		The color wanted
+ *
+ * @example
+ * body {
+ * 		@include s-show-vertical-rhythm();
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Take a transition as parameter and print the corresponding transition property
+ * The $transitions parameter can be either a registered transition name or a custom css transition like : all .2s ease-in-out 2s
+ * The $transitions argument will be parsed with the [./_s-parse-properties.scss] function.
+ *
+ * @param 			{List} 				$transitions 			The registered transition(s) name(s) or the transition(s) strings(s) to transform into list
+ * @return 			{List} 										The corresponding transition list properties
+ *
+ * @example
+ * // register a transition
+ * \@include s-setup((
+ * 		transitions : (
+ * 			fast : all .2s ease-in-out 0s,
+ * 			// other transitions...
+ * 		)
+ * ));
+ *
+ * // registered transition
+ * .my-cool-element {
+ * 		\@include s-transition(fast>);
+ * 		// transition : all .2s ease-in-out 0s;
+ * }
+ *
+ * // custom transition
+ * .my-cool-element {
+ * 		\@include s-transition(fast -delay .5s, fase width ease-in);
+ *  	// transition : all .2s ease-in-out .5s, width .2s ease-in 0s;
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Set the unit context to use inside the mixin.
+ * This mean that if you set a unit context, then get a number setting through the [s-setting function](../functions/_s-setting.scss),
+ * The value that will be returned will be converted into the unit context if possible
+ *
+ * @param 			{String} 			$unit 			The unit wanted
+ *
+ * @example
+ * // if settings.typography.font-size == 16px
+ * s-setting('typography.font-size'); // => 16px
+ * \@incluse s-unit-context(rem) {
+ * 		s-setting('typography.font-size'); // => 1rem
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * @name 	s-vertical-rhythm
+ * Scope the content inside the `settings.vertical-rhythm.scope-class` class
+ *
+ * .my-cool-item {
+ * 	@include s-vertical-rhythm() {
+ * 		margin-bottom: 2em; // will be applied only if .my-cool-item is in the .vr scope
+ * 	}
+ * }
+ *
+ * @see 			https://medium.com/written-in-code/aligning-type-to-baseline-the-right-way-using-sass-e258fce47a9b#.lck2lgbni
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * @name 	Helper Classes
+ * This file is responsible to register the static helper classes like:
+ *
+ * - sugar.pull.left : ```.pull-left```
+ * - sugar.pull.right : ```.pull-right```
+ * - sugar.position.relative : ```.relative```
+ * - sugar.position.absolute : ```.absolute```
+ * - sugar.clear.left : ```.clear-left```
+ * - sugar.clear.right : ```.clear-right```
+ * - sugar.clear.both : ```.clear```
+ * - sugar.pointer.events.all : ```.pointer-events-all```
+ * - sugar.pointer.events.none : ```.pointer-events-none```
+ * - sugar.display.show : ```.show```
+ * - sugar.display.show-inline : ```.show-inline```
+ * - sugar.display.hidden : ```.hidden```
+ * - sugar.display.hide : ```.hide```
+ * - sugar.display.visible : ```.visible```
+ * - sugar.display.invisible : ```.invisible```
+ * - sugar.display.visually-hidden : ```.visually-hidden```
+ * - sugar.text.hidden : ```.t-hidden```
+ * - sugar.text.truncate : ```.t-truncate```
+ * - sugar.text.align.left : ```.t-left```
+ * - sugar.text.align.right : ```.t-right```
+ * - sugar.text.align.center : ```.t-center```
+ * - sugar.text.align.justify : ```.t-justify```
+ * - sugar.text.transform.lowercase : ```.t-lowercase```
+ * - sugar.text.transform.uppercase : ```.t-uppercase```
+ * - sugar.text.transform.capitalize : ```.t-capitalize```
+ * - sugar.font.weight.bold : ```.f-bold```
+ * - sugar.font.weight.lighter : ```.f-lighter```
+ * - sugar.font.weight.bolder : ```.f-bolder```
+ * - sugar.font.weight.normal : ```.f-normal```
+ * - sugar.font.style.italic : ```.f-italic```
+ * - sugar.font.style.oblique : ```.f-oblique```
+ * - sugar.font.variant.small-caps : ```.f-small-caps```
+ * - sugar.block.align.center : ```.block-center```
+ * - sugar.ratio.21-9 : ```.ratio-21-9```
+ * - sugar.ratio.16-9 : ```.ratio-16-9```
+ * - sugar.ratio.4-3 : ```.ratio-4-3```
+ * - sugar.ratio.1-1 : ```.ratio-1-1```
+ * - sugar.size.abs.cover : ```.abs-cover```
+ * - sugar.size.abs.contain : ```.abs-contain```
+ * - sugar.size.abs.fit : ```.abs-fit```
+ * - sugar.clearfix.default : ```.clearfix```
+ * - sugar.clearfix.float : ```.clearfix-float```
+ * - sugar.clearfix.micro : ```.clearfix-micro```
+ * - sugar.clearfix.overflow : ```.clearfix-overflow```
+ * - sugar.clearfix.facebook : ```.clearfix-facebook```
+ * - sugar.no-transitions : ```.no-transitions```
+ * - sugar.clear-transitions : ```.clear-transitions```
+ * - sugar.no-animations : ```.no-animations```
+ * - sugar.clear-animations : ```.clear-animations```
+ * - sugar.no-transmations : ```.no-transmations```
+ * - sugar.clear-transmations : ```.clear-transmations```
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * This file contains all the default settings that can be overrided by the [s-setup mixin](./mixins/_s-setup.scss).
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Create an arrow bubble effect
+ *
+ * @param 		{String} 			[$side=bottom] 				The side (top,right,bottom,left)
+ * @param 		{String} 			[$align=center] 			The alignement (left,center,right,top,middle,bottom)
+ * @param 		{Number} 			[$size=10px] 				The size of the arrow
+ * @param 		{Color} 			[$color=s-color(primary)] 	The color of the bubble
+ * @param 		{Number} 			[$arrow-offset=10px] 		The arrow offset from the side of the bubble
+ * @param 		{Number} 			[$border-width=0] 			The border width of the bubble
+ * @param 		{Color} 			[$border-color=null] 		The border color of the bubble
+ *
+ * @example
+ * .my-cool-bubble {
+ * 		\@include s-bubble(
+ * 			$color : s-color(secondary)
+ * 		);
+ * 		color : white;
+ * }
+ *
+ * @see 			https://codepen.io/kirkas/pen/otqyJ
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Generate a drop shadow depending on the depth specified
+ *
+ * @param 		{Integer} 			$depth 							The depth wanted (1,2,3,4,etc...)
+ * @param 		{Color} 			[$color=rgba(0,0,0,.2)] 		The drop shadow color
+ *
+ * @example
+ * .my-cool-element {
+ * 		\@include s-depth(2);
+ * }
+ *
+ * @author 	 		Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Create a poping dot effect to catch user attention on a particular item
+ * This mixin affect the :before and :after pseudo selector of the item
+ *
+ * @param 		{String} 		[$vertical-align=top] 			Where to put the dot verticaly (top,middle,bottom)
+ * @param 		{String} 		[$align=left] 					Where to put the dot horizontaly (left,center,right)
+ * @param 		{Number} 		[$size=20px] 					The size of the dot
+ * @param 		{Color} 		[$color=primary] 				The color of the dot
+ * @param 		{Number} 		[$offset-top=0] 				The offset top
+ * @param 		{Number} 		[$offset-right=0] 				The offset right
+ * @param 		{Number} 		[$offset-bottom=0] 				The offset bottom
+ * @param 		{Number} 		[$offset-left=0] 				The offset left
+ *
+ * @example
+ * .my-cool-element {
+ * 		\@include s-hey(
+ * 			$align : right,
+ * 			$color : secondary,
+ * 			$size : 10px,
+ * 			$offset-top : -10px,
+ * 			$offset-right : -10px
+ * 		);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Generate a full animated, single element, bars loader
+ *
+ * @param 			{String} 			[$shape=rect] 				The shape of the bars (rect,circle)
+ * @param 			{Color} 			[$color=primary] 			The color(s) of the loader. Can be a list of colors
+ * @param 			{Number} 			[$width=.5em] 				The width of each bars
+ * @param 			{Number} 			[$height=2em] 				The height of each bars
+ * @param 			{Integer} 			[$count=5] 					How many bars you want
+ * @param 			{Number} 			[$gap=.5em] 				The gap between each bars
+ * @param 			{Number} 			[$opacity=1] 				The initial opacity of each bars
+ * @param 			{Number} 			[$a-opacity=null] 			The opacity of the animated bars
+ * @param 			{Second} 			[$a-duration=1s] 			The overall animation duration
+ * @param 			{Second} 			[$a-delay=0s] 				The delay between two animation cycle
+ * @param 			{Integer} 			[$a-near=1] 				How many bars are affected by the animated one
+ * @param 			{String} 			[$a-ease=ease-in-out] 		The ease to use to animate each bars
+ * @param 			{Number} 			[$a-offset=null] 			The offset to move the animated bar
+ * @param 			{String} 			[$a-direction=both] 		The direction in which to move the bars (up,down,both)
+ * @param 			{Boolean} 			[$a-continuous=true] 		If true, the first bars will be animated at same time at the last ones
+ *
+ * @example
+ * .my-cool-loader {
+ * 		\@include s-loader-bars(
+ * 			$color : primary,
+ * 			$a-offset : .5em
+ * 		);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Generate a full animated, single element, circle loader
+ *
+ * @param 			{Color} 			[$color=primary] 			The color(s) of the loader. Can be a list of colors
+ * @param 			{Number} 			[$size=.33em] 				The size of each dot
+ * @param 			{Number} 			[$radius=1em] 				The distance of each dot from the center of the loader
+ * @param 			{Integer} 			[$count=5] 					How many bars you want
+ * @param 			{Number} 			[$opacity=1] 				The initial opacity of each bars
+ * @param 			{Number} 			[$a-opacity=null] 			The opacity of the animated bars
+ * @param 			{Second} 			[$a-duration=1s] 			The overall animation duration
+ * @param 			{Second} 			[$a-delay=0s] 				The delay between two animation cycle
+ * @param 			{Integer} 			[$a-near=1] 				How many bars are affected by the animated one
+ * @param 			{String} 			[$a-ease=ease-in-out] 		The ease to use to animate each bars
+ *
+ * @TODO finish documentation
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Generate a full animated, single element, couch-potato style loader
+ *
+ * @param 		{Number} 		[$size=1em] 				The size of the loader
+ * @param 		{Color} 		[$color=primary] 			The color of the loader
+ * @param 		{Second} 		[$a-duration=1s] 			The overall animation duration
+ * @param 		{Second} 		[$a-delay=0s] 				The delay between two animation cycle
+ * @param 		{String} 		[$a-ease=ease-in-out]		The ease to use for the animation
+ * @param 		{Degree}		[$a-rotate=360deg] 			The animation rotation
+ * @param 		{Number} 		[$a-scale=.7] 				The animation scale
+ *
+ * @example
+ * .my-cool-loader {
+ * 		\@include s-loader-couch-potato();
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Generate a full animated, single element, flip ball style loader
+ *
+ * @param 		{String} 		[$shape=circle] 			The shape of the loader (circle,rect)
+ * @param 		{Number} 		[$size=1em] 				The size of the loader
+ * @param 		{Color} 		[$color=primary] 			The color of the loader. Can be a list of colors
+ * @param 		{Second} 		[$a-duration=1s] 			The overall animation duration
+ * @param 		{Second} 		[$a-delay=0s] 				The delay between two animation cycle
+ * @param 		{String} 		[$a-ease=ease-in-out]		The ease to use for the animation
+ *
+ * @example
+ * .my-cool-loader {
+ * 		\@include s-loader-flip-ball();
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Generate a long shadow effect like [this](https://www.google.ch/search?q=long+shadow&espv=2&biw=2560&bih=1316&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjjne6x49LPAhVBHRQKHat8AW8Q_AUIBigB)
+ *
+ * @param 		{Color} 		[$color=rgba(0,0,0,.3)] 			The shadow color
+ * @param 		{String} 		[$type=text] 						The shadow type (text,box)
+ * @param 		{Degree} 		[$angle=135deg] 					The shadow angle
+ * @param 		{Integer} 		[$depth=20] 						The shadow depth
+ * @param 		{Boolean} 		[$fade=false] 						If true, the shadow will fade itself
+ * @param 		{Number} 		[$blur=0] 							The blur amount of the shadow
+ * @param 		{Number} 		[$blur-ratio=0] 					The ratio to blur each depth more
+ *
+ * @example
+ * .my-cool-title {
+ * 		\@include s-long-shadow(
+ * 			$depth : 10
+ * 		);
+ * }
+ * .my-cool-box {
+ * 		\@include s-long-shadow(
+ * 			$type : box
+ * 		);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Create side lines around an item
+ *
+ * @param 			{String} 		[$style=solid] 			The line style, same possible values as the border-style property
+ * @param 			{String} 		[$side=both] 			The side where to put lines (left,right,both)
+ * @param 			{Number} 		[$height=1px] 			The lines height
+ * @param 			{Number} 		[$width=50%] 			The width of the lines
+ * @param 			{Color} 		[$color=text]			The color of the lines
+ * @param 			{Number} 		[$padding=0] 			The padding between the lines and the content
+ * @param 			{Number} 		[$offset-top=null] 		The line offset top
+ *
+ * @example
+ * h1 {
+ * 		\@include s-side-lined(
+ * 			$padding : 20px,
+ * 			$side : right,
+ * 			$width : 100%
+ * 		);
+ * }
+ *
+ * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+/**
+ * Setup
+ * Setup all the different parts/modules/libraries.
+ */
+/**
+	 * @name 	default State
+	 * Here's the settings for the **default** state.
+	 * @styleguide 	Gridle / States
+	 * @display 	gridle-settings
+	 * @gridle-name 	default
+	 * @gridle-min-width 	
+	 * @gridle-max-width 	
+	 * @gridle-query 	
+	 * @gridle-classes 	true
+	 * @gridle-context 	12
+	 * @gridle-gutter-width 	30px
+	 * @gridle-gutter-height 	0
+	 * @gridle-gutter-top 	0
+	 * @gridle-gutter-right 	15px
+	 * @gridle-gutter-bottom 	0
+	 * @gridle-gutter-left 	15px
+	 * @gridle-direction 	ltr
+	 * @gridle-dir-attribute 	false
+	 * @gridle-name-multiplicator 	1
+	 * @gridle-states-classes 	false
+	 * @gridle-classes-prefix 	
+	 */
+/**
+ * Mobile first states
+ * - mobile : 320px to infinite
+ * - tablet : 640px to infinite
+ * - desktop : 992px to infinite
+ * - large : 1200px to infinite
+ */
+/**
+	 * @name 	mobile State
+	 * Here's the settings for the **mobile** state.
+	 * @styleguide 	Gridle / States
+	 * @display 	gridle-settings
+	 * @gridle-name 	mobile
+	 * @gridle-min-width 	320px
+	 * @gridle-max-width 	
+	 * @gridle-query 	
+	 * @gridle-classes 	true
+	 * @gridle-context 	12
+	 * @gridle-gutter-width 	30px
+	 * @gridle-gutter-height 	0
+	 * @gridle-gutter-top 	0
+	 * @gridle-gutter-right 	15px
+	 * @gridle-gutter-bottom 	0
+	 * @gridle-gutter-left 	15px
+	 * @gridle-direction 	ltr
+	 * @gridle-dir-attribute 	false
+	 * @gridle-name-multiplicator 	1
+	 * @gridle-states-classes 	false
+	 * @gridle-classes-prefix 	
+	 */
+/**
+	 * @name 	tablet State
+	 * Here's the settings for the **tablet** state.
+	 * @styleguide 	Gridle / States
+	 * @display 	gridle-settings
+	 * @gridle-name 	tablet
+	 * @gridle-min-width 	640px
+	 * @gridle-max-width 	
+	 * @gridle-query 	
+	 * @gridle-classes 	true
+	 * @gridle-context 	12
+	 * @gridle-gutter-width 	30px
+	 * @gridle-gutter-height 	0
+	 * @gridle-gutter-top 	0
+	 * @gridle-gutter-right 	15px
+	 * @gridle-gutter-bottom 	0
+	 * @gridle-gutter-left 	15px
+	 * @gridle-direction 	ltr
+	 * @gridle-dir-attribute 	false
+	 * @gridle-name-multiplicator 	1
+	 * @gridle-states-classes 	false
+	 * @gridle-classes-prefix 	
+	 */
+/**
+	 * @name 	desktop State
+	 * Here's the settings for the **desktop** state.
+	 * @styleguide 	Gridle / States
+	 * @display 	gridle-settings
+	 * @gridle-name 	desktop
+	 * @gridle-min-width 	992px
+	 * @gridle-max-width 	
+	 * @gridle-query 	
+	 * @gridle-classes 	true
+	 * @gridle-context 	12
+	 * @gridle-gutter-width 	30px
+	 * @gridle-gutter-height 	0
+	 * @gridle-gutter-top 	0
+	 * @gridle-gutter-right 	15px
+	 * @gridle-gutter-bottom 	0
+	 * @gridle-gutter-left 	15px
+	 * @gridle-direction 	ltr
+	 * @gridle-dir-attribute 	false
+	 * @gridle-name-multiplicator 	1
+	 * @gridle-states-classes 	false
+	 * @gridle-classes-prefix 	
+	 */
+/**
+	 * @name 	large State
+	 * Here's the settings for the **large** state.
+	 * @styleguide 	Gridle / States
+	 * @display 	gridle-settings
+	 * @gridle-name 	large
+	 * @gridle-min-width 	1200px
+	 * @gridle-max-width 	
+	 * @gridle-query 	
+	 * @gridle-classes 	true
+	 * @gridle-context 	12
+	 * @gridle-gutter-width 	30px
+	 * @gridle-gutter-height 	0
+	 * @gridle-gutter-top 	0
+	 * @gridle-gutter-right 	15px
+	 * @gridle-gutter-bottom 	0
+	 * @gridle-gutter-left 	15px
+	 * @gridle-direction 	ltr
+	 * @gridle-dir-attribute 	false
+	 * @gridle-name-multiplicator 	1
+	 * @gridle-states-classes 	false
+	 * @gridle-classes-prefix 	
+	 */
+/**
+ * @name 	STooltipComponent Classes
+ * This file provide the mixins to generate tooltip classes
+ */
+/**
+ * Print out the bare and style tooltip css
+ * Generated classes:
+ * - `.tooltip`
+ * - `.tooltip--tl`
+ * - `.tooltip--t`
+ * - `.tooltip--tr`
+ * - `.tooltip--l`
+ * - `.tooltip--r`
+ * - `.tooltip--bl`
+ * - `.tooltip--b`
+ * - `.tooltip--br`
+ * - `.tooltip--c`
+ * - `.tooltip--{color}`
+ * - `.tooltip--active, .tooltip.active, .tooltip[active], :hover > .tooltip, .active > .tooltip, [active] > .tooltip`
+ * @param 	{List<Color>} 		[$color=default primary secondary] 		The colors to generate
+ * @param 	{List<String>} 		[$sides=tl t tr l r bl b br c] 			The sides to generate
+ */
+/**
+ * Print out the bare tooltip css
+ * Generated classed
+ * - `.tooltip`
+ * - `.tooltip--tl`
+ * - `.tooltip--t`
+ * - `.tooltip--tr`
+ * - `.tooltip--l`
+ * - `.tooltip--r`
+ * - `.tooltip--bl`
+ * - `.tooltip--b`
+ * - `.tooltip--br`
+ * - `.tooltip--c`
+ * - `.tooltip.active, .tooltip[active], :hover > .tooltip, .active > .tooltip, [active] > .tooltip`
+ * @param 	{List<String>} 		[$sides=tl t tr l r bl b br c] 			The sides to generate
+ */
+/**
+ * Print out the style tooltip css
+ * Generated classes:
+ * - `.tooltip`
+ * - `.tooltip--tl`
+ * - `.tooltip--t`
+ * - `.tooltip--tr`
+ * - `.tooltip--l`
+ * - `.tooltip--r`
+ * - `.tooltip--bl`
+ * - `.tooltip--b`
+ * - `.tooltip--br`
+ * - `.tooltip--c`
+ * - `.tooltip--{color}`
+ * - `.tooltip--active, .tooltip.active, .tooltip[active], :hover > .tooltip, .active > .tooltip, [active] > .tooltip`
+ * @param 	{List<Color>} 		[$color=default primary secondary] 		The colors to generate
+ * @param 	{List<String>} 		[$sides=tl t tr l r bl b br c] 			The sides to generate
+ */
+.tooltip {
+  position: absolute !important;
+  pointer-events: none;
+  opacity: 0;
+  padding: 0.8em 1.4em;
+  line-height: 1.4; }
+  .tooltip.tooltip--active,
+  :hover > .tooltip,
+  [active] > .tooltip,
+  .active > .tooltip, .tooltip.active, .tooltip[active] {
+    opacity: 1;
+    z-index: 1; }
+
+/**
+			 * @name 		```.tooltip--c```
+			 * Display a centered tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--c">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--c {
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  transform-origin: 0 0;
+  transform: translateX(-50%) translateY(-50%) translateZ(0); }
+
+/**
+			 * @name 		```.tooltip--t```
+			 * Display a top centered tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--t">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+.tooltip--t {
+  transform-origin: 0 calc(100% + 0.5em);
+  left: 50%;
+  bottom: calc(100% + 1em);
+  top: auto;
+  right: auto;
+  transform: translateX(-50%) translateY(0) translateZ(0); }
+
+/**
+			 * @name 		```.tooltip--tl```
+			 * Display a top left tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--tl">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--tl {
+  transform-origin: 0 calc(100% + 0.5em);
+  left: 0;
+  bottom: calc(100% + 1em);
+  top: auto;
+  right: auto; }
+
+/**
+			 * @name 		```.tooltip--tr```
+			 * Display a top right tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--tr">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--tr {
+  transform-origin: 100% 100%;
+  right: 0;
+  bottom: calc(100% + 1em);
+  left: auto;
+  top: auto; }
+
+/**
+			 * @name 		```.tooltip--l```
+			 * Display a left tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--l">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--l {
+  transform-origin: calc(100% + 0.5em) 50%;
+  right: calc(100% + 1em);
+  top: 50%;
+  left: auto;
+  bottom: auto;
+  transform: translateX(0) translateY(-50%) translateZ(0); }
+
+/**
+			 * @name 		```.tooltip--r```
+			 * Display a right tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--r">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--r {
+  transform-origin: -.5em 50%;
+  left: calc(100% + 1em);
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  transform: translateX(0) translateY(-50%) translateZ(0); }
+
+/**
+			 * @name 		```.tooltip--bl```
+			 * Display a bottom left tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--bl">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--bl {
+  transform-origin: 1em -1em;
+  left: 0;
+  top: calc(100% + 1em);
+  bottom: auto;
+  right: auto; }
+
+/**
+			 * @name 		```.tooltip--b```
+			 * Display a bottom tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--b">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--b {
+  transform-origin: 0 -1em;
+  left: 50%;
+  top: calc(100% + 1em);
+  bottom: auto;
+  right: auto;
+  transform: translateX(-50%) translateY(0) translateZ(0); }
+
+/**
+			 * @name 		```.tooltip--br```
+			 * Display a bottom right tooltip
+			 * @styleguide 		Atoms / Tooltip
+			 * @example 	html
+			 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+			 * 	<div class="tooltip tooltip--br">
+			 * 		I'm a cool tooltip
+			 * 	</div>
+			 * </div>
+			 */
+.tooltip--br {
+  transform-origin: calc(100% - 1em) -1em;
+  right: 0;
+  top: calc(100% + 1em);
+  left: auto;
+  bottom: auto; }
+
+.tooltip {
+  box-shadow: rgba(0, 0, 0, 0.2) 0 10px 15px;
+  border-radius: 0em;
+  transition: all 0.1s ease-in-out 0s, outline-color 0s linear 0s;
+  outline-color: black; }
+
+@keyframes s-tooltip-component {
+  0% {
+    transform: scale(0.9, 0.9); }
+  100% {
+    transform: scale(1, 1); } }
+
+@keyframes s-tooltip-component--c {
+  0% {
+    transform: scale(0.9, 0.9) translateX(-50%) translateY(-50%); }
+  100% {
+    transform: scale(1, 1) translateX(-50%) translateY(-50%); } }
+
+@keyframes s-tooltip-component--b {
+  0% {
+    transform: scale(0.9, 0.9) translateX(-50%); }
+  100% {
+    transform: scale(1, 1) translateX(-50%); } }
+
+@keyframes s-tooltip-component--t {
+  0% {
+    transform: scale(0.9, 0.9) translateX(-50%); }
+  100% {
+    transform: scale(1, 1) translateX(-50%); } }
+
+@keyframes s-tooltip-component--l {
+  0% {
+    transform: scale(0.9, 0.9) translateY(-50%); }
+  100% {
+    transform: scale(1, 1) translateY(-50%); } }
+
+@keyframes s-tooltip-component--r {
+  0% {
+    transform: scale(0.9, 0.9) translateY(-50%); }
+  100% {
+    transform: scale(1, 1) translateY(-50%); } }
+
+.tooltip {
+  background-color: #848e91;
+  color: white;
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--c.tooltip--default```
+					 * Display a default centered tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--c">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--t.tooltip--default```
+					 * Display a default top centered tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--t">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--tl.tooltip--default```
+					 * Display a default top left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--tl">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--tr.tooltip--default```
+					 * Display a default top right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--tr">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--l.tooltip--default```
+					 * Display a default left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--l">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--r.tooltip--default```
+					 * Display a default right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--r">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--bl.tooltip--default```
+					 * Display a default bottom left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--bl">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--b.tooltip--default```
+					 * Display a default bottom tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--b">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-default">Default</span> ```.tooltip--br.tooltip--default```
+					 * Display a default bottom right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--default tooltip--br">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */ }
+  .tooltip.tooltip--c.tooltip--active, .tooltip.tooltip--c.active,
+  .tooltip.tooltip--c[active] [active] > .tooltip.tooltip--c,
+  .active > .tooltip.tooltip--c,
+  :hover > .tooltip.tooltip--c {
+    animation: s-tooltip-component--c 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c), .tooltip.tooltip--t {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):after, .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):before, .tooltip.tooltip--t:after, .tooltip.tooltip--t:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):after, .tooltip.tooltip--t:after {
+      border-width: 0.5em;
+      border-top-color: #848e91;
+      bottom: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):before, .tooltip.tooltip--t:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c).tooltip--active, .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c).active,
+    .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c)[active] [active] > .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    .active > .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    :hover > .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c), .tooltip.tooltip--t.tooltip--active, .tooltip.tooltip--t.active,
+    .tooltip.tooltip--t[active] [active] > .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    .active > .tooltip.tooltip--t,
+    :hover > .tooltip.tooltip--t,
+    .tooltip.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c)[active] [active] > .tooltip.tooltip--t,
+    .tooltip.tooltip--t[active] [active] > .tooltip.tooltip--t {
+      animation: s-tooltip-component--t 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip--tl {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip--tl:after, .tooltip.tooltip--tl:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip--tl:after {
+      border-width: 0.5em;
+      border-top-color: #848e91;
+      bottom: -1em;
+      left: 0.5em; }
+    .tooltip.tooltip--tl:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      left: 0.5em; }
+    .tooltip.tooltip--tl.tooltip--active, .tooltip.tooltip--tl.active,
+    .tooltip.tooltip--tl[active] [active] > .tooltip.tooltip--tl,
+    .active > .tooltip.tooltip--tl,
+    :hover > .tooltip.tooltip--tl {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip--tr {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip--tr:after, .tooltip.tooltip--tr:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip--tr:after {
+      border-width: 0.5em;
+      border-top-color: #848e91;
+      bottom: -1em;
+      right: 0.5em; }
+    .tooltip.tooltip--tr:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      right: 0.5em; }
+    .tooltip.tooltip--tr.tooltip--active, .tooltip.tooltip--tr.active,
+    .tooltip.tooltip--tr[active] [active] > .tooltip.tooltip--tr,
+    .active > .tooltip.tooltip--tr,
+    :hover > .tooltip.tooltip--tr {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip--l {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip--l:after, .tooltip.tooltip--l:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip--l:after {
+      border-width: 0.5em;
+      border-left-color: #848e91;
+      right: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip.tooltip--l:before {
+      border-width: 0.5em;
+      right: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip.tooltip--l.tooltip--active, .tooltip.tooltip--l.active,
+    .tooltip.tooltip--l[active] [active] > .tooltip.tooltip--l,
+    .active > .tooltip.tooltip--l,
+    :hover > .tooltip.tooltip--l {
+      animation: s-tooltip-component--l 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip--r {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip--r:after, .tooltip.tooltip--r:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip--r:after {
+      border-width: 0.5em;
+      border-right-color: #848e91;
+      left: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip.tooltip--r:before {
+      border-width: 0.5em;
+      left: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip.tooltip--r.tooltip--active, .tooltip.tooltip--r.active,
+    .tooltip.tooltip--r[active] [active] > .tooltip.tooltip--r,
+    .active > .tooltip.tooltip--r,
+    :hover > .tooltip.tooltip--r {
+      animation: s-tooltip-component--r 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip--bl {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip--bl:after, .tooltip.tooltip--bl:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip--bl:after {
+      border-width: 0.5em;
+      border-bottom-color: #848e91;
+      top: -1em;
+      left: 0.5em; }
+    .tooltip.tooltip--bl:before {
+      border-width: 0.5em;
+      top: -1em;
+      left: 0.5em; }
+    .tooltip.tooltip--bl.tooltip--active, .tooltip.tooltip--bl.active,
+    .tooltip.tooltip--bl[active] [active] > .tooltip.tooltip--bl,
+    .active > .tooltip.tooltip--bl,
+    :hover > .tooltip.tooltip--bl {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip--b {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip--b:after, .tooltip.tooltip--b:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip--b:after {
+      border-width: 0.5em;
+      border-bottom-color: #848e91;
+      top: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip.tooltip--b:before {
+      border-width: 0.5em;
+      top: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip.tooltip--b.tooltip--active, .tooltip.tooltip--b.active,
+    .tooltip.tooltip--b[active] [active] > .tooltip.tooltip--b,
+    .active > .tooltip.tooltip--b,
+    :hover > .tooltip.tooltip--b {
+      animation: s-tooltip-component--b 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip.tooltip--br {
+    position: relative;
+    background: #848e91;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip.tooltip--br:after, .tooltip.tooltip--br:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip.tooltip--br:after {
+      border-width: 0.5em;
+      border-bottom-color: #848e91;
+      top: -1em;
+      right: 0.5em; }
+    .tooltip.tooltip--br:before {
+      border-width: 0.5em;
+      top: -1em;
+      right: 0.5em; }
+    .tooltip.tooltip--br.tooltip--active, .tooltip.tooltip--br.active,
+    .tooltip.tooltip--br[active] [active] > .tooltip.tooltip--br,
+    .active > .tooltip.tooltip--br,
+    :hover > .tooltip.tooltip--br {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+
+.tooltip--primary {
+  background-color: #f2bc2b;
+  color: white;
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--c.tooltip--primary```
+					 * Display a primary centered tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--c">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--t.tooltip--primary```
+					 * Display a primary top centered tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--t">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--tl.tooltip--primary```
+					 * Display a primary top left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--tl">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--tr.tooltip--primary```
+					 * Display a primary top right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--tr">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--l.tooltip--primary```
+					 * Display a primary left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--l">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--r.tooltip--primary```
+					 * Display a primary right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--r">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--bl.tooltip--primary```
+					 * Display a primary bottom left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--bl">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--b.tooltip--primary```
+					 * Display a primary bottom tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--b">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-primary">Primary</span> ```.tooltip--br.tooltip--primary```
+					 * Display a primary bottom right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--primary tooltip--br">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */ }
+  .tooltip--primary.tooltip--c.tooltip--active, .tooltip--primary.tooltip--c.active,
+  .tooltip--primary.tooltip--c[active] [active] > .tooltip--primary.tooltip--c,
+  .active > .tooltip--primary.tooltip--c,
+  :hover > .tooltip--primary.tooltip--c {
+    animation: s-tooltip-component--c 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c), .tooltip--primary.tooltip--t {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):after, .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):before, .tooltip--primary.tooltip--t:after, .tooltip--primary.tooltip--t:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):after, .tooltip--primary.tooltip--t:after {
+      border-width: 0.5em;
+      border-top-color: #f2bc2b;
+      bottom: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):before, .tooltip--primary.tooltip--t:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c).tooltip--active, .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c).active,
+    .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c)[active] [active] > .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    .active > .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    :hover > .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c), .tooltip--primary.tooltip--t.tooltip--active, .tooltip--primary.tooltip--t.active,
+    .tooltip--primary.tooltip--t[active] [active] > .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    .active > .tooltip--primary.tooltip--t,
+    :hover > .tooltip--primary.tooltip--t,
+    .tooltip--primary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c)[active] [active] > .tooltip--primary.tooltip--t,
+    .tooltip--primary.tooltip--t[active] [active] > .tooltip--primary.tooltip--t {
+      animation: s-tooltip-component--t 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip--tl {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip--tl:after, .tooltip--primary.tooltip--tl:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip--tl:after {
+      border-width: 0.5em;
+      border-top-color: #f2bc2b;
+      bottom: -1em;
+      left: 0.5em; }
+    .tooltip--primary.tooltip--tl:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      left: 0.5em; }
+    .tooltip--primary.tooltip--tl.tooltip--active, .tooltip--primary.tooltip--tl.active,
+    .tooltip--primary.tooltip--tl[active] [active] > .tooltip--primary.tooltip--tl,
+    .active > .tooltip--primary.tooltip--tl,
+    :hover > .tooltip--primary.tooltip--tl {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip--tr {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip--tr:after, .tooltip--primary.tooltip--tr:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip--tr:after {
+      border-width: 0.5em;
+      border-top-color: #f2bc2b;
+      bottom: -1em;
+      right: 0.5em; }
+    .tooltip--primary.tooltip--tr:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      right: 0.5em; }
+    .tooltip--primary.tooltip--tr.tooltip--active, .tooltip--primary.tooltip--tr.active,
+    .tooltip--primary.tooltip--tr[active] [active] > .tooltip--primary.tooltip--tr,
+    .active > .tooltip--primary.tooltip--tr,
+    :hover > .tooltip--primary.tooltip--tr {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip--l {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip--l:after, .tooltip--primary.tooltip--l:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip--l:after {
+      border-width: 0.5em;
+      border-left-color: #f2bc2b;
+      right: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--primary.tooltip--l:before {
+      border-width: 0.5em;
+      right: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--primary.tooltip--l.tooltip--active, .tooltip--primary.tooltip--l.active,
+    .tooltip--primary.tooltip--l[active] [active] > .tooltip--primary.tooltip--l,
+    .active > .tooltip--primary.tooltip--l,
+    :hover > .tooltip--primary.tooltip--l {
+      animation: s-tooltip-component--l 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip--r {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip--r:after, .tooltip--primary.tooltip--r:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip--r:after {
+      border-width: 0.5em;
+      border-right-color: #f2bc2b;
+      left: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--primary.tooltip--r:before {
+      border-width: 0.5em;
+      left: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--primary.tooltip--r.tooltip--active, .tooltip--primary.tooltip--r.active,
+    .tooltip--primary.tooltip--r[active] [active] > .tooltip--primary.tooltip--r,
+    .active > .tooltip--primary.tooltip--r,
+    :hover > .tooltip--primary.tooltip--r {
+      animation: s-tooltip-component--r 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip--bl {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip--bl:after, .tooltip--primary.tooltip--bl:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip--bl:after {
+      border-width: 0.5em;
+      border-bottom-color: #f2bc2b;
+      top: -1em;
+      left: 0.5em; }
+    .tooltip--primary.tooltip--bl:before {
+      border-width: 0.5em;
+      top: -1em;
+      left: 0.5em; }
+    .tooltip--primary.tooltip--bl.tooltip--active, .tooltip--primary.tooltip--bl.active,
+    .tooltip--primary.tooltip--bl[active] [active] > .tooltip--primary.tooltip--bl,
+    .active > .tooltip--primary.tooltip--bl,
+    :hover > .tooltip--primary.tooltip--bl {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip--b {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip--b:after, .tooltip--primary.tooltip--b:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip--b:after {
+      border-width: 0.5em;
+      border-bottom-color: #f2bc2b;
+      top: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--primary.tooltip--b:before {
+      border-width: 0.5em;
+      top: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--primary.tooltip--b.tooltip--active, .tooltip--primary.tooltip--b.active,
+    .tooltip--primary.tooltip--b[active] [active] > .tooltip--primary.tooltip--b,
+    .active > .tooltip--primary.tooltip--b,
+    :hover > .tooltip--primary.tooltip--b {
+      animation: s-tooltip-component--b 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--primary.tooltip--br {
+    position: relative;
+    background: #f2bc2b;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--primary.tooltip--br:after, .tooltip--primary.tooltip--br:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--primary.tooltip--br:after {
+      border-width: 0.5em;
+      border-bottom-color: #f2bc2b;
+      top: -1em;
+      right: 0.5em; }
+    .tooltip--primary.tooltip--br:before {
+      border-width: 0.5em;
+      top: -1em;
+      right: 0.5em; }
+    .tooltip--primary.tooltip--br.tooltip--active, .tooltip--primary.tooltip--br.active,
+    .tooltip--primary.tooltip--br[active] [active] > .tooltip--primary.tooltip--br,
+    .active > .tooltip--primary.tooltip--br,
+    :hover > .tooltip--primary.tooltip--br {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+
+.tooltip--secondary {
+  background-color: #2b3438;
+  color: white;
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--c.tooltip--secondary```
+					 * Display a secondary centered tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--c">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--t.tooltip--secondary```
+					 * Display a secondary top centered tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--t">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--tl.tooltip--secondary```
+					 * Display a secondary top left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--tl">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--tr.tooltip--secondary```
+					 * Display a secondary top right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--tr">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--l.tooltip--secondary```
+					 * Display a secondary left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--l">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--r.tooltip--secondary```
+					 * Display a secondary right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--r">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--bl.tooltip--secondary```
+					 * Display a secondary bottom left tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--bl">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--b.tooltip--secondary```
+					 * Display a secondary bottom tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--b">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */
+  /**
+					 * @name 		<span class="c-secondary">Secondary</span> ```.tooltip--br.tooltip--secondary```
+					 * Display a secondary bottom right tooltip
+					 * @styleguide 		Atoms / Tooltip
+					 * @example 	html
+					 * <div class="active bkg-primary" style="display: block; width: 10px; height: 10px; position: relative; margin: 50px auto;">
+					 * 	<div class="tooltip tooltip--secondary tooltip--br">
+					 * 		I'm a cool tooltip
+					 * 	</div>
+					 * </div>
+					 */ }
+  .tooltip--secondary.tooltip--c.tooltip--active, .tooltip--secondary.tooltip--c.active,
+  .tooltip--secondary.tooltip--c[active] [active] > .tooltip--secondary.tooltip--c,
+  .active > .tooltip--secondary.tooltip--c,
+  :hover > .tooltip--secondary.tooltip--c {
+    animation: s-tooltip-component--c 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c), .tooltip--secondary.tooltip--t {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):after, .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):before, .tooltip--secondary.tooltip--t:after, .tooltip--secondary.tooltip--t:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):after, .tooltip--secondary.tooltip--t:after {
+      border-width: 0.5em;
+      border-top-color: #2b3438;
+      bottom: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c):before, .tooltip--secondary.tooltip--t:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c).tooltip--active, .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c).active,
+    .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c)[active] [active] > .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    .active > .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    :hover > .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c), .tooltip--secondary.tooltip--t.tooltip--active, .tooltip--secondary.tooltip--t.active,
+    .tooltip--secondary.tooltip--t[active] [active] > .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c),
+    .active > .tooltip--secondary.tooltip--t,
+    :hover > .tooltip--secondary.tooltip--t,
+    .tooltip--secondary.tooltip:not(.tooltip--tr):not(.tooltip--tl):not(.tooltip--l):not(.tooltip--r):not(.tooltip--bl):not(.tooltip--b):not(.tooltip--br):not(.tooltip--c)[active] [active] > .tooltip--secondary.tooltip--t,
+    .tooltip--secondary.tooltip--t[active] [active] > .tooltip--secondary.tooltip--t {
+      animation: s-tooltip-component--t 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip--tl {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip--tl:after, .tooltip--secondary.tooltip--tl:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip--tl:after {
+      border-width: 0.5em;
+      border-top-color: #2b3438;
+      bottom: -1em;
+      left: 0.5em; }
+    .tooltip--secondary.tooltip--tl:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      left: 0.5em; }
+    .tooltip--secondary.tooltip--tl.tooltip--active, .tooltip--secondary.tooltip--tl.active,
+    .tooltip--secondary.tooltip--tl[active] [active] > .tooltip--secondary.tooltip--tl,
+    .active > .tooltip--secondary.tooltip--tl,
+    :hover > .tooltip--secondary.tooltip--tl {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip--tr {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip--tr:after, .tooltip--secondary.tooltip--tr:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip--tr:after {
+      border-width: 0.5em;
+      border-top-color: #2b3438;
+      bottom: -1em;
+      right: 0.5em; }
+    .tooltip--secondary.tooltip--tr:before {
+      border-width: 0.5em;
+      bottom: -1em;
+      right: 0.5em; }
+    .tooltip--secondary.tooltip--tr.tooltip--active, .tooltip--secondary.tooltip--tr.active,
+    .tooltip--secondary.tooltip--tr[active] [active] > .tooltip--secondary.tooltip--tr,
+    .active > .tooltip--secondary.tooltip--tr,
+    :hover > .tooltip--secondary.tooltip--tr {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip--l {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip--l:after, .tooltip--secondary.tooltip--l:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip--l:after {
+      border-width: 0.5em;
+      border-left-color: #2b3438;
+      right: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--secondary.tooltip--l:before {
+      border-width: 0.5em;
+      right: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--secondary.tooltip--l.tooltip--active, .tooltip--secondary.tooltip--l.active,
+    .tooltip--secondary.tooltip--l[active] [active] > .tooltip--secondary.tooltip--l,
+    .active > .tooltip--secondary.tooltip--l,
+    :hover > .tooltip--secondary.tooltip--l {
+      animation: s-tooltip-component--l 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip--r {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip--r:after, .tooltip--secondary.tooltip--r:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip--r:after {
+      border-width: 0.5em;
+      border-right-color: #2b3438;
+      left: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--secondary.tooltip--r:before {
+      border-width: 0.5em;
+      left: -1em;
+      top: 50%;
+      margin-top: -0.5em; }
+    .tooltip--secondary.tooltip--r.tooltip--active, .tooltip--secondary.tooltip--r.active,
+    .tooltip--secondary.tooltip--r[active] [active] > .tooltip--secondary.tooltip--r,
+    .active > .tooltip--secondary.tooltip--r,
+    :hover > .tooltip--secondary.tooltip--r {
+      animation: s-tooltip-component--r 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip--bl {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip--bl:after, .tooltip--secondary.tooltip--bl:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip--bl:after {
+      border-width: 0.5em;
+      border-bottom-color: #2b3438;
+      top: -1em;
+      left: 0.5em; }
+    .tooltip--secondary.tooltip--bl:before {
+      border-width: 0.5em;
+      top: -1em;
+      left: 0.5em; }
+    .tooltip--secondary.tooltip--bl.tooltip--active, .tooltip--secondary.tooltip--bl.active,
+    .tooltip--secondary.tooltip--bl[active] [active] > .tooltip--secondary.tooltip--bl,
+    .active > .tooltip--secondary.tooltip--bl,
+    :hover > .tooltip--secondary.tooltip--bl {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip--b {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip--b:after, .tooltip--secondary.tooltip--b:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip--b:after {
+      border-width: 0.5em;
+      border-bottom-color: #2b3438;
+      top: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--secondary.tooltip--b:before {
+      border-width: 0.5em;
+      top: -1em;
+      right: 50%;
+      margin-right: -0.5em; }
+    .tooltip--secondary.tooltip--b.tooltip--active, .tooltip--secondary.tooltip--b.active,
+    .tooltip--secondary.tooltip--b[active] [active] > .tooltip--secondary.tooltip--b,
+    .active > .tooltip--secondary.tooltip--b,
+    :hover > .tooltip--secondary.tooltip--b {
+      animation: s-tooltip-component--b 0.1s 0s ease-in-out 1 normal forwards; }
+  .tooltip--secondary.tooltip--br {
+    position: relative;
+    background: #2b3438;
+    border-style: solid;
+    border-width: 0; }
+    .tooltip--secondary.tooltip--br:after, .tooltip--secondary.tooltip--br:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      visibility: visible; }
+    .tooltip--secondary.tooltip--br:after {
+      border-width: 0.5em;
+      border-bottom-color: #2b3438;
+      top: -1em;
+      right: 0.5em; }
+    .tooltip--secondary.tooltip--br:before {
+      border-width: 0.5em;
+      top: -1em;
+      right: 0.5em; }
+    .tooltip--secondary.tooltip--br.tooltip--active, .tooltip--secondary.tooltip--br.active,
+    .tooltip--secondary.tooltip--br[active] [active] > .tooltip--secondary.tooltip--br,
+    .active > .tooltip--secondary.tooltip--br,
+    :hover > .tooltip--secondary.tooltip--br {
+      animation: s-tooltip-component 0.1s 0s ease-in-out 1 normal forwards; }
+
+.tooltip {
+  white-space: nowrap; }

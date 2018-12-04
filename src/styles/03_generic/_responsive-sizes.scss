@@ -1,0 +1,25 @@
+@if function-exists("g-custom-class") {
+  @each $sizeName, $sizeValue in s-setting("sizes") {
+    $sizeNameForClassname: $sizeName;
+
+    @if $sizeName == default {
+      $sizeNameForClassname: null;
+    }
+
+    @include g-custom-class(("s", "-", $sizeNameForClassname, "@", "%state")) {
+      @if g-current-state-name() != default {
+        /**
+         * @name  			```.s-#{$sizeName}@#{g-current-state-name()}```
+         * Set the #{sizeName} size for the #{g-current-state-name()}
+         * @styleguide 		Layout / Sizes
+         * @example 		html
+         * <div class="s-#{$sizeName}@#{g-current-state-name()}">
+         * 	Hello world
+         * </div>
+         */
+      }
+
+      font-size: s-rem($sizeValue) !important;
+    }
+  }
+}

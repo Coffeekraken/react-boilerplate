@@ -1,0 +1,46 @@
+@if mixin-exists("g-custom-class") {
+  @include g-custom-class(("t", "-", "center", "@", "%state")) {
+    @if g-current-state-name() != default {
+      /**
+       * @name  			```.t-center@#{g-current-state-name()}```
+       * Align the text to center for the "#{g-current-state-name()}" state
+       * @styleguide 		Helpers / Text Align
+       * @example 		html
+       * <div class="t-center@#{g-current-state-name()}">
+       * 	Hello world
+       * </div>
+       */
+      text-align: center;
+    }
+  }
+
+  @include g-custom-class(("t", "-", "right", "@", "%state")) {
+    @if g-current-state-name() != default {
+      /**
+       * @name  			```.t-right@#{g-current-state-name()}```
+       * Align the text to right for the "#{g-current-state-name()}" state
+       * @styleguide 		Helpers / Text Align
+       * @example 		html
+       * <div class="t-right@#{g-current-state-name()}">
+       * 	Hello world
+       * </div>
+       */
+      text-align: right;
+    }
+  }
+
+  @include g-custom-class(("t", "-", "left", "@", "%state")) {
+    @if g-current-state-name() != default {
+      /**
+       * @name  			```.t-left@#{g-current-state-name()}```
+       * Align the text to left for the "#{g-current-state-name()}" state
+       * @styleguide 		Helpers / Text Align
+       * @example 		html
+       * <div class="t-left@#{g-current-state-name()}">
+       * 	Hello world
+       * </div>
+       */
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+/**
+ * Text format styling
+ */
+.#{s-text-format-class()} {
+  p {
+    margin-bottom: 1em;
+    display: inline-block;
+    max-width: 65ex;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  p a {
+    display: inline;
+    text-decoration: underline;
+  }
+
+  ol {
+    @include s-list();
+
+    li {
+      @include s-list-bullet(
+        $type: decimal,
+        $space: s-rem(40px),
+        $size: s-rem(14px),
+        $offset: s-rem(2px) s-rem(16px)
+      );
+
+      margin-bottom: s-space(default);
+      line-height: 1.6;
+
+      &:hover::before {
+        color: s-color(primary) !important;
+      }
+    }
+  }
+
+  ul {
+    @include s-list();
+
+    li {
+      @include s-list-bullet(
+        $type: disc,
+        $space: s-rem(40px),
+        $size: s-rem(25px),
+        $offset: s-rem(-10px) s-rem(16px)
+      );
+
+      margin-bottom: s-space(default);
+      line-height: 1.6;
+
+      &:hover::before {
+        color: s-color(primary) !important;
+      }
+    }
+  }
+
+  blockquote {
+    padding-left: s-space(default);
+    border-left: s-rem(3px) solid s-color(default);
+
+    @include s-font($size: s-rem(30px), $style: italic);
+  }
+}

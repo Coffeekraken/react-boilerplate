@@ -1,0 +1,11 @@
+/**
+ * The purpose of a color schema is to basically set the color text of all his children.
+ * This is useful when for example the background is dark and you need the content on top
+ * to be light like white or whatever.
+ * It's usually a good idea to start with at least 1 color schema that is the opposite of
+ * your default site color. If your website is dark with light text by default, think to
+ * create a `.cs-dark` color schema and vice versa...
+ */
+.cs-light {
+  color: white;
+}

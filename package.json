@@ -1,0 +1,68 @@
+{
+  "name": "react-boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "coffeekraken-gridle": "^3.0.1",
+    "coffeekraken-s-button-component": "^1.0.1",
+    "coffeekraken-s-dropdown-component": "^1.0.2",
+    "coffeekraken-s-form-component": "^1.0.3",
+    "coffeekraken-s-table-component": "^1.0.2",
+    "coffeekraken-s-tooltip-component": "^1.0.4",
+    "coffeekraken-s-typography-component": "^1.0.2",
+    "coffeekraken-sugar": "^1.0.27",
+    "connected-react-router": "^5.0.1",
+    "history": "^4.7.2",
+    "immer": "^1.8.0",
+    "loadable-components": "^2.2.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "styled-components": "^4.1.2"
+  },
+  "watch": {
+    "scss": {
+      "paths": "src/**/*.scss"
+    }
+  },
+  "scripts": {
+    "scss": "node-sass src -o src --include-path node_modules --include-path src/styles",
+    "start": "coffeekraken-scripts-stack start-react scss -i start",
+    "start-react": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "CI=true react-scripts test",
+    "server": "php -S 0.0.0.0:8080 -t build/",
+    "pretty-quick": "pretty-quick",
+    "pretty-quick-commit": "pretty-quick --staged > /dev/null 2>&1",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint 'src/**/!(tests)/*.js'",
+    "lint:css": "stylelint 'src/styles/**/*.scss'"
+  },
+  "pre-commit": [
+    "pretty-quick-commit",
+    "test",
+    "lint"
+  ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "coffeekraken-scripts-stack": "^1.0.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "node-sass": "^4.10.0",
+    "pre-commit": "^1.2.2",
+    "pretty-quick": "^1.8.0",
+    "stylelint": "^9.9.0",
+    "stylelint-config-standard": "^18.2.0"
+  }
+}

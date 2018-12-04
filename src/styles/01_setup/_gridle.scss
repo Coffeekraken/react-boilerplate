@@ -1,0 +1,16 @@
+// default gridle settings
+@include g-setup(
+  (
+    context: 12,
+    gutter-width: 30px
+  )
+);
+
+/**
+ * Mobile first states
+ * - mobile : 320px to infinite
+ * - tablet : 640px to infinite
+ * - desktop : 992px to infinite
+ * - large : 1200px to infinite
+ */
+@include g-register-mobile-first-states();
