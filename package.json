@@ -12,6 +12,7 @@
     "coffeekraken-s-typography-component": "^1.0.2",
     "coffeekraken-sugar": "^1.0.27",
     "connected-react-router": "^5.0.1",
+    "dotenv": "^6.1.0",
     "history": "^4.7.2",
     "immer": "^1.8.0",
     "loadable-components": "^2.2.3",

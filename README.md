@@ -50,18 +50,20 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 - [Redux thunk](https://github.com/reduxjs/redux-thunk) built-in
 - [Reselect](https://github.com/reduxjs/reselect) built-in
 - [Styled component](https://www.styled-components.com/) built-in
+- Immutable state through [Immer](https://github.com/mweststrate/immer)
 - Sass support through [node-sass](https://github.com/sass/node-sass)
 - CSS structure based on [atomic design](http://bradfrost.com/blog/post/atomic-web-design/) principles
 - Code linting through [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/)
 - [Jest](https://jestjs.io/) tests stack
 - Automatically reject commits if tests and linting fail through [pre-commit](https://www.npmjs.com/package/pre-commit)
-- [Browsersync](https://browsersync.io/) built in
-- Docker container configuration built in
-- [CSSUA](http://cssuseragent.org/) built in
-- [Babel polyfill](https://babeljs.io/docs/en/babel-polyfill) built in
-- [Coffeekraken scripts stack](https://github.com/coffeekraken/scripts-stack) built in
-- [Coffeekraken sugar](https://github.com/coffeekraken/sugar) built in
-- [Coffeekraken gridle](https://github.com/coffeekraken/gridle) built in
+- [Browsersync](https://browsersync.io/) built-in
+- [Dotenv](https://www.npmjs.com/package/dotenv) built-in
+- Docker container configuration built-in
+- [CSSUA](http://cssuseragent.org/) built-in
+- [Babel polyfill](https://babeljs.io/docs/en/babel-polyfill) built-in
+- [Coffeekraken scripts stack](https://github.com/coffeekraken/scripts-stack) built-in
+- [Coffeekraken sugar](https://github.com/coffeekraken/sugar) built-in
+- [Coffeekraken gridle](https://github.com/coffeekraken/gridle) built-in
 
 ## Table of content
 

@@ -1,0 +1,19 @@
+version: '2'
+services:
+  web:
+    build: .
+    container_name: react-boilerplate-web
+    command: bash -c "./up.sh"
+    ports:
+      - "8080:80"
+    env_file:
+      - ./.env
+    volumes:
+      - ./up.sh:/var/www/html/up.sh
+      - ../build/:/var/www/html
+      - ./php.ini:/usr/local/etc/php/php.ini
+      - ./apache.conf:/etc/apache2/sites-available/000-default.conf
+networks:
+  default:
+    external:
+      name: react-boilerplate-network
