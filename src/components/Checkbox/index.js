@@ -1,4 +1,5 @@
 import React from 'react'
+import uniqid from 'uniqid'
 
 import './style.css'
 
@@ -9,10 +10,12 @@ class Checkbox extends React.PureComponent {
   }
 
   render() {
-    const { onChange, className, ...others } = this.props
+    const { onChange, className, id, ...others } = this.props
+    const forId = id || uniqid()
     return (
-      <label className={'checkbox ' + className}>
+      <label className={`checkbox ${className}`} htmlFor={forId}>
         <input
+          id={forId}
           type="checkbox"
           className="checkbox__input"
           onChange={e => this.onChange(e)}

@@ -12,7 +12,8 @@
     "no-param-reassign": "off",
     "react/forbid-prop-types": "off",
     "import/prefer-default-export": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "jsx-a11y/no-autofocus": "off"
   },
   "env": {
     "browser": true,

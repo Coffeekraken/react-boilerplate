@@ -37,9 +37,10 @@ class TodoPage extends React.PureComponent {
 
   addTodo(e) {
     const { addTodo } = this.props
+    const { todo } = this.state
     switch (e.keyCode) {
       case 13: // enter
-        addTodo(this.state.todo)
+        addTodo(todo)
         this.setState({
           todo: ''
         })
@@ -60,6 +61,7 @@ class TodoPage extends React.PureComponent {
 
   render() {
     const { todos, filter, intl } = this.props
+    const { todo } = this.state
     return (
       <div className="page todo">
         <Card>
@@ -69,7 +71,7 @@ class TodoPage extends React.PureComponent {
             name="todo"
             className="form-input m-b"
             placeholder={intl.formatMessage(messages.newTodo)}
-            value={this.state.todo}
+            value={todo}
             onChange={e => this.onChange(e)}
             onKeyDown={e => this.addTodo(e)}
           />
@@ -78,7 +80,7 @@ class TodoPage extends React.PureComponent {
               <li
                 key={todo.id}
                 className={
-                  'todo__item ' + (todo.done ? 'todo__item--done' : '')
+                  `todo__item ${(todo.done ? 'todo__item--done' : '')}`
                 }
               >
                 <Checkbox
@@ -88,6 +90,7 @@ class TodoPage extends React.PureComponent {
                 />
                 <span className="todo__item-text">{todo.text}</span>
                 <button
+                  type="button"
                   className="todo__item-remove"
                   onClick={e => this.removeTodo(e, todo)}
                 >

@@ -61,7 +61,8 @@
     "redux-devtools-extension": "^2.13.7",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "styled-components": "^4.1.2"
+    "styled-components": "^4.1.2",
+    "uniqid": "^5.0.3"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
