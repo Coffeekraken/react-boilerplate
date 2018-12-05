@@ -22,12 +22,12 @@ class Header extends React.PureComponent {
         <nav className="header__nav header__nav--main">
           <ul className="nav nav--inline">
             <li className="nav__item">
-              <NavLink to="/">
+              <NavLink to="/" exact>
                 <FormattedMessage {...messages.home} />
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/counter">
+              <NavLink to="/counter" exact>
                 <FormattedMessage {...messages.counter} />
               </NavLink>
             </li>
@@ -56,7 +56,8 @@ Header.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  locale: state.language.locale
+    location: state.router.location,
+    locale: state.language.locale
 })
 const mapDispatchToProps = dispatch => ({
   changeLocale: locale => dispatch(changeLocale(locale))
