@@ -1,11 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import { NavLink } from "react-router-dom"
+import { FormattedMessage } from "react-intl"
+import messages from "./messages"
 
-import { locales } from '../../i18n'
-import { changeLocale } from '../LanguageProvider/actions'
+import { locales } from "../../i18n"
+import { changeLocale } from "../LanguageProvider/actions"
 
-import './style.css'
+import "./style.css"
 
 class Header extends React.PureComponent {
   changeLocale(locale) {
@@ -16,14 +19,28 @@ class Header extends React.PureComponent {
   render() {
     return (
       <header className="header">
-        <nav className="header__nav">
+        <nav className="header__nav header__nav--main">
           <ul className="nav nav--inline">
-            {locales.map((locale) => (
+            <li className="nav__item">
+              <NavLink to="/">
+                <FormattedMessage {...messages.home} />
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink to="/counter">
+                <FormattedMessage {...messages.counter} />
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <nav className="header__nav header__nav--locale">
+          <ul className="nav nav--inline">
+            {locales.map(locale => (
               <li key={locale} className="nav__item">
                 <button type="button" onClick={() => this.changeLocale(locale)}>
                   {locale.toUpperCase()}
                 </button>
-            </li>
+              </li>
             ))}
           </ul>
         </nav>
@@ -32,17 +49,17 @@ class Header extends React.PureComponent {
   }
 }
 
-Header.defaultProps = {
-}
+Header.defaultProps = {}
 
 Header.propTypes = {
   changeLocale: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
+  locale: state.language.locale
 })
-const mapDispatchToProps = (dispatch) => ({
-  changeLocale: (locale) => dispatch(changeLocale(locale))
+const mapDispatchToProps = dispatch => ({
+  changeLocale: locale => dispatch(changeLocale(locale))
 })
 
 export default connect(
