@@ -1,0 +1,43 @@
+@import 'bootstrap';
+
+.todo {
+  .card {
+    width: 70%;
+    max-width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.todo__list {
+}
+
+.todo__item {
+  @include s-clearfix();
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid s-color(white, -darken 10%);
+  font-size: s-rem(16px);
+}
+  .todo__item-checkbox {
+
+  }
+  .todo__item-text {
+    flex: 1;
+    display: inline-block;
+    padding: 0 s-lnf(padding-vertical);
+
+    .todo__item--done & {
+      text-decoration: line-through;
+    }
+  }
+  .todo__item-remove {
+    background: s-color(error);
+    color: white;
+    border:none;
+    padding: s-lnf(padding-horizontal) s-lnf(padding-vertical);
+
+  }

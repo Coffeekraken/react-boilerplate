@@ -1,0 +1,55 @@
+@import 'bootstrap';
+
+.checkbox {
+
+}
+  @each $colorName, $color in (default primary secondary success error) {
+    $sel : ".checkbox[#{$colorName}]";
+    @if $colorName == default {
+      $sel : ".checkbox";
+    }
+    #{$sel} .checkbox__display:after {
+      background-color: s-color($colorName);
+    }
+  }
+
+.checkbox__input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -120vw;
+}
+
+.checkbox__display {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: s-lnf(border-radius);
+  }
+  &:before {
+    border:1px solid s-color(white, -darken 10%);
+  }
+  &:after {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    opacity: .1;
+
+    :checked + & {
+      opacity: 1;
+    }
+  }
+}

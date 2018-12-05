@@ -12,5 +12,9 @@ export default defineMessages({
   counter: {
     id: `${scope}.counter`,
     defaultMessage: "Counter"
+  },
+  todo: {
+    id: `${scope}.todo`,
+    defaultMessage: 'Todo'
   }
 })

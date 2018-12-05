@@ -6,6 +6,11 @@
   "general.home": "Home",
   "header.counter": "Counter",
   "header.home": "Home",
+  "header.todo": "Todo",
   "homepage.body": "React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, sugar, gridle and more...",
-  "homepage.title": "Coffeekraken React Boilerplate"
+  "homepage.title": "Coffeekraken React Boilerplate",
+  "todo.newTodo": "New todo",
+  "todo.show.active": "Active",
+  "todo.show.all": "All",
+  "todo.show.completed": "Completed"
 }

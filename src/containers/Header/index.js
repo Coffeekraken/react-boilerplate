@@ -31,6 +31,11 @@ class Header extends React.PureComponent {
                 <FormattedMessage {...messages.counter} />
               </NavLink>
             </li>
+            <li className="nav__item">
+              <NavLink to="/todo" exact>
+                <FormattedMessage {...messages.todo} />
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <nav className="header__nav header__nav--locale">

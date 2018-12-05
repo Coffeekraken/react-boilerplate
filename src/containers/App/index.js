@@ -1,13 +1,14 @@
-import React from "react"
-import { Switch, Route } from "react-router-dom"
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-import FullscreenVideo from "../../components/FullscreenVideo"
-import video from "../../assets/disaster.mp4"
-import Header from "../Header/Loadable"
-import HomePage from "../HomePage/Loadable"
-import CounterPage from "../CounterPage/Loadable"
+import FullscreenVideo from '../../components/FullscreenVideo'
+import video from '../../assets/disaster.mp4'
+import Header from '../Header/Loadable'
+import HomePage from '../HomePage/Loadable'
+import CounterPage from '../CounterPage/Loadable'
+import TodoPage from '../TodoPage/Loadable'
 
-import "./style.css"
+import './style.css'
 
 export default () => (
   <div>
@@ -16,7 +17,8 @@ export default () => (
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/counter" component={CounterPage} />
-      </Switch>
+        <Route path="/todo" component={TodoPage} />
+     </Switch>
     </FullscreenVideo>
   </div>
 )
