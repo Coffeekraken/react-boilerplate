@@ -1,4 +1,6 @@
 {
+  "app.description": "React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, sugar, gridle and more...",
+  "app.title": "Coffeekraken React Boilerplate",
   "counter.counter.decrement": "Decrement",
   "counter.counter.decrement.tooltip": "Decrement the counter",
   "counter.counter.increment": "Increment",

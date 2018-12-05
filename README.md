@@ -113,7 +113,7 @@ npm start
 - `npm run lint` : Run the linters
 - `npm run lint:js` : Run the Js linter
 - `npm run lint:css` : Run the css linter
-- `npm run extract-messages` : Extract the messages from all the `messages.js` files up to the translations folder
+- `npm run messages:extract` : Extract the messages from all the `messages.js` files up to the translations folder
 
 <a name="readme-browsers-support"></a>
 ## Browsers support

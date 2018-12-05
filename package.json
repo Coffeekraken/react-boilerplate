@@ -12,8 +12,10 @@
     "scss": "node-sass src -o src --include-path node_modules --include-path src/styles",
     "start": "coffeekraken-scripts-stack start-react scss browsersync -i start",
     "start-react": "NODE_PATH=src BROWSER=none react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run build:favicon npm run build:favicon:inject",
     "build:server": "php -S 0.0.0.0:8080 -t build/",
+    "build:favicon": "coffeekraken-favicons-stack --source src/assets/favicon.png --output build/static/favicons --html-output build/static/favicons/favicons.html --path '/static/favicons' --theme '#fff' --background '#fff'",
+    "build:favicon:inject": "node scripts/inject-favicons.js",
     "browsersync": "browser-sync start --proxy \"localhost:3000\" --port 8080 --no-open",
     "test": "CI=true react-scripts test",
     "pretty-quick": "pretty-quick",
@@ -21,7 +23,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint 'src/**/!(tests)/*.js'",
     "lint:css": "stylelint 'src/styles/**/*.scss'",
-    "extract-messages": "node scripts/extract-messages.js"
+    "messages:extract": "node scripts/extract-messages.js"
   },
   "pre-commit": [
     "pretty-quick-commit",
@@ -52,6 +54,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-helmet": "^5.2.0",
     "react-intl": "^2.7.2",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
@@ -68,6 +71,7 @@
     "babel-register": "^6.26.0",
     "browser-sync": "^2.26.3",
     "chalk": "^2.4.1",
+    "coffeekraken-favicons-stack": "^1.0.0",
     "coffeekraken-scripts-stack": "^1.0.2",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
