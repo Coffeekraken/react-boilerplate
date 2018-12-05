@@ -18,7 +18,7 @@ export default () => (
         <Route exact path="/" component={HomePage} />
         <Route path="/counter" component={CounterPage} />
         <Route path="/todo" component={TodoPage} />
-     </Switch>
+      </Switch>
     </FullscreenVideo>
   </div>
 )

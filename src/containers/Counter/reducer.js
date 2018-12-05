@@ -1,5 +1,5 @@
-import produce from "immer"
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./constants"
+import produce from 'immer'
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './constants'
 
 const initialState = {
   count: 0

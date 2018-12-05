@@ -1,19 +1,19 @@
-import React from "react"
-import "./style.css"
+import React from 'react'
+import './style.css'
 
 class Button extends React.PureComponent {
   render() {
     const { className, children, ...others } = this.props
     const { primary, secondary, outline, link } = this.props
 
-    const cn = ["btn", className]
-    if (primary) cn.push("btn--primary")
-    if (secondary) cn.push("btn--secondary")
-    if (outline) cn.push("btn--outline")
-    if (link) cn.push("btn--link")
+    const cn = ['btn', className]
+    if (primary) cn.push('btn--primary')
+    if (secondary) cn.push('btn--secondary')
+    if (outline) cn.push('btn--outline')
+    if (link) cn.push('btn--link')
 
     return (
-      <button type="button" className={cn.join(" ")} {...others}>
+      <button type="button" className={cn.join(' ')} {...others}>
         {children}
       </button>
     )

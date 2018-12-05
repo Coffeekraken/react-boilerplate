@@ -1,14 +1,14 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { connect } from "react-redux"
-import { NavLink } from "react-router-dom"
-import { FormattedMessage } from "react-intl"
-import messages from "./messages"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
-import { locales } from "../../i18n"
-import { changeLocale } from "../LanguageProvider/actions"
+import { locales } from '../../i18n'
+import { changeLocale } from '../LanguageProvider/actions'
 
-import "./style.css"
+import './style.css'
 
 class Header extends React.PureComponent {
   changeLocale(locale) {
@@ -61,8 +61,8 @@ Header.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    location: state.router.location,
-    locale: state.language.locale
+  location: state.router.location,
+  locale: state.language.locale
 })
 const mapDispatchToProps = dispatch => ({
   changeLocale: locale => dispatch(changeLocale(locale))

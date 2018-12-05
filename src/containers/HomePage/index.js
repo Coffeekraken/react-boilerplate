@@ -1,13 +1,13 @@
-import React from "react"
-import { FormattedMessage } from "react-intl"
-import messages from "./messages"
+import React from 'react'
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
-import headerImg from "../../assets/doc-header.jpg"
-import H1 from "../../components/H1"
-import P from "../../components/P"
-import Card from "../../components/Card"
+import headerImg from '../../assets/doc-header.jpg'
+import H1 from '../../components/H1'
+import P from '../../components/P'
+import Card from '../../components/Card'
 
-import "./style.css"
+import './style.css'
 
 export default () => (
   <div className="page">

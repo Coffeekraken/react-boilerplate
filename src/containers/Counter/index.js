@@ -1,18 +1,18 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { connect } from "react-redux"
-import { FormattedMessage } from "react-intl"
-import messages from "./messages"
-import { incrementCounter, decrementCounter } from "./actions"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
+import { incrementCounter, decrementCounter } from './actions'
 
-import Tooltip from "../../components/Tooltip"
-import Button from "../../components/Button"
+import Tooltip from '../../components/Tooltip'
+import Button from '../../components/Button'
 
-import reducer from "./reducer"
-import registerReducer from "../../registerReducer"
+import reducer from './reducer'
+import registerReducer from '../../registerReducer'
 
 // register the reducer
-registerReducer("counter", reducer)
+registerReducer('counter', reducer)
 
 class Counter extends React.PureComponent {
   increment() {

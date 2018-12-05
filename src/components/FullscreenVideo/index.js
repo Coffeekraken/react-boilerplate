@@ -1,5 +1,5 @@
-import React from "react"
-import "./style.css"
+import React from 'react'
+import './style.css'
 
 class FullscreenVideo extends React.PureComponent {
   render() {

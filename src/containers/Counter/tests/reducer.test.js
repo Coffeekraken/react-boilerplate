@@ -1,7 +1,7 @@
-import counterReducer from "../reducer"
-import { incrementCounter } from "../actions"
+import counterReducer from '../reducer'
+import { incrementCounter } from '../actions'
 
-describe("counterReducer", () => {
+describe('counterReducer', () => {
   let state
   beforeEach(() => {
     state = {
@@ -9,12 +9,12 @@ describe("counterReducer", () => {
     }
   })
 
-  it("should return the initial state", () => {
+  it('should return the initial state', () => {
     const expectedResult = state
     expect(counterReducer(undefined, {})).toEqual(expectedResult)
   })
 
-  it("should handle the increment action correctly", () => {
+  it('should handle the increment action correctly', () => {
     const expectedResult = {
       count: 1
     }

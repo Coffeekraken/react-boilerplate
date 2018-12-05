@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 class H2 extends React.PureComponent {
   render() {

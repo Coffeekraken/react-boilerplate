@@ -1,7 +1,7 @@
-import { defineMessages } from "react-intl"
+import { defineMessages } from 'react-intl'
 
 // scope
-export const scope = "todo"
+export const scope = 'todo'
 
 // messages
 export default defineMessages({

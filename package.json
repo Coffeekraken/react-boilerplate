@@ -11,11 +11,12 @@
   "scripts": {
     "scss": "node-sass src -o src --include-path node_modules --include-path src/styles",
     "start": "coffeekraken-scripts-stack start-react scss browsersync -i start",
-    "start-react": "BROWSER=none react-scripts start",
+    "start-react": "NODE_PATH=src BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "build:server": "php -S 0.0.0.0:8080 -t build/",
     "browsersync": "browser-sync start --proxy \"localhost:3000\" --port 8080 --no-open",
     "test": "CI=true react-scripts test",
+    "prettier": "prettier --write src/**/*.js",
     "pretty-quick": "pretty-quick",
     "pretty-quick-commit": "pretty-quick --staged > /dev/null 2>&1",
     "lint": "npm run lint:js && npm run lint:css",

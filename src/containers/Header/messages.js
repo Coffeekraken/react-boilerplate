@@ -1,17 +1,17 @@
-import { defineMessages } from "react-intl"
+import { defineMessages } from 'react-intl'
 
 // scope
-export const scope = "header"
+export const scope = 'header'
 
 // messages
 export default defineMessages({
   home: {
     id: `${scope}.home`,
-    defaultMessage: "Home"
+    defaultMessage: 'Home'
   },
   counter: {
     id: `${scope}.counter`,
-    defaultMessage: "Counter"
+    defaultMessage: 'Counter'
   },
   todo: {
     id: `${scope}.todo`,

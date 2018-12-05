@@ -1,2 +1,2 @@
-import loadable from "loadable-components"
-export default loadable(() => import("./index"), {})
+import loadable from 'loadable-components'
+export default loadable(() => import('./index'), {})
