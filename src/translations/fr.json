@@ -1,8 +1,11 @@
 {
+  "counter.counter.decrement": "Décrémenter",
+  "counter.counter.decrement.tooltip": "Décrémenter le compteur",
+  "counter.counter.increment": "Incrémenter",
+  "counter.counter.increment.tooltip": "Incrémenter le compteur",
+  "general.home": "",
+  "header.counter": "Compteur",
+  "header.home": "Accueil",
   "homepage.body": "Boilerplate react intégré avec react-scripts, redux, redux-thunk, reselect, sugar, gridle et plus encore...",
-  "homepage.counter.decrement": "Décrémenter",
-  "homepage.counter.decrement.tooltip": "Décrémenter le compteur",
-  "homepage.counter.increment": "Incrémenter",
-  "homepage.counter.increment.tooltip": "Incrémenter le compteur",
   "homepage.title": "Coffeekraken React Boilerplate"
 }
