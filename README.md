@@ -57,7 +57,6 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 - [Jest](https://jestjs.io/) tests stack
 - Automatically reject commits if tests and linting fail through [pre-commit](https://www.npmjs.com/package/pre-commit)
 - [Browsersync](https://browsersync.io/) built-in
-- [Dotenv](https://www.npmjs.com/package/dotenv) built-in
 - Docker container configuration built-in
 - [CSSUA](http://cssuseragent.org/) built-in
 - [Babel polyfill](https://babeljs.io/docs/en/babel-polyfill) built-in
