@@ -113,7 +113,7 @@ npm start
 - `npm run build:favicon` : Generate the favicons from the `src/assets/favicon.png` file
 - `npm run build:favicon:inject` : Inject the favicon code inside the `build/index.html` file
 - `npm run browsersync` : Start the browsersync service on port `8080`
-- `npm run styleguidist` : Start the styleguidist service on port `6060`
+- `npm run storybook` : Start the storybook service on port `9009`
 - `npm run test` : Run the tests
 - `npm run pretty-quick` : Run prettier on the entire project
 - `npm run pretty-quick-commit` : Run prettier on staged filed

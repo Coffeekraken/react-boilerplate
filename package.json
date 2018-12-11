@@ -18,15 +18,14 @@
     "build:favicon": "coffeekraken-favicons-stack --source src/assets/favicon.png --output build/static/favicons --html-output build/static/favicons/favicons.html --path '/static/favicons' --theme '#fff' --background '#fff'",
     "build:favicon:inject": "node scripts/inject-favicons.js",
     "browsersync": "browser-sync start --proxy \"localhost:3000\" --port 8080 --no-open",
-    "styleguidist": "npx styleguidist server",
+    "storybook": "start-storybook -p 9009 -s public",
     "test": "CI=true react-scripts test",
     "pretty-quick": "pretty-quick",
     "pretty-quick-commit": "pretty-quick --staged > /dev/null 2>&1",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint 'src/**/!(tests)/*.js'",
     "lint:css": "stylelint 'src/styles/**/*.scss'",
-    "messages:extract": "node scripts/extract-messages.js",
-    "storybook": "start-storybook -p 9009 -s public"
+    "messages:extract": "node scripts/extract-messages.js"
   },
   "pre-commit": [
     "pretty-quick-commit",
