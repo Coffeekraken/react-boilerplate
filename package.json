@@ -12,7 +12,7 @@
     "scss": "node-sass src/styles/style.scss -o src/styles --include-path node_modules --include-path src/styles --importer node_modules/node-sass-glob-importer/dist/cli.js",
     "start": "coffeekraken-scripts-stack start-react scss browsersync -i start",
     "start-react": "NODE_PATH=src BROWSER=none react-scripts start",
-    "build": "react-scripts build && npm run build:favicon npm run build:favicon:inject",
+    "build": "react-scripts build && npm run build:favicon && npm run build:favicon:inject",
     "build:server": "php -S 0.0.0.0:8080 -t build/",
     "build:ssr": "node ssr/bootstrap.js -p 3333",
     "build:favicon": "coffeekraken-favicons-stack --source src/assets/favicon.png --output build/static/favicons --html-output build/static/favicons/favicons.html --path '/static/favicons' --theme '#fff' --background '#fff'",
