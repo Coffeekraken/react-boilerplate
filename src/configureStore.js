@@ -5,6 +5,8 @@ import thunk from 'redux-thunk'
 import createReducer from './reducers'
 import history from './history'
 
+console.log('COCO')
+
 const store = createStore(
   createReducer(), // root reducer with router state
   composeWithDevTools(

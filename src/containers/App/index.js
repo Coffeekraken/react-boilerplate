@@ -9,14 +9,14 @@ import messages from './messages'
 import getGtagClientId from '../../utils/getGtagClientId'
 
 import FullscreenVideo from '../../components/FullscreenVideo'
-import video from '../../assets/disaster.mp4'
 import Header from '../Header/Loadable'
 import HomePage from '../HomePage/Loadable'
 import CounterPage from '../CounterPage/Loadable'
 import TodoPage from '../TodoPage/Loadable'
 
+import video from '../../assets/disaster.mp4'
 import sharingImg from '../../assets/sharing.png'
-import './style.css'
+// import './style.css'
 
 class App extends React.PureComponent {
   componentDidUpdate(prevProps) {

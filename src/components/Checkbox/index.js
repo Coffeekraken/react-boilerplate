@@ -1,7 +1,7 @@
 import React from 'react'
 import uniqid from 'uniqid'
 
-import './style.css'
+// import './style.css'
 
 class Checkbox extends React.PureComponent {
   onChange(e) {

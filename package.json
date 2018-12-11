@@ -38,6 +38,8 @@
   ],
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
     "coffeekraken-gridle": "^3.0.1",
     "coffeekraken-s-button-component": "^1.0.1",
     "coffeekraken-s-dropdown-component": "^1.0.2",
@@ -67,6 +69,8 @@
     "uniqid": "^5.0.3"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "browser-sync": "^2.26.3",
@@ -75,10 +79,12 @@
     "coffeekraken-scripts-stack": "^1.0.2",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
+    "express": "^4.16.4",
     "glob-all": "^3.1.0",
     "node-sass": "^4.10.0",
     "pre-commit": "^1.2.2",
     "pretty-quick": "^1.8.0",
+    "react-jsdom": "^3.0.0",
     "sort-object-keys": "^1.1.2",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0"
