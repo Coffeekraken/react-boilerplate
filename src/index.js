@@ -1,29 +1,31 @@
 // some libraries
 import 'cssuseragent'
 import '@babel/polyfill'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 
-import App from './containers/App'
-import store from './configureStore'
+import store from './store'
 import history from './history'
 
-import LanguageProvider from './containers/LanguageProvider'
-import { translationMessages, locale } from './i18n'
+import Bootstrap from './bootstrap'
 
-// base styling
-import './styles/style.css'
+// determine the function to use to render the app
+const rootElm = document.querySelector('#root')
+let renderFn = ReactDOM.render
+if (rootElm.hasChildNodes()) {
+  renderFn = ReactDOM.hydrate
+}
 
 // render the app
-ReactDOM.render(
+renderFn(
   <Provider store={store}>
-    <LanguageProvider locale={locale} messages={translationMessages}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
-    </LanguageProvider>
+    <ConnectedRouter history={history}>
+      <Bootstrap />
+    </ConnectedRouter>
   </Provider>,
-  document.getElementById('root')
+  rootElm
 )

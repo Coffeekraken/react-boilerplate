@@ -1,5 +1,4 @@
 import React from 'react'
-import './style.css'
 
 class Tooltip extends React.PureComponent {
   render() {

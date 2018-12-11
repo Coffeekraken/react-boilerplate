@@ -1,5 +1,4 @@
 import React from 'react'
-import './style.css'
 
 export default class Card extends React.PureComponent {
   render() {

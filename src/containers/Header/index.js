@@ -8,8 +8,6 @@ import messages from './messages'
 import { locales } from '../../i18n'
 import { changeLocale } from '../LanguageProvider/actions'
 
-import './style.css'
-
 class Header extends React.PureComponent {
   changeLocale(locale) {
     const { changeLocale } = this.props

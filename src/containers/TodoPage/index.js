@@ -14,8 +14,6 @@ import messages from './messages'
 import reducer from './reducer'
 import registerReducer from '../../registerReducer'
 
-import './style.css'
-
 // register the reducer
 registerReducer('todos', reducer)
 
@@ -79,9 +77,7 @@ class TodoPage extends React.PureComponent {
             {todos.map(todo => (
               <li
                 key={todo.id}
-                className={
-                  `todo__item ${(todo.done ? 'todo__item--done' : '')}`
-                }
+                className={`todo__item ${todo.done ? 'todo__item--done' : ''}`}
               >
                 <Checkbox
                   className="todo__item-checkbox"
