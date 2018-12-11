@@ -12,7 +12,7 @@ import frTranslationMessages from './translations/fr.json'
 addLocaleData(en)
 addLocaleData(fr)
 
-// default locale taken from env, otherwise 'en'
+// default locale
 export const DEFAULT_LOCALE = 'en'
 
 // export the locale
