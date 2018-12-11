@@ -4,9 +4,8 @@ body {
 }
 
 body {
-  background-color: s-color(secondary);
   -webkit-font-smoothing: auto;
-  overflow: hidden;
+  overflow-x: hidden;
 
   // autialiazed on retina displays
   @media screen and (-webkit-min-device-pixel-ratio: 2),

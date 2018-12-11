@@ -4,7 +4,7 @@ import '@babel/polyfill'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import Loadable from 'react-loadable'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 
@@ -21,11 +21,15 @@ if (rootElm.hasChildNodes()) {
 }
 
 // render the app
-renderFn(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Bootstrap />
-    </ConnectedRouter>
-  </Provider>,
-  rootElm
-)
+window.onload = () => {
+  Loadable.preloadReady().then(() => {
+    renderFn(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Bootstrap />
+        </ConnectedRouter>
+      </Provider>,
+      rootElm
+    )
+  })
+}

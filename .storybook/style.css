@@ -1,0 +1,6 @@
+body {
+  background: white !important;
+}
+#root > div > div {
+  padding: 0 20px;
+}

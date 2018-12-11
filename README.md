@@ -40,7 +40,7 @@
 
 React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, sugar, gridle and more...
 
-<img src="/.resources/react.png" title="React" height="40px" /><img src="/.resources/redux.png" title="Redux" height="40px" /><img src="/.resources/thunk.png" title="Redux Thunk" height="40px" /><img src="/.resources/reselect.png" title="Redux Reselect" height="40px" /><img src="/.resources/styled-components.png" title="Styled components" height="40px" /><img src="/.resources/styleguidist.png" title="Styleguidist" height="40px" /><img src="/.resources/react-intl.png" title="React intl" height="40px" /><img src="/.resources/docker.png" title="Docker" height="40px" /><img src="/.resources/eslint.png" title="ESLint" height="40px" /><img src="/.resources/jest.png" title="Jest" height="40px" /><img src="/.resources/npm.png" title="NPM" height="40px" />
+<img src="/.resources/react.png" title="React" height="40px" /><img src="/.resources/redux.png" title="Redux" height="40px" /><img src="/.resources/thunk.png" title="Redux Thunk" height="40px" /><img src="/.resources/reselect.png" title="Redux Reselect" height="40px" /><img src="/.resources/styled-components.png" title="Styled components" height="40px" /><img src="/.resources/storybook.png" title="Storybook" height="40px" /><img src="/.resources/react-intl.png" title="React intl" height="40px" /><img src="/.resources/docker.png" title="Docker" height="40px" /><img src="/.resources/eslint.png" title="ESLint" height="40px" /><img src="/.resources/jest.png" title="Jest" height="40px" /><img src="/.resources/npm.png" title="NPM" height="40px" />
 <img src="/.resources/prettier.png" title="Prettier" height="40px" /><img src="/.resources/sass.png" title="Sass" height="40px" /><img src="/.resources/stylelint.png" title="Stylelint" height="40px" /><img src="/.resources/travisci.png" title="Travis CI" height="40px" /><img src="/.resources/webpack.png" title="Webpack" height="40px" />
 
 ## Features
@@ -58,7 +58,7 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 - Code linting through [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/)
 - [Jest](https://jestjs.io/) tests stack
 - Automatically reject commits if tests and linting fail through [pre-commit](https://www.npmjs.com/package/pre-commit)
-- [Styleguidist](https://github.com/styleguidist/react-styleguidist) built-in
+- [Storybook](https://storybook.js.org/) built-in
 - [Browsersync](https://browsersync.io/) built-in
 - [Docker](https://www.docker.com/) container configuration built-in
 - [CSSUA](http://cssuseragent.org/) built-in
@@ -109,7 +109,11 @@ npm start
 - `npm start-react` : Start the react-scripts process that will build and serve the dev application
 - `npm run build` : Build the react prod application using the react-scripts CLI
 - `npm run build:server` : Start the prod server to serve the build folder
+- `npm run build:ssr` : Start the SSR server. A build has to be done before
+- `npm run build:favicon` : Generate the favicons from the `src/assets/favicon.png` file
+- `npm run build:favicon:inject` : Inject the favicon code inside the `build/index.html` file
 - `npm run browsersync` : Start the browsersync service on port `8080`
+- `npm run styleguidist` : Start the styleguidist service on port `6060`
 - `npm run test` : Run the tests
 - `npm run pretty-quick` : Run prettier on the entire project
 - `npm run pretty-quick-commit` : Run prettier on staged filed

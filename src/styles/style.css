@@ -15917,9 +15917,8 @@ body {
 }
 
 body {
-  background-color: #2b3438;
   -webkit-font-smoothing: auto;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2),
   screen and (-moz-min-device-pixel-ratio: 2),
