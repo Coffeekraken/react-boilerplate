@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 
 import messages from './messages'
 import getGtagClientId from '../../utils/getGtagClientId'
+import isServer from '../../utils/isServer'
 
 import FullscreenVideo from '../../components/FullscreenVideo'
 import Header from '../Header/Loadable'
@@ -16,7 +17,6 @@ import TodoPage from '../TodoPage/Loadable'
 
 import video from '../../assets/disaster.mp4'
 import sharingImg from '../../assets/sharing.png'
-// import './style.css'
 
 class App extends React.PureComponent {
   componentDidUpdate(prevProps) {
@@ -40,49 +40,54 @@ class App extends React.PureComponent {
     const { intl } = this.props
     return (
       <div>
-        <Helmet>
-          <title>{intl.formatMessage(messages.title)}</title>
-          <meta
-            name="description"
-            content={intl.formatMessage(messages.description)}
-          />
-          <meta property="og:url" content={document.location.href} />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:title"
-            content={intl.formatMessage(messages.title)}
-          />
-          <meta
-            property="og:description"
-            content={intl.formatMessage(messages.description)}
-          />
-          <meta
-            property="og:image"
-            content={`${document.location.origin}${sharingImg}`}
-          />
-          <meta name="twitter:url" content={document.location.href} />
-          <meta
-            name="twitter:title"
-            content={intl.formatMessage(messages.title)}
-          />
-          <meta
-            name="twitter:description"
-            content={intl.formatMessage(messages.description)}
-          />
-          <meta
-            name="twitter:image:src"
-            content={`${document.location.origin}${sharingImg}`}
-          />
-          <meta itemProp="name" content={intl.formatMessage(messages.title)} />
-          <meta
-            itemProp="description"
-            content={intl.formatMessage(messages.description)}
-          />
-          <meta
-            itemProp="image"
-            content={`${document.location.origin}${sharingImg}`}
-          />
-        </Helmet>
+        {!isServer && (
+          <Helmet>
+            <title>{intl.formatMessage(messages.title)}</title>
+            <meta
+              name="description"
+              content={intl.formatMessage(messages.description)}
+            />
+            <meta property="og:url" content={document.location} />
+            <meta property="og:type" content="website" />
+            <meta
+              property="og:title"
+              content={intl.formatMessage(messages.title)}
+            />
+            <meta
+              property="og:description"
+              content={intl.formatMessage(messages.description)}
+            />
+            <meta
+              property="og:image"
+              content={`${document.location.origin}${sharingImg}`}
+            />
+            <meta name="twitter:url" content={document.location} />
+            <meta
+              name="twitter:title"
+              content={intl.formatMessage(messages.title)}
+            />
+            <meta
+              name="twitter:description"
+              content={intl.formatMessage(messages.description)}
+            />
+            <meta
+              name="twitter:image:src"
+              content={`${document.location.origin}${sharingImg}`}
+            />
+            <meta
+              itemProp="name"
+              content={intl.formatMessage(messages.title)}
+            />
+            <meta
+              itemProp="description"
+              content={intl.formatMessage(messages.description)}
+            />
+            <meta
+              itemProp="image"
+              content={`${document.location.origin}${sharingImg}`}
+            />
+          </Helmet>
+        )}
         <Header />
         <FullscreenVideo autoPlay muted loop src={video}>
           <Switch>

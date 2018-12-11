@@ -7,8 +7,6 @@ import H1 from '../../components/H1'
 import P from '../../components/P'
 import Card from '../../components/Card'
 
-import './style.css'
-
 export default () => (
   <div className="page">
     <Card className="homepage">

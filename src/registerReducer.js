@@ -1,4 +1,4 @@
-import store from './configureStore'
+import store from './store'
 import createReducer from './reducers'
 
 export default function registerReducer(name, asyncReducer) {

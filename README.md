@@ -40,7 +40,7 @@
 
 React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, sugar, gridle and more...
 
-<img src="/.resources/react.png" title="React" height="40px" /><img src="/.resources/redux.png" title="Redux" height="40px" /><img src="/.resources/thunk.png" title="Redux Thunk" height="40px" /><img src="/.resources/reselect.png" title="Redux Reselect" height="40px" /><img src="/.resources/styled-components.png" title="Styled components" height="40px" /><img src="/.resources/docker.png" title="Docker" height="40px" /><img src="/.resources/eslint.png" title="ESLint" height="40px" /><img src="/.resources/jest.png" title="Jest" height="40px" /><img src="/.resources/npm.png" title="NPM" height="40px" />
+<img src="/.resources/react.png" title="React" height="40px" /><img src="/.resources/redux.png" title="Redux" height="40px" /><img src="/.resources/thunk.png" title="Redux Thunk" height="40px" /><img src="/.resources/reselect.png" title="Redux Reselect" height="40px" /><img src="/.resources/styled-components.png" title="Styled components" height="40px" /><img src="/.resources/styleguidist.png" title="Styleguidist" height="40px" /><img src="/.resources/react-intl.png" title="React intl" height="40px" /><img src="/.resources/docker.png" title="Docker" height="40px" /><img src="/.resources/eslint.png" title="ESLint" height="40px" /><img src="/.resources/jest.png" title="Jest" height="40px" /><img src="/.resources/npm.png" title="NPM" height="40px" />
 <img src="/.resources/prettier.png" title="Prettier" height="40px" /><img src="/.resources/sass.png" title="Sass" height="40px" /><img src="/.resources/stylelint.png" title="Stylelint" height="40px" /><img src="/.resources/travisci.png" title="Travis CI" height="40px" /><img src="/.resources/webpack.png" title="Webpack" height="40px" />
 
 ## Features
@@ -51,13 +51,16 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 - [Reselect](https://github.com/reduxjs/reselect) built-in
 - [Styled component](https://www.styled-components.com/) built-in
 - Immutable state through [Immer](https://github.com/mweststrate/immer)
+- SSR (server side rendering) ready 🍺
+- I18n ready through [react-intl](https://github.com/yahoo/react-intl)
 - Sass support through [node-sass](https://github.com/sass/node-sass)
 - CSS structure based on [atomic design](http://bradfrost.com/blog/post/atomic-web-design/) principles
 - Code linting through [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/)
 - [Jest](https://jestjs.io/) tests stack
 - Automatically reject commits if tests and linting fail through [pre-commit](https://www.npmjs.com/package/pre-commit)
+- [Styleguidist](https://github.com/styleguidist/react-styleguidist) built-in
 - [Browsersync](https://browsersync.io/) built-in
-- Docker container configuration built-in
+- [Docker](https://www.docker.com/) container configuration built-in
 - [CSSUA](http://cssuseragent.org/) built-in
 - [Babel polyfill](https://babeljs.io/docs/en/babel-polyfill) built-in
 - [Coffeekraken scripts stack](https://github.com/coffeekraken/scripts-stack) built-in

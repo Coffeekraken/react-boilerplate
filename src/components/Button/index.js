@@ -1,5 +1,4 @@
 import React from 'react'
-// import './style.css'
 
 class Button extends React.PureComponent {
   render() {

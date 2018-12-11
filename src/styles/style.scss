@@ -63,6 +63,13 @@
 @import '08_atoms/all';
 
 /**
+ * Import all the components styles
+ * This feature uses the "node-sass-glob-importer" package
+ */
+@import '../components/**/*.scss';
+@import '../containers/**/*.scss';
+
+/**
  * Trumps
  * All the things that does not fit in any others directory. Try to keep this folder has small as possible.
  * If you have to many things in here, that mean that you probably need to refactor your codebase...
