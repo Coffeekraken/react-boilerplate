@@ -6,7 +6,13 @@ import Checkbox from '../../components/Checkbox'
 import Card from '../../components/Card'
 import Button from '../../components/Button'
 
-import { addTodo, toggleTodo, removeTodo, changeFilter } from './actions'
+import {
+  fetchTodos,
+  addTodo,
+  toggleTodo,
+  removeTodo,
+  changeFilter
+} from './actions'
 import { FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED } from './constants'
 import { getVisibleTodos } from './selectors'
 import messages from './messages'
@@ -14,12 +20,23 @@ import messages from './messages'
 import reducer from './reducer'
 import registerReducer from '../../registerReducer'
 
+import sagas from './sagas'
+import registerSaga from '../../registerSaga'
+
 // register the reducer
 registerReducer('todos', reducer)
+
+// register the saga
+registerSaga(sagas)
 
 class TodoPage extends React.PureComponent {
   state = {
     todo: ''
+  }
+
+  componentDidMount() {
+    const { fetchTodos } = this.props
+    fetchTodos()
   }
 
   onChange(e) {
@@ -126,6 +143,7 @@ const mapStateToProps = state => ({
   filter: state.todos.filter
 })
 const mapDispatchToProps = dispatch => ({
+  fetchTodos: () => dispatch(fetchTodos()),
   addTodo: todo => dispatch(addTodo(todo)),
   toggleTodo: todo => dispatch(toggleTodo(todo)),
   removeTodo: todo => dispatch(removeTodo(todo)),

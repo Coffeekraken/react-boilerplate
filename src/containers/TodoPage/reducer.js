@@ -1,5 +1,6 @@
 import produce from 'immer'
 import {
+  TODOS_FETCHED,
   ADD_TODO,
   TOGGLE_TODO,
   REMOVE_TODO,
@@ -8,15 +9,15 @@ import {
 } from './constants'
 
 const initialState = {
-  todos: [
-    { id: 1, text: 'Hello World', done: false },
-    { id: 2, text: 'Hello Universe', done: true }
-  ],
+  todos: [],
   filter: FILTER_ALL
 }
 
 export default produce((draft = initialState, action) => {
   switch (action.type) {
+    case TODOS_FETCHED:
+      draft.todos = action.todos
+      return draft
     case ADD_TODO:
       draft.todos.push({
         id: Math.round(Math.random() * 9999999), // this is ugly

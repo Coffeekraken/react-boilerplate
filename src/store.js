@@ -1,16 +1,19 @@
 import { applyMiddleware, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { routerMiddleware } from 'connected-react-router'
-import thunk from 'redux-thunk'
+
 import createReducer from './reducers'
-import history from './history'
+
+import sagaMiddleware from './middlewares/saga'
+import thunkMiddleware from './middlewares/thunk'
+import routerMiddleware from './middlewares/router'
 
 const store = createStore(
   createReducer(), // root reducer with router state
   composeWithDevTools(
     applyMiddleware(
-      routerMiddleware(history), // for dispatching history actions
-      thunk
+      routerMiddleware, // for dispatching history actions
+      sagaMiddleware,
+      thunkMiddleware
     )
   )
 )
