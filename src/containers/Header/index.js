@@ -8,7 +8,23 @@ import messages from './messages'
 import { locales } from '../../i18n'
 import { changeLocale } from '../LanguageProvider/actions'
 
-class Header extends React.PureComponent {
+export default
+@connect(
+  state => ({
+    location: state.router.location,
+    locale: state.language.locale
+  }),
+  dispatch => ({
+    changeLocale: locale => dispatch(changeLocale(locale))
+  })
+)
+class extends React.PureComponent {
+  static defaultProps = {}
+
+  static propTypes = {
+    changeLocale: PropTypes.func.isRequired
+  }
+
   changeLocale(locale) {
     const { changeLocale } = this.props
     changeLocale(locale)
@@ -51,22 +67,3 @@ class Header extends React.PureComponent {
     )
   }
 }
-
-Header.defaultProps = {}
-
-Header.propTypes = {
-  changeLocale: PropTypes.func.isRequired
-}
-
-const mapStateToProps = state => ({
-  location: state.router.location,
-  locale: state.language.locale
-})
-const mapDispatchToProps = dispatch => ({
-  changeLocale: locale => dispatch(changeLocale(locale))
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header)

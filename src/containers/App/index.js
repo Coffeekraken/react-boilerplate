@@ -18,7 +18,17 @@ import TodoPage from '../TodoPage/Loadable'
 import video from '../../assets/disaster.mp4'
 import sharingImg from '../../assets/sharing.png'
 
+export default
+@injectIntl
+@connect(state => ({
+  location: state.router.location
+}))
 class App extends React.PureComponent {
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+    intl: PropTypes.object.isRequired
+  }
+
   componentDidUpdate(prevProps) {
     const { location } = this.props
     if (location.pathname !== prevProps.location.pathname) {
@@ -100,13 +110,3 @@ class App extends React.PureComponent {
     )
   }
 }
-
-App.propTypes = {
-  location: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired
-}
-
-const mapStateToProps = state => ({
-  location: state.router.location
-})
-export default injectIntl(connect(mapStateToProps)(App))

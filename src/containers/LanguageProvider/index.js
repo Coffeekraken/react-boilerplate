@@ -9,7 +9,22 @@ import registerReducer from '../../registerReducer'
 // inject the reducer to the app
 registerReducer('language', reducer)
 
-class LanguageProvider extends React.PureComponent {
+export default
+@connect(state => ({
+  locale: state.language.locale
+}))
+class extends React.PureComponent {
+  static defaultProps = {
+    locale: 'en',
+    messages: {}
+  }
+
+  static propTypes = {
+    locale: PropTypes.string,
+    messages: PropTypes.object,
+    children: PropTypes.element.isRequired
+  }
+
   render() {
     const { locale, messages, children } = this.props
     return (
@@ -19,20 +34,3 @@ class LanguageProvider extends React.PureComponent {
     )
   }
 }
-
-LanguageProvider.defaultProps = {
-  locale: 'en',
-  messages: {}
-}
-
-LanguageProvider.propTypes = {
-  locale: PropTypes.string,
-  messages: PropTypes.object,
-  children: PropTypes.element.isRequired
-}
-
-const mapStateToProps = state => ({
-  locale: state.language.locale
-})
-
-export default connect(mapStateToProps)(LanguageProvider)

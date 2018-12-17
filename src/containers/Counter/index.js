@@ -14,7 +14,29 @@ import registerReducer from '../../registerReducer'
 // register the reducer
 registerReducer('counter', reducer)
 
-class Counter extends React.PureComponent {
+export default
+@connect(
+  state => ({
+    count: state.counter.count
+  }),
+  dispatch => ({
+    increment: () => dispatch(incrementCounter()),
+    decrement: () => dispatch(decrementCounter())
+  })
+)
+class extends React.PureComponent {
+  static defaultProps = {
+    increment: null,
+    decrement: null,
+    count: 0
+  }
+
+  static propTypes = {
+    increment: PropTypes.func,
+    decrement: PropTypes.func,
+    count: PropTypes.number
+  }
+
   increment() {
     const { increment } = this.props
     increment()
@@ -50,28 +72,3 @@ class Counter extends React.PureComponent {
     )
   }
 }
-
-Counter.defaultProps = {
-  increment: null,
-  decrement: null,
-  count: 0
-}
-
-Counter.propTypes = {
-  increment: PropTypes.func,
-  decrement: PropTypes.func,
-  count: PropTypes.number
-}
-
-const mapStateToProps = state => ({
-  count: state.counter.count
-})
-const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch(incrementCounter()),
-  decrement: () => dispatch(decrementCounter())
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter)

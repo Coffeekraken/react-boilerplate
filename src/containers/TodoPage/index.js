@@ -29,6 +29,21 @@ registerReducer('todos', reducer)
 // register the saga
 registerSaga(sagas)
 
+export default
+@injectIntl
+@connect(
+  state => ({
+    todos: getVisibleTodos(state),
+    filter: state.todos.filter
+  }),
+  dispatch => ({
+    fetchTodos: () => dispatch(fetchTodos()),
+    addTodo: todo => dispatch(addTodo(todo)),
+    toggleTodo: todo => dispatch(toggleTodo(todo)),
+    removeTodo: todo => dispatch(removeTodo(todo)),
+    changeFilter: filter => dispatch(changeFilter(filter))
+  })
+)
 class TodoPage extends React.PureComponent {
   state = {
     todo: ''
@@ -137,22 +152,3 @@ class TodoPage extends React.PureComponent {
     )
   }
 }
-
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state),
-  filter: state.todos.filter
-})
-const mapDispatchToProps = dispatch => ({
-  fetchTodos: () => dispatch(fetchTodos()),
-  addTodo: todo => dispatch(addTodo(todo)),
-  toggleTodo: todo => dispatch(toggleTodo(todo)),
-  removeTodo: todo => dispatch(removeTodo(todo)),
-  changeFilter: filter => dispatch(changeFilter(filter))
-})
-
-export default injectIntl(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(TodoPage)
-)
