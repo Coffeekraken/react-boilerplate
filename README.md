@@ -117,6 +117,7 @@ npm start
 - `npm run build:ssr` : Start the SSR server. A build has to be done before
 - `npm run build:favicon` : Generate the favicons from the `src/assets/favicon.png` file
 - `npm run build:favicon:inject` : Inject the favicon code inside the `build/index.html` file
+- `npm run eject` : Eject the configs from react-scripts
 - `npm run browsersync` : Start the browsersync service on port `8080`
 - `npm run storybook` : Start the storybook service on port `9009`
 - `npm run test` : Run the tests

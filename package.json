@@ -17,6 +17,7 @@
     "build:ssr": "node ssr/bootstrap.js -p 3333",
     "build:favicon": "coffeekraken-favicons-stack --source src/assets/favicon.png --output build/static/favicons --html-output build/static/favicons/favicons.html --path '/static/favicons' --theme '#fff' --background '#fff'",
     "build:favicon:inject": "node scripts/inject-favicons.js",
+    "eject": "react-scripts eject",
     "browsersync": "browser-sync start --proxy \"localhost:3000\" --port 8080 --no-open",
     "storybook": "start-storybook -p 9009 -s public",
     "test": "CI=true react-app-rewired test",
