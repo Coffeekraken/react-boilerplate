@@ -1,4 +1,4 @@
-![Coffeekraken HTML Boilerplate](/.resources/doc-header.jpg)
+![Coffeekraken React Boilerplate](/.resources/doc-header.jpg)
 
 # Coffeekraken React Boilerplate <img src="/.resources/coffeekraken-logo.jpg" height="25px" />
 
