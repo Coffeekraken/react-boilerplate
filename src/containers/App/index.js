@@ -31,9 +31,8 @@ class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    // console.dir(axios)
     axios.get('https://randomuser.me/api/').then(response => {
-      // console.log('response', response)
+      console.log('response', response)
     })
   }
 

@@ -1,5 +1,5 @@
 require('ignore-styles')
-
+require('jsdom-global')()
 require('@babel/register')({
   presets: ['@babel/preset-env', '@babel/preset-react'],
   plugins: [
@@ -10,5 +10,4 @@ require('@babel/register')({
     'react-loadable/babel'
   ]
 })
-
 require('./index')

@@ -51,7 +51,7 @@
     "coffeekraken-s-tooltip-component": "^1.0.4",
     "coffeekraken-s-typography-component": "^1.0.2",
     "coffeekraken-sugar": "^1.0.27",
-    "coffeekraken-ww-axios": "^1.0.2",
+    "coffeekraken-ww-axios": "^1.0.4",
     "commander": "^2.19.0",
     "connected-react-router": "^5.0.1",
     "cssuseragent": "^2.1.31",
