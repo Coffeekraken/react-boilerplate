@@ -40,8 +40,12 @@
 
 React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, sugar, gridle and more...
 
+---
+
 <img src="/.resources/react.png" title="React" height="40px" /><img src="/.resources/redux.png" title="Redux" height="40px" /><img src="/.resources/redux-saga.png" title="Redux Saga" height="40px" /><img src="/.resources/thunk.png" title="Redux Thunk" height="40px" /><img src="/.resources/reselect.png" title="Redux Reselect" height="40px" /><img src="/.resources/styled-components.png" title="Styled components" height="40px" /><img src="/.resources/storybook.png" title="Storybook" height="40px" /><img src="/.resources/react-intl.png" title="React intl" height="40px" /><img src="/.resources/docker.png" title="Docker" height="40px" /><img src="/.resources/eslint.png" title="ESLint" height="40px" /><img src="/.resources/jest.png" title="Jest" height="40px" /><img src="/.resources/npm.png" title="NPM" height="40px" />
 <img src="/.resources/prettier.png" title="Prettier" height="40px" /><img src="/.resources/sass.png" title="Sass" height="40px" /><img src="/.resources/stylelint.png" title="Stylelint" height="40px" /><img src="/.resources/travisci.png" title="Travis CI" height="40px" /><img src="/.resources/webpack.png" title="Webpack" height="40px" />
+
+---
 
 ## Features
 
