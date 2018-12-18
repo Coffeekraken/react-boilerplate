@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
-import axios from 'coffeekraken-ww-axios'
 
 import messages from './messages'
 import getGtagClientId from '../../utils/getGtagClientId'
@@ -28,12 +27,6 @@ class App extends React.PureComponent {
   static propTypes = {
     location: PropTypes.object.isRequired,
     intl: PropTypes.object.isRequired
-  }
-
-  componentDidMount() {
-    axios.get('https://randomuser.me/api/').then(response => {
-      console.log('response', response)
-    })
   }
 
   componentDidUpdate(prevProps) {
