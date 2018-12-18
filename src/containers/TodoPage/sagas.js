@@ -1,4 +1,4 @@
-import { put, call, takeEvery } from 'redux-saga/effects'
+import { put, takeEvery } from 'redux-saga/effects'
 import axios from 'coffeekraken-ww-axios'
 import { FETCH_TODOS, TODOS_FETCHED } from './constants'
 

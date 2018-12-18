@@ -20,14 +20,20 @@ import messages from './messages'
 import reducer from './reducer'
 import registerReducer from '../../registerReducer'
 
-import sagas from './sagas'
-import registerSaga from '../../registerSaga'
+// import sagas from './sagas'
+// import registerSaga from '../../registerSaga'
+
+import worker from './tasks.worker'
+import { registerWorker } from '../../middlewares/webworker'
 
 // register the reducer
 registerReducer('todos', reducer)
 
 // register the saga
-registerSaga(sagas)
+// registerSaga(sagas)
+
+// register worker
+registerWorker(worker)
 
 export default
 @injectIntl
@@ -44,7 +50,7 @@ export default
     changeFilter: filter => dispatch(changeFilter(filter))
   })
 )
-class TodoPage extends React.PureComponent {
+class extends React.PureComponent {
   state = {
     todo: ''
   }
