@@ -23,7 +23,7 @@ export default
 @connect(state => ({
   location: state.router.location
 }))
-class App extends React.PureComponent {
+class extends React.PureComponent {
   static propTypes = {
     location: PropTypes.object.isRequired,
     intl: PropTypes.object.isRequired
