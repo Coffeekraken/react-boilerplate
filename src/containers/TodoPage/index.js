@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
+import { registerWorker } from 'coffeekraken-redux-web-worker'
 
 import Checkbox from '../../components/Checkbox'
 import Card from '../../components/Card'
@@ -24,7 +25,6 @@ import registerReducer from '../../registerReducer'
 // import registerSaga from '../../registerSaga'
 
 import worker from './tasks.worker'
-import { registerWorker } from '../../middlewares/webworker'
 
 // register the reducer
 registerReducer('todos', reducer)
@@ -55,7 +55,7 @@ class extends React.PureComponent {
     todo: ''
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { fetchTodos } = this.props
     fetchTodos()
   }
