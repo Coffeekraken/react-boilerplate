@@ -4,14 +4,10 @@ import {
   ADD_TODO,
   TOGGLE_TODO,
   REMOVE_TODO,
-  CHANGE_FILTER,
-  FILTER_ALL
+  CHANGE_FILTER
 } from './constants'
 
-const initialState = {
-  todos: [],
-  filter: FILTER_ALL
-}
+import initialState from './initialState'
 
 export default produce((draft = initialState, action) => {
   switch (action.type) {

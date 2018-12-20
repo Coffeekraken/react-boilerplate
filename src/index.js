@@ -6,12 +6,74 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Loadable from 'react-loadable'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router'
+import {
+  ConnectedRouter,
+  routerMiddleware,
+  connectRouter
+} from 'connected-react-router'
 
-import store from './store'
+import { BrowserRouter } from 'react-router-dom'
+
 import history from './history'
 
 import Bootstrap from './bootstrap'
+
+import languageReducer from './containers/LanguageProvider/reducer'
+import todosReducer from './containers/TodoPage/reducer'
+
+import ReduxWorker from './redux.worker'
+import { FETCH_TODOS } from './containers/TodoPage/constants'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+
+const reduxWorker = new ReduxWorker()
+reduxWorker.postMessage({
+  type: FETCH_TODOS
+})
+reduxWorker.addEventListener('message', e => {
+  appStore.dispatch({
+    type: 'HYDRATE',
+    payload: e.data.state
+  })
+})
+
+const reducers = combineReducers({
+  router: connectRouter(history),
+  language: languageReducer
+  // todos: todosReducer
+})
+
+import todosInitialState from './containers/TodoPage/initialState'
+
+const mainReducer = (
+  state = {
+    todos: todosInitialState
+  },
+  action
+) => {
+  if (action.type === 'HYDRATE') {
+    console.log('HYDRATE', action.payload)
+    return {
+      ...state,
+      ...action.payload
+    }
+  } else {
+    reduxWorker.postMessage(action)
+
+    return {
+      ...state,
+      ...reducers(state, action)
+    }
+  }
+}
+
+const appStore = createStore(
+  mainReducer,
+  {
+    todos: todosInitialState
+  },
+  composeWithDevTools(applyMiddleware())
+)
 
 // determine the function to use to render the app
 const rootElm = document.querySelector('#root')
@@ -24,10 +86,10 @@ if (rootElm.hasChildNodes()) {
 window.onload = () => {
   Loadable.preloadReady().then(() => {
     renderFn(
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
+      <Provider store={appStore}>
+        <BrowserRouter>
           <Bootstrap />
-        </ConnectedRouter>
+        </BrowserRouter>
       </Provider>,
       rootElm
     )

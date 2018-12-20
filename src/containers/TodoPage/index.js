@@ -27,13 +27,13 @@ import registerReducer from '../../registerReducer'
 import worker from './tasks.worker'
 
 // register the reducer
-registerReducer('todos', reducer)
+// registerReducer('todos', reducer)
 
 // register the saga
 // registerSaga(sagas)
 
 // register worker
-registerWorker(worker)
+// registerWorker(worker)
 
 export default
 @injectIntl

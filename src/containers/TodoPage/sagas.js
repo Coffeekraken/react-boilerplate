@@ -1,5 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects'
-import axios from 'coffeekraken-ww-axios'
+import axios from 'axios'
 import { FETCH_TODOS, TODOS_FETCHED } from './constants'
 
 function* fetchTodos(action) {
