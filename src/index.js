@@ -27,9 +27,6 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const reduxWorker = new ReduxWorker()
-reduxWorker.postMessage({
-  type: FETCH_TODOS
-})
 reduxWorker.addEventListener('message', e => {
   appStore.dispatch({
     type: 'HYDRATE',
@@ -44,21 +41,19 @@ const reducers = combineReducers({
 })
 
 import todosInitialState from './containers/TodoPage/initialState'
+import counterInitialState from './containers/Counter/initialState'
 
-const mainReducer = (
-  state = {
-    todos: todosInitialState
-  },
-  action
-) => {
+const mainReducer = (state = {}, action) => {
   if (action.type === 'HYDRATE') {
-    console.log('HYDRATE', action.payload)
+    console.warn('HYDRATE', action.payload)
     return {
       ...state,
       ...action.payload
     }
   } else {
-    reduxWorker.postMessage(action)
+    if (!action.type.match(/@@redux/)) {
+      reduxWorker.postMessage(action)
+    }
 
     return {
       ...state,
@@ -70,7 +65,8 @@ const mainReducer = (
 const appStore = createStore(
   mainReducer,
   {
-    todos: todosInitialState
+    todos: todosInitialState,
+    counter: counterInitialState
   },
   composeWithDevTools(applyMiddleware())
 )

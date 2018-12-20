@@ -1,9 +1,6 @@
 import produce from 'immer'
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './constants'
-
-const initialState = {
-  count: 0
-}
+import initialState from './initialState'
 
 export default produce((draft = initialState, action) => {
   switch (action.type) {
