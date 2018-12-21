@@ -8,11 +8,12 @@ import { incrementCounter, decrementCounter } from './actions'
 import Tooltip from '../../components/Tooltip'
 import Button from '../../components/Button'
 
-import reducer from './reducer'
-import registerReducer from '../../registerReducer'
+import initialState from './initialState'
+import { setInitialState } from '../../redux-full-worker'
 
-// register the reducer
-registerReducer('counter', reducer)
+setInitialState({
+  counter: initialState
+})
 
 export default
 @connect(

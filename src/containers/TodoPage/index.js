@@ -18,6 +18,9 @@ import { FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED } from './constants'
 import { getVisibleTodos } from './selectors'
 import messages from './messages'
 
+import initialState from './initialState'
+import { setInitialState } from '../../redux-full-worker'
+
 import reducer from './reducer'
 import registerReducer from '../../registerReducer'
 
@@ -34,6 +37,10 @@ import worker from './tasks.worker'
 
 // register worker
 // registerWorker(worker)
+
+setInitialState({
+  todos: initialState
+})
 
 export default
 @injectIntl

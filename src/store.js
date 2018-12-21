@@ -7,15 +7,11 @@ import sagaMiddleware from './middlewares/saga'
 import thunkMiddleware from './middlewares/thunk'
 import webworkerMiddleware from './middlewares/webworker'
 
-const store = initStore()
+const store = createStore(
+  createReducer(), // root reducer with router state
+  composeWithDevTools(applyMiddleware(sagaMiddleware, thunkMiddleware))
+)
 
 store.asyncReducers = {}
-
-export function initStore() {
-  return createStore(
-    createReducer(), // root reducer with router state
-    composeWithDevTools(applyMiddleware(sagaMiddleware, thunkMiddleware))
-  )
-}
 
 export default store

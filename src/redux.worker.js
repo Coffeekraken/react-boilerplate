@@ -25,6 +25,5 @@ store.subscribe(() => {
 })
 
 self.addEventListener('message', e => {
-  console.log('e', e.data)
   store.dispatch(e.data)
 })
