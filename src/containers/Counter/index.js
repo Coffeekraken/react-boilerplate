@@ -5,15 +5,13 @@ import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 import { incrementCounter, decrementCounter } from './actions'
 
+import { registerReducer } from '../../redux-full-worker'
+import reducer from './reducer'
+
 import Tooltip from '../../components/Tooltip'
 import Button from '../../components/Button'
 
-import initialState from './initialState'
-import { setInitialState } from '../../redux-full-worker'
-
-setInitialState({
-  counter: initialState
-})
+registerReducer('counter', reducer)
 
 export default
 @connect(

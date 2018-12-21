@@ -1,17 +1,18 @@
-import { applyMiddleware, createStore } from 'redux'
+import { connectRouter } from 'connected-react-router'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import createReducer from './reducers'
+import history from './history'
 
-import sagaMiddleware from './middlewares/saga'
-import thunkMiddleware from './middlewares/thunk'
-import webworkerMiddleware from './middlewares/webworker'
+import languageReducer from './containers/LanguageProvider/reducer'
 
-const store = createStore(
-  createReducer(), // root reducer with router state
-  composeWithDevTools(applyMiddleware(sagaMiddleware, thunkMiddleware))
-)
+import ReduxWorker from './redux.worker'
 
-store.asyncReducers = {}
+import { createStore } from './redux-full-worker'
 
+const reducers = {
+  router: connectRouter(history),
+  language: languageReducer
+}
+
+const store = createStore(ReduxWorker, reducers, {}, composeWithDevTools())
 export default store

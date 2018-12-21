@@ -1,8 +1,8 @@
-import store from './store'
-import createReducer from './reducers'
+import { combineReducers } from 'redux'
+import store from './workerStore'
 
 export default function registerReducer(name, asyncReducer) {
   store.asyncReducers[name] = asyncReducer
-  store.replaceReducer(createReducer(store.asyncReducers))
+  store.replaceReducer(combineReducers(store.asyncReducers))
   return asyncReducer
 }

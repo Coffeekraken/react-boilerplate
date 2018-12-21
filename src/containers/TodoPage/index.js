@@ -18,29 +18,22 @@ import { FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED } from './constants'
 import { getVisibleTodos } from './selectors'
 import messages from './messages'
 
-import initialState from './initialState'
-import { setInitialState } from '../../redux-full-worker'
-
 import reducer from './reducer'
-import registerReducer from '../../registerReducer'
+import { registerReducer } from '../../redux-full-worker'
 
 // import sagas from './sagas'
 // import registerSaga from '../../registerSaga'
 
-import worker from './tasks.worker'
+// import worker from './tasks.worker'
 
 // register the reducer
-// registerReducer('todos', reducer)
+registerReducer('todos', reducer)
 
 // register the saga
 // registerSaga(sagas)
 
 // register worker
 // registerWorker(worker)
-
-setInitialState({
-  todos: initialState
-})
 
 export default
 @injectIntl

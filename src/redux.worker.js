@@ -1,5 +1,4 @@
-import store from './store'
-import reducers from './reducers'
+import store from './workerStore'
 import registerSaga from './registerSaga'
 import registerReducer from './registerReducer'
 
@@ -8,22 +7,10 @@ import todoReducer from './containers/TodoPage/reducer'
 
 import counterReducer from './containers/Counter/reducer'
 
+import { expose } from './redux-full-worker'
+
 registerReducer('counter', counterReducer)
-
-registerSaga(todosSagas)
 registerReducer('todos', todoReducer)
+registerSaga(todosSagas)
 
-let timeout
-store.subscribe(() => {
-  clearTimeout(timeout)
-  timeout = setTimeout(() => {
-    self.postMessage({
-      type: 'HYDRATE',
-      state: store.getState()
-    })
-  })
-})
-
-self.addEventListener('message', e => {
-  store.dispatch(e.data)
-})
+export default expose(store, self)
