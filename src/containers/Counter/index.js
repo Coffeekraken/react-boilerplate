@@ -9,7 +9,7 @@ import Tooltip from '../../components/Tooltip'
 import Button from '../../components/Button'
 
 import reducer from './reducer'
-import registerReducer from '../../registerReducer'
+import registerReducer from '../../utils/registerReducer'
 
 // register the reducer
 registerReducer('counter', reducer)

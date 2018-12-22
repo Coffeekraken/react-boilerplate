@@ -20,6 +20,4 @@ const store = createStore(
   )
 )
 
-store.asyncReducers = {}
-
 export default store
