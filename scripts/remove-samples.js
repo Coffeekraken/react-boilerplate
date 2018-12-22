@@ -14,10 +14,6 @@ rimraf.sync('src/containers/TodoPage')
 fs.unlinkSync('src/assets/disaster.mp4')
 fs.unlinkSync('src/assets/doc-header.jpg')
 
-// remove translations
-fs.unlinkSync('src/translations/en.json')
-fs.unlinkSync('src/translations/fr.json')
-
 // remove all code from files that are scoped inside /* sample:start */ and /* sample:end */
 const files = glob.sync('src/**/*.js')
 files.forEach(file => {
