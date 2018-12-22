@@ -82,8 +82,8 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 5. [Browsers support](#readme-browsers-support)
 6. [Code formatting](#readme-code-formatting)
 7. [Code linting](#readme-code-linting)
-8. [Contribute](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md)
-9. [Who are Coffeekraken?](https://github.com/Coffeekraken/coffeekraken/blob/master/who-are-we.md)
+8. [Contribute](#readme-contribute)
+9. [Who are Coffeekraken?](#readme-who-are-coffeekraken)
 10. [Licence](#readme-license)
 
 <a name="readme-install"></a>
@@ -128,6 +128,7 @@ npm start
 - `npm run lint:js` : Run the Js linter
 - `npm run lint:css` : Run the css linter
 - `npm run messages:extract` : Extract the messages from all the `messages.js` files up to the translations folder
+- `npm run samples:remove` : Remove the samples data, containers, etc... to let you start with a clean boilerplate
 
 <a name="readme-browsers-support"></a>
 ## Browsers support
@@ -155,8 +156,29 @@ This boilerplate uses some code linting rules. Here's the list:
 
 > Your commits will not been accepted if the code style is not respected!
 
-<a name="readme-license"></a>
+<a id="readme-contribute"></a>
+
+## Contribute
+
+This is an open source project and will ever be! You are more that welcomed to contribute to his development and make it more awesome every day.
+To do so, you have several possibilities:
+
+1. [Share the love ❤️](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-share-the-love)
+2. [Declare issues](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-declare-issues)
+3. [Fix issues](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-fix-issues)
+4. [Add features](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-add-features)
+5. [Build web component](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-build-web-component)
+
+<a id="readme-who-are-coffeekraken"></a>
+
+## Who are Coffeekraken
+
+We try to be **some cool guys** that build **some cool tools** to make our (and yours hopefully) **every day life better**.
+
+#### [More on who we are](https://github.com/Coffeekraken/coffeekraken/blob/master/who-are-we.md)
+
+<a id="readme-license"></a>
 
 ## License
 
-The code is available under the [MIT license](LICENSE.txt).
+The code is available under the [MIT license](LICENSE.txt). This mean that you can use, modify, or do whatever you want with it. This mean also that it is shipped to you for free, so don't be a hater and if you find some issues, etc... feel free to [contribute](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md) instead of sharing your frustrations on social networks like an asshole...
