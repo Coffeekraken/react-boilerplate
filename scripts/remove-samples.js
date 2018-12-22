@@ -20,7 +20,6 @@ fs.unlinkSync('src/translations/fr.json')
 
 // remove all code from files that are scoped inside /* sample:start */ and /* sample:end */
 const files = glob.sync('src/**/*.js')
-console.log('files', files)
 files.forEach(file => {
   let content = fs.readFileSync(file, 'utf8')
   content = content.replace(
