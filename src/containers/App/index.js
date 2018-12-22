@@ -8,15 +8,15 @@ import PropTypes from 'prop-types'
 import messages from './messages'
 import getGtagClientId from '../../utils/getGtagClientId'
 import isServer from '../../utils/isServer'
-
+/* sample:start */
 import FullscreenVideo from '../../components/FullscreenVideo'
 import Header from '../Header/Loadable'
 import HomePage from '../HomePage/Loadable'
 import CounterPage from '../CounterPage/Loadable'
 import TodoPage from '../TodoPage/Loadable'
 import FormPage from '../FormPage/Loadable'
-
 import video from '../../assets/disaster.mp4'
+/* sample:end */
 import sharingImg from '../../assets/sharing.png'
 
 export default
@@ -99,15 +99,21 @@ class extends React.PureComponent {
             />
           </Helmet>
         )}
+        {/* sample:start */}
         <Header />
         <FullscreenVideo autoPlay muted loop src={video}>
+          {/* sample:end */}
           <Switch>
+            {/* sample:start */}
             <Route exact path="/" component={HomePage} />
             <Route path="/counter" component={CounterPage} />
             <Route path="/todo" component={TodoPage} />
             <Route path="/form" component={FormPage} />
+            {/* sample:end */}
           </Switch>
+          {/* sample:start */}
         </FullscreenVideo>
+        {/* sample:end */}
       </div>
     )
   }
