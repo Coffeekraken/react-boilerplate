@@ -14,6 +14,7 @@ import Header from '../Header/Loadable'
 import HomePage from '../HomePage/Loadable'
 import CounterPage from '../CounterPage/Loadable'
 import TodoPage from '../TodoPage/Loadable'
+import FormPage from '../FormPage/Loadable'
 
 import video from '../../assets/disaster.mp4'
 import sharingImg from '../../assets/sharing.png'
@@ -104,6 +105,7 @@ class extends React.PureComponent {
             <Route exact path="/" component={HomePage} />
             <Route path="/counter" component={CounterPage} />
             <Route path="/todo" component={TodoPage} />
+            <Route path="/form" component={FormPage} />
           </Switch>
         </FullscreenVideo>
       </div>

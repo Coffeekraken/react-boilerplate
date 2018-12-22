@@ -50,6 +50,11 @@ class extends React.PureComponent {
                 <FormattedMessage {...messages.todo} />
               </NavLink>
             </li>
+            <li className="nav__item">
+              <NavLink to="/form" exact>
+                <FormattedMessage {...messages.form} />
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <nav className="header__nav header__nav--locale">

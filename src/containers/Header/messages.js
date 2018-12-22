@@ -16,5 +16,9 @@ export default defineMessages({
   todo: {
     id: `${scope}.todo`,
     defaultMessage: 'Todo'
+  },
+  form: {
+    id: `${scope}.form`,
+    defaultMessage: 'Form'
   }
 })
