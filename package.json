@@ -45,6 +45,7 @@
     "@storybook/react": "^4.1.2",
     "axios": "^0.18.0",
     "coffeekraken-gridle": "^3.0.1",
+    "coffeekraken-redux-full-worker": "^1.0.0",
     "coffeekraken-redux-web-worker": "^1.0.0",
     "coffeekraken-s-button-component": "^1.0.1",
     "coffeekraken-s-dropdown-component": "^1.0.2",

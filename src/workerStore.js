@@ -3,7 +3,6 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import sagaMiddleware from './middlewares/saga'
 import thunkMiddleware from './middlewares/thunk'
-import webworkerMiddleware from './middlewares/webworker'
 
 import appReducer from './containers/App/reducer'
 

@@ -1,12 +1,7 @@
 import produce from 'immer'
 
 import { CHANGE_LOCALE } from './constants'
-import { locale, locales } from '../../i18n'
-
-export const initialState = {
-  locale,
-  locales
-}
+import initialState from './initialState'
 
 export default produce((draft = initialState, action) => {
   switch (action.type) {

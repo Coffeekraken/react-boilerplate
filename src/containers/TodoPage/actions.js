@@ -2,8 +2,8 @@ import {
   ADD_TODO,
   TOGGLE_TODO,
   REMOVE_TODO,
-  CHANGE_FILTER,
-  FETCH_TODOS
+  FETCH_TODOS,
+  CHANGE_FILTER
 } from './constants'
 
 export const fetchTodos = () => ({

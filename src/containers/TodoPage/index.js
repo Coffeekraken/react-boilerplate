@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { registerWorker } from 'coffeekraken-redux-web-worker'
 
 import Checkbox from '../../components/Checkbox'
 import Card from '../../components/Card'
@@ -17,23 +16,6 @@ import {
 import { FILTER_ALL, FILTER_ACTIVE, FILTER_COMPLETED } from './constants'
 import { getVisibleTodos } from './selectors'
 import messages from './messages'
-
-import reducer from './reducer'
-import { registerReducer } from '../../redux-full-worker'
-
-// import sagas from './sagas'
-// import registerSaga from '../../registerSaga'
-
-// import worker from './tasks.worker'
-
-// register the reducer
-registerReducer('todos', reducer)
-
-// register the saga
-// registerSaga(sagas)
-
-// register worker
-// registerWorker(worker)
 
 export default
 @injectIntl

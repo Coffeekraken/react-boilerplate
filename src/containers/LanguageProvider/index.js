@@ -3,12 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { IntlProvider } from 'react-intl'
 
-import reducer from './reducer'
-import registerReducer from '../../registerReducer'
-
-// inject the reducer to the app
-registerReducer('language', reducer)
-
 export default
 @connect(state => ({
   locale: state.language.locale
