@@ -56,6 +56,7 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 - [Redux thunk](https://github.com/reduxjs/redux-thunk) built-in
 - [Reselect](https://github.com/reduxjs/reselect) built-in
 - [Styled component](https://www.styled-components.com/) built-in
+- [Formik](https://jaredpalmer.com/formik) built-in
 - Immutable state through [Immer](https://github.com/mweststrate/immer)
 - SSR (server side rendering) ready 🍺
 - I18n ready through [react-intl](https://github.com/yahoo/react-intl)
