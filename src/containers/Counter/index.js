@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import multireducer, { bindActionCreators } from 'multireducer'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 import { incrementCounter, decrementCounter } from './actions'
@@ -11,18 +12,29 @@ import Button from '../../components/Button'
 import reducer from './reducer'
 import registerReducer from '../../utils/registerReducer'
 
-// register the reducer
-registerReducer('counter', reducer)
+// register the reducers
+registerReducer(
+  'counter',
+  multireducer({
+    counter1: reducer,
+    counter2: reducer
+  })
+)
 
 export default
 @connect(
-  state => ({
-    count: state.counter.count
+  (state, { as }) => ({
+    count: state.counter[as].count
   }),
-  dispatch => ({
-    increment: () => dispatch(incrementCounter()),
-    decrement: () => dispatch(decrementCounter())
-  })
+  (dispatch, { as }) =>
+    bindActionCreators(
+      {
+        incrementCounter,
+        decrementCounter
+      },
+      dispatch,
+      as
+    )
 )
 class extends React.PureComponent {
   static defaultProps = {
@@ -38,19 +50,21 @@ class extends React.PureComponent {
   }
 
   increment() {
-    const { increment } = this.props
-    increment()
+    const { incrementCounter } = this.props
+    incrementCounter()
   }
 
   decrement() {
-    const { decrement } = this.props
-    decrement()
+    const { decrementCounter } = this.props
+    decrementCounter()
   }
 
   render() {
-    const { count } = this.props
+    const { count, className } = this.props
+    const cn = `counter ${className}`
+
     return (
-      <div className="counter">
+      <div className={cn}>
         <Button className="m-r relative" onClick={() => this.decrement()}>
           <Tooltip primary="true">
             <FormattedMessage {...messages.decrementTooltip} />
