@@ -7,9 +7,18 @@ import sagaMiddleware from './middlewares/saga'
 import thunkMiddleware from './middlewares/thunk'
 import routerMiddleware from './middlewares/router'
 import webworkerMiddleware from './middlewares/webworker'
+import isServer from './utils/isServer'
+
+let initialState = {}
+if (!isServer) {
+  initialState =
+    window.app && window.app.state ? JSON.parse(window.app.state) : {}
+}
+console.log(initialState)
 
 const store = createStore(
   createReducer(), // root reducer with router state
+  initialState,
   composeWithDevTools(
     applyMiddleware(
       routerMiddleware, // for dispatching history actions

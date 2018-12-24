@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { registerWorker } from 'coffeekraken-redux-web-worker'
 
-import Checkbox from '../../components/Checkbox'
-import Card from '../../components/Card'
-import Button from '../../components/Button'
+import Checkbox from '@/components/Checkbox'
+import Card from '@/components/Card'
+import Button from '@/components/Button'
 
 import {
   fetchTodos,
@@ -19,10 +19,10 @@ import { getVisibleTodos } from './selectors'
 import messages from './messages'
 
 import reducer from './reducer'
-import registerReducer from '../../utils/registerReducer'
+import registerReducer from '@/utils/registerReducer'
 
 // import sagas from './sagas'
-// import registerSaga from '../../utils/registerSaga'
+// import registerSaga from '@/utils/registerSaga'
 
 import worker from './tasks.worker'
 

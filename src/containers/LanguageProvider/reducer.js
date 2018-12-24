@@ -1,7 +1,7 @@
 import produce from 'immer'
 
 import { CHANGE_LOCALE } from './constants'
-import { locale, locales } from '../../i18n'
+import { locale, locales } from '@/i18n'
 
 const initialState = {
   locale,

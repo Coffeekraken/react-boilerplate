@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-import Card from '../../components/Card'
+import Card from '@/components/Card'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

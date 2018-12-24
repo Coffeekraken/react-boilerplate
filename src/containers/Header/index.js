@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 
-import { locales } from '../../i18n'
-import { changeLocale } from '../LanguageProvider/actions'
+import { locales } from '@/i18n'
+import { changeLocale } from '@/containers/LanguageProvider/actions'
 
 export default
 @connect(

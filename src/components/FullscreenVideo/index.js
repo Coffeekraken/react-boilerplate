@@ -5,7 +5,9 @@ class FullscreenVideo extends React.PureComponent {
     const { children, ...others } = this.props
     return (
       <div>
-        <video className="fullscreen-video__video" {...others} />
+        {typeof this.props.src === 'string' && (
+          <video className="fullscreen-video__video" {...others} />
+        )}
         {children}
       </div>
     )

@@ -1,3 +1,4 @@
+const path = require('path')
 require('ignore-styles')
 require('jsdom-global')()
 require('@babel/register')({
@@ -7,7 +8,15 @@ require('@babel/register')({
     '@babel/plugin-syntax-dynamic-import',
     'dynamic-import-node',
     '@babel/plugin-proposal-class-properties',
-    'react-loadable/babel'
+    'react-loadable/babel',
+    [
+      'module-resolver',
+      {
+        alias: {
+          '@': path.join(__dirname, '../src')
+        }
+      }
+    ]
   ]
 })
 require('./index')

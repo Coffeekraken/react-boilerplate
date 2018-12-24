@@ -6,11 +6,11 @@ import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 import { incrementCounter, decrementCounter } from './actions'
 
-import Tooltip from '../../components/Tooltip'
-import Button from '../../components/Button'
+import Tooltip from '@/components/Tooltip'
+import Button from '@/components/Button'
 
 import reducer from './reducer'
-import registerReducer from '../../utils/registerReducer'
+import registerReducer from '@/utils/registerReducer'
 
 // register the reducers
 registerReducer(
