@@ -19,10 +19,10 @@ import { getVisibleTodos } from './selectors'
 import messages from './messages'
 
 import reducer from './reducer'
-import registerReducer from '../../registerReducer'
+import registerReducer from '../../utils/registerReducer'
 
 // import sagas from './sagas'
-// import registerSaga from '../../registerSaga'
+// import registerSaga from '../../utils/registerSaga'
 
 import worker from './tasks.worker'
 

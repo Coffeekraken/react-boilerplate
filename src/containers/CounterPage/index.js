@@ -6,7 +6,8 @@ import Counter from '../Counter/Loadable'
 export default () => (
   <div className="page t-center">
     <Card className="counter">
-      <Counter />
+      <Counter as="counter1" className="m-b" />
+      <Counter as="counter2" />
     </Card>
   </div>
 )

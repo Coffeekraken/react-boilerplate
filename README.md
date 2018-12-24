@@ -42,7 +42,7 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 
 ---
 
-<img src="/.resources/react.png" title="React" height="40px" /><img src="/.resources/redux.png" title="Redux" height="40px" /><img src="/.resources/redux-saga.png" title="Redux Saga" height="40px" /><img src="/.resources/redux-web-worker.png" title="Coffeekraken Redux web worker" height="40px" /><img src="/.resources/thunk.png" title="Redux Thunk" height="40px" /><img src="/.resources/reselect.png" title="Redux Reselect" height="40px" /><img src="/.resources/styled-components.png" title="Styled components" height="40px" /><img src="/.resources/storybook.png" title="Storybook" height="40px" /><img src="/.resources/react-intl.png" title="React intl" height="40px" /><img src="/.resources/docker.png" title="Docker" height="40px" /><img src="/.resources/eslint.png" title="ESLint" height="40px" /><img src="/.resources/jest.png" title="Jest" height="40px" /><img src="/.resources/npm.png" title="NPM" height="40px" />
+<img src="/.resources/react.png" title="React" height="40px" /><img src="/.resources/redux.png" title="Redux" height="40px" /><img src="/.resources/redux-saga.png" title="Redux Saga" height="40px" /><img src="/.resources/redux-web-worker.png" title="Coffeekraken Redux web worker" height="40px" /><img src="/.resources/thunk.png" title="Redux Thunk" height="40px" /><img src="/.resources/reselect.png" title="Redux Reselect" height="40px" /><img src="/.resources/styled-components.png" title="Styled components" height="40px" /><img src="/.resources/formik.png" title="Formik" height="40px" /><img src="/.resources/storybook.png" title="Storybook" height="40px" /><img src="/.resources/react-intl.png" title="React intl" height="40px" /><img src="/.resources/docker.png" title="Docker" height="40px" /><img src="/.resources/eslint.png" title="ESLint" height="40px" /><img src="/.resources/jest.png" title="Jest" height="40px" /><img src="/.resources/npm.png" title="NPM" height="40px" />
 <img src="/.resources/prettier.png" title="Prettier" height="40px" /><img src="/.resources/sass.png" title="Sass" height="40px" /><img src="/.resources/stylelint.png" title="Stylelint" height="40px" /><img src="/.resources/travisci.png" title="Travis CI" height="40px" /><img src="/.resources/webpack.png" title="Webpack" height="40px" />
 
 ---
@@ -56,6 +56,7 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 - [Redux thunk](https://github.com/reduxjs/redux-thunk) built-in
 - [Reselect](https://github.com/reduxjs/reselect) built-in
 - [Styled component](https://www.styled-components.com/) built-in
+- [Formik](https://jaredpalmer.com/formik) built-in
 - Immutable state through [Immer](https://github.com/mweststrate/immer)
 - SSR (server side rendering) ready 🍺
 - I18n ready through [react-intl](https://github.com/yahoo/react-intl)
@@ -82,8 +83,8 @@ React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, s
 5. [Browsers support](#readme-browsers-support)
 6. [Code formatting](#readme-code-formatting)
 7. [Code linting](#readme-code-linting)
-8. [Contribute](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md)
-9. [Who are Coffeekraken?](https://github.com/Coffeekraken/coffeekraken/blob/master/who-are-we.md)
+8. [Contribute](#readme-contribute)
+9. [Who are Coffeekraken?](#readme-who-are-coffeekraken)
 10. [Licence](#readme-license)
 
 <a name="readme-install"></a>
@@ -128,6 +129,7 @@ npm start
 - `npm run lint:js` : Run the Js linter
 - `npm run lint:css` : Run the css linter
 - `npm run messages:extract` : Extract the messages from all the `messages.js` files up to the translations folder
+- `npm run samples:remove` : Remove the samples data, containers, etc... to let you start with a clean boilerplate
 
 <a name="readme-browsers-support"></a>
 ## Browsers support
@@ -155,8 +157,29 @@ This boilerplate uses some code linting rules. Here's the list:
 
 > Your commits will not been accepted if the code style is not respected!
 
-<a name="readme-license"></a>
+<a id="readme-contribute"></a>
+
+## Contribute
+
+This is an open source project and will ever be! You are more that welcomed to contribute to his development and make it more awesome every day.
+To do so, you have several possibilities:
+
+1. [Share the love ❤️](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-share-the-love)
+2. [Declare issues](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-declare-issues)
+3. [Fix issues](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-fix-issues)
+4. [Add features](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-add-features)
+5. [Build web component](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-build-web-component)
+
+<a id="readme-who-are-coffeekraken"></a>
+
+## Who are Coffeekraken
+
+We try to be **some cool guys** that build **some cool tools** to make our (and yours hopefully) **every day life better**.
+
+#### [More on who we are](https://github.com/Coffeekraken/coffeekraken/blob/master/who-are-we.md)
+
+<a id="readme-license"></a>
 
 ## License
 
-The code is available under the [MIT license](LICENSE.txt).
+The code is available under the [MIT license](LICENSE.txt). This mean that you can use, modify, or do whatever you want with it. This mean also that it is shipped to you for free, so don't be a hater and if you find some issues, etc... feel free to [contribute](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md) instead of sharing your frustrations on social networks like an asshole...
