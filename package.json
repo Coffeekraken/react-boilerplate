@@ -35,6 +35,11 @@
     "test",
     "lint"
   ],
+  "jest": {
+    "moduleNameMapper": {
+      "^@\/(.*)$": "<rootDir>/src/$1"
+    }
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -47,7 +52,7 @@
     "@storybook/react": "^4.1.2",
     "axios": "^0.18.0",
     "coffeekraken-gridle": "^3.0.1",
-    "coffeekraken-redux-web-worker": "^1.0.0",
+    "coffeekraken-redux-web-worker": "^1.0.1",
     "coffeekraken-s-button-component": "^1.0.1",
     "coffeekraken-s-dropdown-component": "^1.0.2",
     "coffeekraken-s-form-component": "^1.0.3",
@@ -116,6 +121,7 @@
     "eslint-config-prettier": "^3.3.0",
     "file-loader": "^2.0.0",
     "glob-all": "^3.1.0",
+    "hash-it": "^4.0.3",
     "jsdom": "^13.1.0",
     "jsdom-global": "^3.0.2",
     "node-sass": "^4.10.0",

@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import objectHash from 'object-hash'
+import hash from 'hash-it'
 
 import Loadable from 'react-loadable'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 
-import Bootstrap from '../../src/bootstrap'
-import store from '../../src/store'
-import { getPromises, resetPromises } from '../../src/utils/SSRPromise'
+import Bootstrap from '@/bootstrap'
+import store from '@/store'
+import { getPromises, resetPromises } from '@/utils/SSRPromise'
 
 import manifest from '../../build/asset-manifest.json'
 
@@ -17,7 +17,9 @@ const fs = require('fs')
 
 function render(req) {
   const modules = []
-  const context = {}
+  const context = {
+    ssrRequestId: req.id
+  }
   const html = ReactDOMServer.renderToString(
     <Loadable.Capture report={m => modules.push(m)}>
       <Provider store={store}>
@@ -36,6 +38,9 @@ function render(req) {
 export default (req, res) => {
   req.id = Math.round(Math.random() * 999999999)
 
+  // hash request and save it under id property
+  req.id = hash(req)
+
   // point to the html file created by CRA's build tool
   const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html')
 
@@ -45,14 +50,16 @@ export default (req, res) => {
       return res.status(404).end()
     }
 
-    // empty the promises
-    resetPromises()
-
     // render the app as a string
     const renderResult = render(req)
 
     // wait for all bubbled promises to finish
-    Promise.all(getPromises()).then(() => {
+    Promise.all(getPromises(req.id)).then(() => {
+      console.log('req id', req.id)
+
+      // empty the promises
+      resetPromises(req.id)
+
       // extract the chunk file that match the modules captured
       const extractAssets = (assets, chunks) =>
         Object.keys(assets)

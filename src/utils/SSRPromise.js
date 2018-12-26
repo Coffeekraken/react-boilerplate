@@ -1,10 +1,11 @@
-let promises = []
-export const getPromises = () => promises
-export const resetPromises = () => {
-  promises = []
-  return promises
+const promises = {}
+export const getPromises = ssrRequestId => promises[ssrRequestId] || []
+export const resetPromises = ssrRequestId => {
+  promises[ssrRequestId] = []
+  return promises[ssrRequestId]
 }
-export default promise => {
-  promises.push(promise)
+export default (promise, ssrRequestId = 'default') => {
+  if (!promises[ssrRequestId]) promises[ssrRequestId] = []
+  promises[ssrRequestId].push(promise)
   return promise
 }

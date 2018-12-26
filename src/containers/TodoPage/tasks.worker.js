@@ -5,11 +5,12 @@ import SSRPromise from '@/utils/SSRPromise'
 
 export default expose(
   {
-    [FETCH_TODOS]: async ({ dispatch }) => {
+    [FETCH_TODOS]: async ({ dispatch, state }) => {
       const todos = await SSRPromise(
         axios.get(
           'https://my-json-server.typicode.com/coffeekraken/react-boilerplate/todos'
-        )
+        ),
+        state.app.ssrRequestId
       )
       dispatch({
         type: TODOS_FETCHED,
