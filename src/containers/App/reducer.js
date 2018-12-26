@@ -1,17 +1,14 @@
 import produce from 'immer'
-
-import { CHANGE_LOCALE } from './constants'
-import { locale, locales } from '@/i18n'
+import { SET_SSR_REQUEST_ID } from './constants'
 
 const initialState = {
-  locale,
-  locales
+  ssrRequestId: null
 }
 
 export default produce((draft = initialState, action) => {
   switch (action.type) {
-    case CHANGE_LOCALE:
-      draft.locale = action.locale
+    case SET_SSR_REQUEST_ID:
+      draft.ssrRequestId = action.ssrRequestId
       return draft
     default:
       return draft

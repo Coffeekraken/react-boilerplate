@@ -1,33 +1,57 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 
+import registerReducer from '@/utils/registerReducer'
 import messages from './messages'
-import getGtagClientId from '../../utils/getGtagClientId'
-import isServer from '../../utils/isServer'
+import reducer from './reducer'
+import { setSsrRequestId } from './actions'
+import getGtagClientId from '@/utils/getGtagClientId'
+import isServer from '@/utils/isServer'
 /* sample:start */
-import FullscreenVideo from '../../components/FullscreenVideo'
-import Header from '../Header/Loadable'
-import HomePage from '../HomePage/Loadable'
-import CounterPage from '../CounterPage/Loadable'
-import TodoPage from '../TodoPage/Loadable'
-import FormPage from '../FormPage/Loadable'
-import video from '../../assets/disaster.mp4'
+import FullscreenVideo from '@/components/FullscreenVideo'
+import Header from '@/containers/Header/Loadable'
+import HomePage from '@/containers/HomePage/Loadable'
+import CounterPage from '@/containers/CounterPage/Loadable'
+import TodoPage from '@/containers/TodoPage/Loadable'
+import FormPage from '@/containers/FormPage/Loadable'
+import video from '@/assets/disaster.mp4'
 /* sample:end */
-import sharingImg from '../../assets/sharing.png'
+import sharingImg from '@/assets/sharing.png'
+
+registerReducer('app', reducer)
 
 export default
+@withRouter
 @injectIntl
-@connect(state => ({
-  location: state.router.location
-}))
+@connect(
+  state => ({
+    location: state.router.location
+  }),
+  dispatch => ({
+    setSsrRequestId: ssrRequestId => dispatch(setSsrRequestId(ssrRequestId))
+  })
+)
 class extends React.PureComponent {
+  static defaultProps = {
+    staticContext: {}
+  }
+
   static propTypes = {
     location: PropTypes.object.isRequired,
-    intl: PropTypes.object.isRequired
+    intl: PropTypes.object.isRequired,
+    staticContext: PropTypes.object,
+    setSsrRequestId: PropTypes.func.isRequired
+  }
+
+  componentWillMount() {
+    const { setSsrRequestId, staticContext } = this.props
+    if (staticContext && staticContext.ssrRequestId) {
+      setSsrRequestId(staticContext.ssrRequestId)
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -49,9 +73,10 @@ class extends React.PureComponent {
 
   render() {
     const { intl } = this.props
+
     return (
       <div>
-        {!isServer && (
+        {!isServer() && (
           <Helmet>
             <title>{intl.formatMessage(messages.title)}</title>
             <meta

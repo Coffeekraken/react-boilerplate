@@ -1,7 +1,11 @@
-const { addDecoratorsLegacy } = require('customize-cra')
-const { disableEsLint } = require('customize-cra')
+const {
+  addDecoratorsLegacy,
+  disableEsLint,
+  addWebpackAlias
+} = require('customize-cra')
 // const { useEslintRc } = require('customize-cra')
 // const fs = require('fs')
+const path = require('path')
 
 module.exports = function override(config) {
   // fix issue with worker and window
@@ -25,6 +29,11 @@ module.exports = function override(config) {
       }
     }
   })
+
+  // add some aliases
+  addWebpackAlias({
+    '@': path.join(__dirname, 'src')
+  })(config)
 
   // fs.writeFileSync('config.json', JSON.stringify(config, null, 2))
 

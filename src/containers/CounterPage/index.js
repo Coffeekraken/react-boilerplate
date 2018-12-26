@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Card from '../../components/Card'
-import Counter from '../Counter/Loadable'
+import Card from '@/components/Card'
+import Counter from '@/containers/Counter/Loadable'
 
 export default () => (
   <div className="page t-center">
