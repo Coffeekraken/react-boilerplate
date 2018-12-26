@@ -15,7 +15,6 @@
     "build": "react-app-rewired build && npm run build:favicon && npm run build:favicon:inject",
     "build:server": "php -S 0.0.0.0:8080 -t build/",
     "build:ssr": "node ssr/bootstrap.js -p 3333",
-    "snap": "react-snap",
     "build:favicon": "coffeekraken-favicons-stack --source src/assets/favicon.png --output build/static/favicons --html-output build/static/favicons/favicons.html --path '/static/favicons' --theme '#fff' --background '#fff'",
     "build:favicon:inject": "node scripts/inject-favicons.js",
     "eject": "react-scripts eject",
