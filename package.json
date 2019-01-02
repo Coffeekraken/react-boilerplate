@@ -35,6 +35,14 @@
     "test",
     "lint"
   ],
+  "author": "Coffeekraken <hello@coffeekraken.io>",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "http://olivierbossel.com"
+    }
+  ],
   "jest": {
     "moduleNameMapper": {
       "^@\/(.*)$": "<rootDir>/src/$1"
