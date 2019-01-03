@@ -38,7 +38,7 @@
 	</a>
 </p>
 
-React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, sugar, gridle and more...
+<p class="lead">React boilerplate integrated with react-scripts, redux, redux-thunk, reselect, sugar, gridle and more...</p>
 
 ---
 
